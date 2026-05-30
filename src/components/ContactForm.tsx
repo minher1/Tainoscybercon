@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef, FormEvent } from "react";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 interface Field {
   name: string;
@@ -25,7 +26,9 @@ export default function ContactForm({
   formType = "contact",
 }: Props) {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error" | "spam">("idle");
+  const [turnstileToken, setTurnstileToken] = useState<string>("");
   const loadedAt = useRef(Date.now());
+  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -45,7 +48,7 @@ export default function ContactForm({
     setStatus("sending");
 
     // Collect all named fields into a plain object
-    const data: Record<string, string> = { _formType: formType, _loadedAt: String(loadedAt.current) };
+    const data: Record<string, string> = { _formType: formType, _loadedAt: String(loadedAt.current), _turnstile: turnstileToken };
     fields.forEach((f) => {
       const el = form.elements.namedItem(f.name) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | null;
       if (el) data[f.label || f.name] = el.value;
@@ -132,6 +135,16 @@ export default function ContactForm({
         );
       })}
 
+      {/* Cloudflare Turnstile */}
+      {siteKey && (
+        <Turnstile
+          siteKey={siteKey}
+          onSuccess={setTurnstileToken}
+          onExpire={() => setTurnstileToken("")}
+          options={{ theme: "dark", size: "normal" }}
+        />
+      )}
+
       {status === "spam" && (
         <p className="text-yellow-400 text-xs font-mono">
           [ERR] Soumission trop rapide. Veuillez réessayer.
@@ -145,7 +158,7 @@ export default function ContactForm({
 
       <button
         type="submit"
-        disabled={status === "sending"}
+        disabled={status === "sending" || (!!siteKey && !turnstileToken)}
         className="w-full py-3.5 bg-[#1c2460] border border-[#4a6cf7] text-white font-bold text-sm tracking-widest uppercase rounded-lg hover:bg-[#4a6cf7] transition-all disabled:opacity-50 disabled:cursor-not-allowed font-mono"
       >
         {status === "sending" ? "> Envoi en cours..." : `> ${submitLabel}`}

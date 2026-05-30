@@ -3,6 +3,18 @@ import { NextRequest, NextResponse } from "next/server";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const TO = "hello@tainoscybercon.com";
+const TURNSTILE_SECRET = process.env.TURNSTILE_SECRET_KEY ?? "";
+
+async function verifyTurnstile(token: string, ip: string): Promise<boolean> {
+  if (!TURNSTILE_SECRET) return true; // skip in dev if key not set
+  const res = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({ secret: TURNSTILE_SECRET, response: token, remoteip: ip }),
+  });
+  const data = await res.json() as { success: boolean };
+  return data.success;
+}
 
 function buildHtml(fields: Record<string, string>, formType: string): string {
   const brandGradient =
@@ -144,13 +156,21 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
-    // Time-trap: reject if submitted too fast (< 3s)
-    const { _loadedAt, _gotcha, _formType = "contact", ...fields } = body;
-    if (_gotcha) {
-      return NextResponse.json({ ok: true }); // silently drop bots
-    }
+    const { _loadedAt, _gotcha, _formType = "contact", _turnstile, ...fields } = body;
+
+    // Honeypot
+    if (_gotcha) return NextResponse.json({ ok: true });
+
+    // Time-trap
     if (_loadedAt && Date.now() - Number(_loadedAt) < 3000) {
       return NextResponse.json({ error: "Too fast" }, { status: 429 });
+    }
+
+    // Cloudflare Turnstile verification
+    const ip = req.headers.get("cf-connecting-ip") ?? req.headers.get("x-forwarded-for") ?? "";
+    const turnstileOk = await verifyTurnstile(_turnstile ?? "", ip);
+    if (!turnstileOk) {
+      return NextResponse.json({ error: "Turnstile failed" }, { status: 403 });
     }
 
     const label = FORM_LABELS[_formType] ?? "Soumission de formulaire";
