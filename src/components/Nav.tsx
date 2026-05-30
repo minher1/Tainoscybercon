@@ -76,7 +76,7 @@ export default function Nav() {
               title={lang === "fr" ? "Switch to English" : "Passer en français"}
             >
               <span className="text-base leading-none">
-                {lang === "fr" ? "🇬🇧" : "🇫🇷"}
+                {lang === "fr" ? "🇺🇸" : "🇫🇷"}
               </span>
               <span>{lang === "fr" ? "EN" : "FR"}</span>
             </button>
