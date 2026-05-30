@@ -2,7 +2,7 @@ import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const TO = "communication@tainoscybercon.com";
+const TO = "hello@tainoscybercon.com";
 
 function buildHtml(fields: Record<string, string>, formType: string): string {
   const brandGradient =
