@@ -54,7 +54,7 @@ export default function Footer() {
             <div className="relative h-9 w-44 mb-4">
               <Image src="/logo.png" alt="Tainos Cyber Con" fill className="object-contain object-left" />
             </div>
-            <p className="text-slate-500 text-xs leading-relaxed max-w-xs">
+            <p className="text-slate-300 text-xs leading-relaxed max-w-xs">
               La conférence internationale de cybersécurité de la Rive-Nord de Montréal.
             </p>
           </div>
@@ -64,7 +64,7 @@ export default function Footer() {
             <h4 className="text-xs font-bold text-[#7b9bff] tracking-widest uppercase mb-4">
               {t.contact.title}
             </h4>
-            <ul className="space-y-2 text-sm text-slate-400">
+            <ul className="space-y-2 text-sm text-slate-300">
               <li>
                 <a href={`tel:${t.contact.phone}`} className="hover:text-white transition-colors">
                   {t.contact.phone}
@@ -75,7 +75,7 @@ export default function Footer() {
                   {t.contact.email}
                 </a>
               </li>
-              <li className="text-slate-500">{t.contact.website}</li>
+              <li className="text-slate-300">{t.contact.website}</li>
             </ul>
           </div>
 
@@ -92,7 +92,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.name}
-                  className="w-9 h-9 rounded-lg border border-[#2a3580] flex items-center justify-center text-slate-500 hover:border-[#4a6cf7]/60 hover:text-[#7b9bff] transition-all"
+                  className="w-9 h-9 rounded-lg border border-[#2a3580] flex items-center justify-center text-slate-300 hover:border-[#4a6cf7]/60 hover:text-[#7b9bff] transition-all"
                 >
                   {s.icon}
                 </a>
@@ -103,15 +103,15 @@ export default function Footer() {
 
         {/* Previous edition */}
         <div className="py-6 border-t border-[#2a3580]/30 border-b mb-6">
-          <p className="text-xs text-slate-600 text-center">
+          <p className="text-xs text-slate-400 text-center">
             {t.previous.title}: {t.previous.date} — &ldquo;{t.previous.theme}&rdquo;
           </p>
         </div>
 
         <div className="flex flex-col items-center gap-3">
           <TainoSun className="w-10 h-10 opacity-70" />
-          <p className="text-center text-xs text-slate-600">{t.footer.copyright}</p>
-          <a href="/privacy" className="text-xs text-slate-600 hover:text-slate-400 transition-colors underline underline-offset-2">
+          <p className="text-center text-xs text-slate-400">{t.footer.copyright}</p>
+          <a href="/privacy" className="text-xs text-slate-400 hover:text-slate-200 transition-colors underline underline-offset-2">
             Politique de confidentialité
           </a>
           <BinaryStream className="w-40 opacity-30" />

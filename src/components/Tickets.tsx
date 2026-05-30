@@ -20,7 +20,7 @@ export default function Tickets() {
           <span className="text-[#7b9bff] text-xs font-mono tracking-[0.3em] uppercase mb-3 block">
             {t.tickets.title}
           </span>
-          <p className="text-slate-400 text-sm">{t.tickets.subtitle}</p>
+          <p className="text-slate-300 text-sm">{t.tickets.subtitle}</p>
         </div>
 
         <div className="relative p-8 sm:p-12 rounded-2xl border border-[#2a3580] bg-gradient-to-b from-[#1c2460]/40 to-[#07091a] overflow-hidden">

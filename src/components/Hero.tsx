@@ -114,7 +114,7 @@ export default function Hero() {
 
         {/* Countdown */}
         <div className="mb-8">
-          <p className="text-xs font-mono text-slate-500 tracking-widest uppercase mb-4">
+          <p className="text-xs font-mono text-slate-300 tracking-widest uppercase mb-4">
             {lang === "fr" ? "// compte à rebours" : "// countdown"}
           </p>
           <Countdown />
@@ -129,7 +129,7 @@ export default function Hero() {
           ].map((item) => (
             <div
               key={item.text}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#2a3580] bg-[#1c2460]/20 text-xs text-slate-400 font-mono"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#2a3580] bg-[#1c2460]/20 text-xs text-slate-300 font-mono"
             >
               <span>{item.icon}</span>
               <span>{item.text}</span>

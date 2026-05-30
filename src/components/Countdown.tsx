@@ -46,7 +46,7 @@ export default function Countdown() {
               {pad(val)}
             </span>
           </div>
-          <span className="text-[10px] font-mono text-slate-500 tracking-widest uppercase mt-1.5">
+          <span className="text-[10px] font-mono text-slate-300 tracking-widest uppercase mt-1.5">
             {labels[i]}
           </span>
         </div>

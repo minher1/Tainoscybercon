@@ -101,7 +101,7 @@ export default function ContactForm({
         return (
           <div key={f.name}>
             {f.label && (
-              <label className="block text-xs font-semibold text-slate-400 tracking-widest uppercase mb-1.5">
+              <label className="block text-xs font-semibold text-slate-200 tracking-widest uppercase mb-1.5">
                 {f.label}{f.required && <span className="text-[#4a6cf7] ml-1">*</span>}
               </label>
             )}

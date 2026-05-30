@@ -31,7 +31,7 @@ export default function ThreatTicker() {
         {[...THREATS, ...THREATS].map((t, i) => (
           <span key={i} className="flex items-center gap-3 text-xs font-mono">
             <span className="text-red-400 shrink-0">⚠</span>
-            <span className="text-slate-400">{t}</span>
+            <span className="text-slate-200">{t}</span>
             <span className="text-[#2a3580]">|</span>
           </span>
         ))}

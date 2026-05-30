@@ -47,7 +47,7 @@ function SpeakerCard({ speaker }: { speaker: Speaker }) {
       <div className="p-6 flex flex-col flex-1">
         <h3 className="text-xl font-black text-white mb-0.5">{speaker.name}</h3>
         <p className="text-[#7b9bff] text-sm font-mono mb-3">{speaker.title}</p>
-        <p className="text-slate-400 text-sm leading-relaxed flex-1">{speaker.bio}</p>
+        <p className="text-slate-200 text-sm leading-relaxed flex-1">{speaker.bio}</p>
 
         {/* Links */}
         <div className="flex items-center gap-3 mt-5 pt-4 border-t border-[#2a3580]/40">
@@ -55,7 +55,7 @@ function SpeakerCard({ speaker }: { speaker: Speaker }) {
             href={speaker.website}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-xs font-mono text-slate-400 hover:text-white transition-colors"
+            className="flex items-center gap-1.5 text-xs font-mono text-slate-300 hover:text-white transition-colors"
           >
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
@@ -66,7 +66,7 @@ function SpeakerCard({ speaker }: { speaker: Speaker }) {
             href={speaker.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-xs font-mono text-slate-400 hover:text-[#7b9bff] transition-colors"
+            className="flex items-center gap-1.5 text-xs font-mono text-slate-300 hover:text-[#7b9bff] transition-colors"
           >
             <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
@@ -132,7 +132,7 @@ export default function Speakers() {
           <span className="logo-gradient-text text-xs font-mono tracking-[0.3em] uppercase mb-3 block font-bold">
             {t.speakers.title}
           </span>
-          <p className="text-slate-400 text-sm">{t.speakers.subtitle}</p>
+          <p className="text-slate-300 text-sm">{t.speakers.subtitle}</p>
         </div>
 
         {/* Confirmed speakers */}
@@ -149,11 +149,11 @@ export default function Speakers() {
                 className="rounded-2xl border border-dashed border-[#2a3580]/40 bg-[#1c2460]/10 flex flex-col items-center justify-center gap-3 py-20 opacity-40"
               >
                 <div className="w-16 h-16 rounded-full border-2 border-dashed border-[#2a3580] flex items-center justify-center">
-                  <svg className="w-7 h-7 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-7 h-7 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                   </svg>
                 </div>
-                <span className="text-xs font-mono text-slate-600 tracking-widest uppercase">
+                <span className="text-xs font-mono text-slate-400 tracking-widest uppercase">
                   {lang === "fr" ? "À venir..." : "Coming soon..."}
                 </span>
               </div>
@@ -165,7 +165,7 @@ export default function Speakers() {
         <div className="max-w-2xl mx-auto">
           <div className="p-8 rounded-xl border border-[#2a3580] bg-gradient-to-br from-[#1c2460]/30 to-transparent">
             <h3 className="text-lg font-bold text-white mb-2">{t.speakers.cta}</h3>
-            <p className="text-slate-400 text-sm mb-6">{t.speakers.cta_desc}</p>
+            <p className="text-slate-200 text-sm mb-6">{t.speakers.cta_desc}</p>
             <ContactForm
               fields={formFields}
               formType="speaker"

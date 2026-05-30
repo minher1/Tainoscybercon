@@ -27,7 +27,7 @@ export default function Schedule() {
           <span className="text-[#7b9bff] text-xs font-mono tracking-[0.3em] uppercase mb-3 block">
             {t.schedule.title}
           </span>
-          <p className="text-slate-400 text-sm">{t.schedule.subtitle}</p>
+          <p className="text-slate-300 text-sm">{t.schedule.subtitle}</p>
         </div>
 
         <div className="relative">
@@ -36,7 +36,7 @@ export default function Schedule() {
             {t.schedule.items.map((item, i) => (
               <div key={i} className="flex items-start gap-6 group">
                 <div className="w-16 shrink-0 text-right">
-                  <span className="text-xs font-mono text-slate-500 group-hover:text-[#7b9bff] transition-colors">
+                  <span className="text-xs font-mono text-slate-300 group-hover:text-[#7b9bff] transition-colors">
                     {item.time}
                   </span>
                 </div>
