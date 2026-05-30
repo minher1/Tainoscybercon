@@ -1,7 +1,6 @@
 "use client";
 import { useLang } from "@/context/LangContext";
 import Image from "next/image";
-import { NetworkSilhouette, EyeSilhouette } from "./Silhouettes";
 
 const icons: Record<string, React.ReactNode> = {
   shield: (
@@ -30,93 +29,89 @@ export default function About() {
   const { t } = useLang();
 
   return (
-    <section id="about" className="py-24 px-4 relative overflow-hidden">
-      {/* Conference audience photo as subtle background */}
-      <div className="absolute inset-0 opacity-[0.07]">
-        <Image src="/photos/event-crowd.jpg" alt="" fill className="object-cover object-center" />
-      </div>
-      <div className="absolute inset-0 bg-gradient-to-b from-[#07091a] via-transparent to-[#07091a]" />
+    <section id="about" className="relative overflow-hidden bg-white">
+      {/* Top edge — dark-to-white transition */}
+      <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-[#07091a] to-white pointer-events-none" />
 
-      {/* Decorative silhouettes */}
-      <NetworkSilhouette className="absolute -bottom-8 right-0 w-80 opacity-60 pointer-events-none select-none" />
-      <EyeSilhouette className="absolute top-16 left-0 w-56 opacity-50 pointer-events-none select-none hidden lg:block" />
+      <div className="relative pt-28 pb-24 px-4 max-w-7xl mx-auto">
 
-      <div className="relative max-w-7xl mx-auto">
-        <div className="section-divider mb-16" />
-
+        {/* Header */}
         <div className="text-center mb-16">
           <span className="logo-gradient-text text-xs font-mono tracking-[0.3em] uppercase mb-3 block font-bold">
             {t.about.title}
           </span>
-          <h2 className="text-3xl sm:text-5xl font-black text-white mb-4">
+          <h2 className="text-3xl sm:text-5xl font-black text-[#07091a] mb-4">
             {t.about.subtitle}
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto text-base leading-relaxed">
+          <p className="text-slate-500 max-w-2xl mx-auto text-base leading-relaxed">
             {t.about.description}
           </p>
         </div>
 
-        {/* Benefits grid */}
+        {/* Benefits grid — white cards with brand accent */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
           {t.about.benefits.map((b, i) => (
             <div
               key={i}
-              className="group p-6 rounded-xl border border-[#2a3580]/60 bg-[#1c2460]/20 hover:border-[#4a6cf7]/60 hover:bg-[#1c2460]/40 transition-all duration-300"
+              className="group p-6 rounded-xl border border-slate-200 bg-white shadow-sm hover:shadow-md hover:border-[#c03880]/30 transition-all duration-300"
             >
-              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#e84444]/10 to-[#7b35b0]/20 border border-[#c03880]/30 flex items-center justify-center text-[#c03880] mb-4 group-hover:border-[#c03880]/60 transition-colors">
+              {/* Icon badge */}
+              <div className="w-12 h-12 rounded-lg logo-gradient flex items-center justify-center text-white mb-4 shadow-md">
                 {icons[b.icon]}
               </div>
-              <h3 className="font-bold text-white mb-2">{b.title}</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">{b.desc}</p>
+              <h3 className="font-bold text-[#07091a] mb-2">{b.title}</h3>
+              <p className="text-slate-500 text-sm leading-relaxed">{b.desc}</p>
             </div>
           ))}
         </div>
 
         {/* Photo + Audience side by side */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Conference photo */}
-          <div className="relative h-64 lg:h-auto rounded-xl overflow-hidden border border-[#2a3580]/60">
+          <div className="relative h-72 lg:h-auto rounded-2xl overflow-hidden shadow-xl">
             <Image
               src="/photos/event-crowd.jpg"
               alt="Conférence Tainos Cyber Con"
               fill
               className="object-cover object-center"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#07091a]/80 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             <div className="absolute bottom-4 left-4">
-              <span className="text-xs font-mono text-[#7b9bff] tracking-wider uppercase opacity-80">
+              <span className="text-xs font-mono text-white/80 tracking-wider uppercase">
                 Tainos Cyber Con 2020
               </span>
             </div>
           </div>
 
-          <div className="p-8 rounded-xl border border-[#2a3580]/60 bg-[#1c2460]/20">
-            <h3 className="font-bold text-white mb-4">{t.about.audience_title}</h3>
-            <ul className="space-y-2 mb-6">
+          {/* Audience panel — navy card on white section */}
+          <div className="p-8 rounded-2xl bg-[#07091a] text-white shadow-xl flex flex-col justify-center">
+            <h3 className="font-bold text-white text-lg mb-5">{t.about.audience_title}</h3>
+            <ul className="space-y-3 mb-8">
               {t.about.audience.map((a, i) => (
-                <li key={i} className="flex items-center gap-2 text-sm text-slate-300">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-br from-[#e84444] to-[#7b35b0] shrink-0" />
+                <li key={i} className="flex items-center gap-3 text-sm text-slate-300">
+                  <span className="w-2 h-2 rounded-full logo-gradient shrink-0 inline-block" />
                   {a}
                 </li>
               ))}
             </ul>
-            <div className="flex items-start gap-3 pt-4 border-t border-[#2a3580]/40">
-              <div className="w-8 h-8 rounded-lg bg-[#1c2460] border border-[#2a3580] flex items-center justify-center text-[#7b9bff] shrink-0 mt-0.5">
+            <div className="flex items-start gap-3 pt-5 border-t border-white/10">
+              <div className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-[#7b9bff] shrink-0 mt-0.5">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                 </svg>
               </div>
               <div>
-                <p className="text-slate-300 text-sm">{t.about.location_detail}</p>
+                <p className="text-slate-200 text-sm">{t.about.location_detail}</p>
                 <p className="text-slate-500 text-xs mt-1">Rive-Nord de Montréal</p>
               </div>
             </div>
           </div>
         </div>
-
       </div>
+
+      {/* Bottom edge — white-to-dark transition */}
+      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#07091a] to-white pointer-events-none" />
     </section>
   );
 }
-
