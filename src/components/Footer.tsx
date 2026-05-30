@@ -51,13 +51,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="relative w-8 h-8 rounded-md overflow-hidden shrink-0">
-                <Image src="/logo-badge.png" alt="" fill className="object-cover" />
-              </div>
-              <div className="relative h-7 w-36">
-                <Image src="/logo.png" alt="Tainos Cyber Con" fill className="object-contain object-left" />
-              </div>
+            <div className="relative h-9 w-44 mb-4">
+              <Image src="/logo.png" alt="Tainos Cyber Con" fill className="object-contain object-left" />
             </div>
             <p className="text-slate-500 text-xs leading-relaxed max-w-xs">
               La conférence internationale de cybersécurité de la Rive-Nord de Montréal.
