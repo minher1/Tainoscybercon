@@ -22,7 +22,7 @@ function SpeakerCard({ speaker }: { speaker: Speaker }) {
           src={speaker.photo}
           alt={speaker.name}
           fill
-          className="object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100"
+          className="object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100"
           onError={(e) => {
             // Fallback to initials avatar on missing photo
             (e.target as HTMLImageElement).style.display = "none";
