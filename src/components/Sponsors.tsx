@@ -1,8 +1,35 @@
 "use client";
 import { useLang } from "@/context/LangContext";
+import ContactForm from "./ContactForm";
 
 export default function Sponsors() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+
+  const fields = lang === "fr"
+    ? [
+        { name: "name",         label: "Nom / Organisation",   required: true  },
+        { name: "email",        label: "Courriel",             type: "email", required: true },
+        { name: "phone",        label: "Téléphone",            type: "tel"   },
+        {
+          name: "package",
+          label: "Niveau de partenariat souhaité",
+          options: ["Or", "Argent", "Bronze", "À discuter"],
+        },
+        { name: "message",      label: "Message",              type: "textarea" },
+        { name: "_subject",     label: "",                     type: "hidden" },
+      ]
+    : [
+        { name: "name",         label: "Name / Organization",  required: true  },
+        { name: "email",        label: "Email",                type: "email", required: true },
+        { name: "phone",        label: "Phone",                type: "tel"   },
+        {
+          name: "package",
+          label: "Desired partnership level",
+          options: ["Gold", "Silver", "Bronze", "To discuss"],
+        },
+        { name: "message",      label: "Message",              type: "textarea" },
+        { name: "_subject",     label: "",                     type: "hidden" },
+      ];
 
   return (
     <section id="sponsors" className="py-24 px-4 bg-[#0d1035]">
@@ -18,7 +45,8 @@ export default function Sponsors() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start mb-16">
+          {/* Benefits list */}
           <div>
             <h3 className="text-sm font-bold text-[#7b9bff] tracking-widest uppercase mb-6">
               {t.sponsors.benefits_title}
@@ -35,31 +63,23 @@ export default function Sponsors() {
             </ul>
           </div>
 
-          <div className="p-8 rounded-xl border border-[#2a3580] bg-gradient-to-br from-[#1c2460]/40 to-transparent">
-            <div className="w-12 h-12 rounded-lg bg-[#1c2460] border border-[#2a3580] flex items-center justify-center text-[#7b9bff] mb-6">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-bold text-white mb-3">200+ participants attendus</h3>
-            <p className="text-slate-400 text-sm leading-relaxed mb-8">
-              Rejoignez notre écosystème de partenaires et bénéficiez d&apos;une visibilité
-              ciblée auprès des professionnels de la cybersécurité de la région.
-            </p>
-            <a
-              href={`mailto:${t.contact.email}?subject=Partenariat Tainos Cyber Con 2026`}
-              className="group inline-flex items-center gap-2 px-8 py-3.5 bg-[#1c2460] border border-[#4a6cf7] text-white font-bold text-sm tracking-widest uppercase rounded hover:bg-[#4a6cf7] transition-all"
-            >
-              {t.sponsors.cta}
-              <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-              </svg>
-            </a>
+          {/* Contact form */}
+          <div className="p-8 rounded-xl border border-[#2a3580] bg-gradient-to-br from-[#1c2460]/30 to-transparent">
+            <h3 className="text-lg font-bold text-white mb-6">{t.sponsors.cta}</h3>
+            <ContactForm
+              fields={fields}
+              submitLabel={lang === "fr" ? "Envoyer" : "Send"}
+              successMessage={
+                lang === "fr"
+                  ? "Message envoyé ! Nous vous répondrons sous 48h."
+                  : "Message sent! We'll get back to you within 48h."
+              }
+            />
           </div>
         </div>
 
         {/* Sponsor logo placeholders */}
-        <div className="mt-16 pt-12 border-t border-[#2a3580]/40">
+        <div className="pt-12 border-t border-[#2a3580]/40">
           <p className="text-center text-xs text-slate-600 tracking-widest uppercase mb-8">
             Nos partenaires
           </p>
