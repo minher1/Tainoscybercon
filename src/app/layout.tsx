@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "@/context/LangContext";
+import BrandDefs from "@/components/BrandDefs";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -31,6 +32,7 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-[#07091a] text-slate-200">
+        <BrandDefs />
         <LangProvider>{children}</LangProvider>
 
       </body>

@@ -3,6 +3,7 @@ import { useLang } from "@/context/LangContext";
 import Image from "next/image";
 import Typewriter from "./Typewriter";
 import Countdown from "./Countdown";
+import { ShieldSilhouette, CircuitTrace, BinaryStream } from "./Silhouettes";
 
 const typewriterLinesFr = [
   "La cybersécurité à l'ère de l'IA, du cloud et des menaces persistantes",
@@ -38,11 +39,16 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(28,36,96,0.9)_0%,transparent_70%)]" />
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#1c2460]/50 rounded-full blur-[100px] pointer-events-none" />
 
+      {/* Silhouettes */}
+      <ShieldSilhouette className="absolute right-4 sm:right-12 top-1/4 w-48 sm:w-72 opacity-80 pointer-events-none select-none" />
+      <CircuitTrace className="absolute left-4 sm:left-10 bottom-32 w-24 opacity-70 pointer-events-none select-none" />
+      <BinaryStream className="absolute left-2 sm:left-8 top-1/3 w-36 opacity-60 pointer-events-none select-none hidden lg:block" />
+
       {/* Corner brackets */}
-      <div className="absolute top-28 left-8 w-16 h-16 border-l-2 border-t-2 border-[#4a6cf7]/30" />
-      <div className="absolute top-28 right-8 w-16 h-16 border-r-2 border-t-2 border-[#4a6cf7]/30" />
-      <div className="absolute bottom-28 left-8 w-16 h-16 border-l-2 border-b-2 border-[#4a6cf7]/30" />
-      <div className="absolute bottom-28 right-8 w-16 h-16 border-r-2 border-b-2 border-[#4a6cf7]/30" />
+      <div className="absolute top-28 left-8 w-16 h-16 border-l-2 border-t-2 border-[#c03880]/30" />
+      <div className="absolute top-28 right-8 w-16 h-16 border-r-2 border-t-2 border-[#c03880]/30" />
+      <div className="absolute bottom-28 left-8 w-16 h-16 border-l-2 border-b-2 border-[#7b35b0]/30" />
+      <div className="absolute bottom-28 right-8 w-16 h-16 border-r-2 border-b-2 border-[#7b35b0]/30" />
 
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto w-full pt-24 pb-16">
         {/* Date badge */}

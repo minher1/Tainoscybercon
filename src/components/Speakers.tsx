@@ -115,7 +115,7 @@ export default function Speakers() {
         <div className="section-divider mb-16" />
 
         <div className="text-center mb-16">
-          <span className="text-[#7b9bff] text-xs font-mono tracking-[0.3em] uppercase mb-3 block">
+          <span className="logo-gradient-text text-xs font-mono tracking-[0.3em] uppercase mb-3 block font-bold">
             {t.speakers.title}
           </span>
           <p className="text-slate-400 text-sm">{t.speakers.subtitle}</p>

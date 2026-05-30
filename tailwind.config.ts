@@ -19,8 +19,11 @@ const config: Config = {
           white: "#ffffff",
           blue: "#4a6cf7",
           "blue-light": "#7b9bff",
-          red: "#e63946",
-          "red-light": "#ff6b77",
+          // Logo gradient palette
+          coral: "#e84444",
+          pink: "#c03880",
+          violet: "#7b35b0",
+          indigo: "#2d2b8e",
         },
       },
       fontFamily: {

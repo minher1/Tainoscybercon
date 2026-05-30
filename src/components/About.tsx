@@ -1,6 +1,7 @@
 "use client";
 import { useLang } from "@/context/LangContext";
 import Image from "next/image";
+import { NetworkSilhouette, EyeSilhouette } from "./Silhouettes";
 
 const icons: Record<string, React.ReactNode> = {
   shield: (
@@ -36,11 +37,15 @@ export default function About() {
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-[#07091a] via-transparent to-[#07091a]" />
 
+      {/* Decorative silhouettes */}
+      <NetworkSilhouette className="absolute -bottom-8 right-0 w-80 opacity-60 pointer-events-none select-none" />
+      <EyeSilhouette className="absolute top-16 left-0 w-56 opacity-50 pointer-events-none select-none hidden lg:block" />
+
       <div className="relative max-w-7xl mx-auto">
         <div className="section-divider mb-16" />
 
         <div className="text-center mb-16">
-          <span className="text-[#7b9bff] text-xs font-mono tracking-[0.3em] uppercase mb-3 block">
+          <span className="logo-gradient-text text-xs font-mono tracking-[0.3em] uppercase mb-3 block font-bold">
             {t.about.title}
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-white mb-4">
@@ -58,7 +63,7 @@ export default function About() {
               key={i}
               className="group p-6 rounded-xl border border-[#2a3580]/60 bg-[#1c2460]/20 hover:border-[#4a6cf7]/60 hover:bg-[#1c2460]/40 transition-all duration-300"
             >
-              <div className="w-12 h-12 rounded-lg bg-[#1c2460] border border-[#2a3580] flex items-center justify-center text-[#7b9bff] mb-4 group-hover:border-[#4a6cf7] transition-colors">
+              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#e84444]/10 to-[#7b35b0]/20 border border-[#c03880]/30 flex items-center justify-center text-[#c03880] mb-4 group-hover:border-[#c03880]/60 transition-colors">
                 {icons[b.icon]}
               </div>
               <h3 className="font-bold text-white mb-2">{b.title}</h3>
@@ -90,7 +95,7 @@ export default function About() {
             <ul className="space-y-2">
               {t.about.audience.map((a, i) => (
                 <li key={i} className="flex items-center gap-2 text-sm text-slate-300">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#4a6cf7] shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-br from-[#e84444] to-[#7b35b0] shrink-0" />
                   {a}
                 </li>
               ))}

@@ -1,6 +1,7 @@
 "use client";
 import { useLang } from "@/context/LangContext";
 import Image from "next/image";
+import { TainoSun, BinaryStream } from "./Silhouettes";
 
 const socials = [
   {
@@ -112,7 +113,11 @@ export default function Footer() {
           </p>
         </div>
 
-        <p className="text-center text-xs text-slate-600">{t.footer.copyright}</p>
+        <div className="flex flex-col items-center gap-3">
+          <TainoSun className="w-10 h-10 opacity-70" />
+          <p className="text-center text-xs text-slate-600">{t.footer.copyright}</p>
+          <BinaryStream className="w-40 opacity-30" />
+        </div>
       </div>
     </footer>
   );
