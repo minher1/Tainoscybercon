@@ -1,0 +1,146 @@
+{
+  "nav": {
+    "conference": "The 2026 Conference",
+    "program": "2026 Program",
+    "speakers": "Our Speakers",
+    "sponsors": "Become a Partner",
+    "tickets": "Tickets"
+  },
+  "hero": {
+    "title": "TAINOS CYBER CON",
+    "year": "2026",
+    "tagline": "Cybersecurity in the age of AI, cloud, and persistent threats",
+    "cta_ticket": "BUY YOUR TICKET",
+    "cta_sponsor": "BECOME A SPONSOR",
+    "date": "August 29, 2026",
+    "time": "9 AM to 5 PM",
+    "location": "Mascouche, QC"
+  },
+  "about": {
+    "title": "ABOUT",
+    "subtitle": "Where cybersecurity meets the public",
+    "description": "Tainos Cyber Con is an international cybersecurity awareness conference offering training, talks, and workshops. Our mission: provide equitable access to security solutions across all communities.",
+    "location_detail": "3235 Ave de la Gare, Mascouche, Room 2C2B",
+    "audience_title": "Target Audience",
+    "audience": [
+      "IT and security professionals",
+      "Managers and executives",
+      "Healthcare and education organizations",
+      "SMEs",
+      "Government and non-profit agencies"
+    ],
+    "benefits": [
+      {
+        "icon": "shield",
+        "title": "Threat Clarity",
+        "desc": "Understand current risks and anticipate tomorrow's threats."
+      },
+      {
+        "icon": "users",
+        "title": "Practitioner Sessions",
+        "desc": "Real cases and deployable tools presented by security professionals."
+      },
+      {
+        "icon": "calendar",
+        "title": "Timely Topics",
+        "desc": "Content carefully selected based on industry trends."
+      },
+      {
+        "icon": "network",
+        "title": "Networking",
+        "desc": "Connect with 50+ Quebec cybersecurity professionals and decision-makers."
+      }
+    ]
+  },
+  "themes": {
+    "title": "2026 THEMES",
+    "subtitle": "Program in development",
+    "items": [
+      {
+        "icon": "cpu",
+        "title": "AI & Cybersecurity",
+        "desc": "Artificial intelligence as an attack vector and defense tool."
+      },
+      {
+        "icon": "alert",
+        "title": "Ransomware & Incident Response",
+        "desc": "Detection, containment, and recovery strategies."
+      },
+      {
+        "icon": "cloud",
+        "title": "Cloud & SaaS Security",
+        "desc": "Protecting your assets in hybrid and multi-cloud environments."
+      },
+      {
+        "icon": "key",
+        "title": "Identity & Access Management",
+        "desc": "Zero trust, MFA, and privilege governance."
+      }
+    ]
+  },
+  "speakers": {
+    "title": "OUR SPEAKERS",
+    "subtitle": "Announced progressively starting June 2026",
+    "cta": "SUBMIT A PROPOSAL",
+    "cta_desc": "Practitioners, researchers, and decision-makers — share your expertise with our community.",
+    "placeholder": "Speakers will be announced soon."
+  },
+  "schedule": {
+    "title": "SCHEDULE",
+    "subtitle": "August 29, 2026 · 9 AM – 5 PM",
+    "items": [
+      { "time": "9:00 AM", "title": "Welcome & Morning Coffee" },
+      { "time": "9:30 AM", "title": "Opening Keynote" },
+      { "time": "10:30 AM", "title": "Session 1 — AI & Cybersecurity" },
+      { "time": "11:30 AM", "title": "Session 2 — Ransomware" },
+      { "time": "12:30 PM", "title": "Lunch" },
+      { "time": "1:30 PM", "title": "Session 3 — Cloud Security" },
+      { "time": "2:30 PM", "title": "Session 4 — Identity Management" },
+      { "time": "3:30 PM", "title": "Coffee Break & Networking" },
+      { "time": "4:00 PM", "title": "Expert Panel & Roundtable" },
+      { "time": "5:00 PM", "title": "Closing & Networking" }
+    ]
+  },
+  "tickets": {
+    "title": "TICKETS",
+    "subtitle": "Full day access",
+    "includes_title": "Included with your ticket",
+    "includes": [
+      "Welcome coffee",
+      "Lunch",
+      "Two breaks",
+      "Printed program",
+      "Name badge",
+      "Post-event resource access"
+    ],
+    "cta": "BUY ON EVENTBRITE",
+    "eventbrite_url": "https://www.eventbrite.com"
+  },
+  "sponsors": {
+    "title": "PARTNERS",
+    "subtitle": "Become a Tainos Cyber Con 2026 partner",
+    "benefits_title": "Why become a partner?",
+    "benefits": [
+      "Targeted visibility to 200+ attendees over three months",
+      "Direct access to decision-makers",
+      "Business development: booth, demo, presentation",
+      "Industry recognition and community association",
+      "Support for regional cyber-resilience"
+    ],
+    "cta": "CONTACT US"
+  },
+  "previous": {
+    "title": "PREVIOUS EDITION",
+    "date": "October 16, 2020",
+    "theme": "Building a Better Cyber World"
+  },
+  "contact": {
+    "title": "CONTACT",
+    "phone": "1-877-895-5859",
+    "email": "hello@tainoscybercon.com",
+    "website": "www.tainoscybercon.com"
+  },
+  "footer": {
+    "copyright": "© 2026 Tainos Cyber Con. All rights reserved."
+  }
+}
