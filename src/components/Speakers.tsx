@@ -154,6 +154,7 @@ export default function Speakers() {
             <p className="text-slate-400 text-sm mb-6">{t.speakers.cta_desc}</p>
             <ContactForm
               fields={formFields}
+              formType="speaker"
               submitLabel={lang === "fr" ? "Soumettre ma proposition" : "Submit proposal"}
               successMessage={
                 lang === "fr"

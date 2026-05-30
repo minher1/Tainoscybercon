@@ -13,12 +13,17 @@ interface Props {
   fields: Field[];
   submitLabel: string;
   successMessage: string;
+  formType?: "speaker" | "sponsor" | "contact";
 }
 
-const FORMSPREE_URL = "https://formspree.io/f/xjgzdvaw";
-const MIN_FILL_MS = 3000; // reject submissions faster than 3 s (bots)
+const MIN_FILL_MS = 3000;
 
-export default function ContactForm({ fields, submitLabel, successMessage }: Props) {
+export default function ContactForm({
+  fields,
+  submitLabel,
+  successMessage,
+  formType = "contact",
+}: Props) {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error" | "spam">("idle");
   const loadedAt = useRef(Date.now());
 
@@ -26,26 +31,31 @@ export default function ContactForm({ fields, submitLabel, successMessage }: Pro
     e.preventDefault();
     const form = e.currentTarget;
 
-    // Time-trap: real humans take > 3 s to fill a form
     if (Date.now() - loadedAt.current < MIN_FILL_MS) {
       setStatus("spam");
       return;
     }
 
-    // Honeypot: if the hidden _gotcha field has any value, silently drop
     const gotcha = (form.elements.namedItem("_gotcha") as HTMLInputElement)?.value;
     if (gotcha) {
-      setStatus("success"); // fake success so bots don't retry
+      setStatus("success");
       return;
     }
 
     setStatus("sending");
-    const data = new FormData(form);
+
+    // Collect all named fields into a plain object
+    const data: Record<string, string> = { _formType: formType, _loadedAt: String(loadedAt.current) };
+    fields.forEach((f) => {
+      const el = form.elements.namedItem(f.name) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | null;
+      if (el) data[f.label || f.name] = el.value;
+    });
+
     try {
-      const res = await fetch(FORMSPREE_URL, {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        body: data,
-        headers: { Accept: "application/json" },
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
       });
       if (res.ok) {
         setStatus("success");
@@ -73,7 +83,7 @@ export default function ContactForm({ fields, submitLabel, successMessage }: Pro
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      {/* Honeypot — hidden from real users, filled by bots */}
+      {/* Honeypot */}
       <input
         type="text"
         name="_gotcha"

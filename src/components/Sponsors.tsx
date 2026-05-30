@@ -75,6 +75,7 @@ export default function Sponsors() {
             <h3 className="text-lg font-bold text-white mb-6">{t.sponsors.cta}</h3>
             <ContactForm
               fields={fields}
+              formType="sponsor"
               submitLabel={lang === "fr" ? "Envoyer" : "Send"}
               successMessage={
                 lang === "fr"
