@@ -44,7 +44,7 @@ export default function Themes() {
           <span className="logo-gradient-text text-xs font-mono tracking-[0.3em] uppercase mb-3 block font-bold">
             {t.themes.title}
           </span>
-          <p className="text-slate-500 text-sm tracking-widest uppercase">
+          <p className="text-slate-300 text-sm tracking-widest uppercase">
             {t.themes.subtitle}
           </p>
         </div>
@@ -53,15 +53,22 @@ export default function Themes() {
           {t.themes.items.map((item, i) => (
             <div
               key={i}
-              className="group relative p-8 rounded-xl border border-[#2a3580]/60 bg-[#07091a]/60 overflow-hidden hover:border-[#4a6cf7]/50 hover:bg-[#1c2460]/20 transition-all duration-300"
+              className="group relative p-8 rounded-xl border border-white/10 bg-white/5 overflow-hidden hover:border-white/20 hover:bg-white/[0.08] transition-all duration-300 shadow-lg shadow-black/30"
             >
-              <span className="absolute top-4 right-6 text-6xl font-black text-white/3 select-none">
+              {/* Left accent stripe */}
+              <div className="absolute left-0 top-6 bottom-6 w-[3px] rounded-full logo-gradient opacity-70 group-hover:opacity-100 transition-opacity" />
+
+              {/* Faint large number */}
+              <span className="absolute top-4 right-6 text-7xl font-black text-white/[0.06] select-none leading-none">
                 0{i + 1}
               </span>
-              <div className="text-[#7b9bff] mb-5">{icons[item.icon]}</div>
-              <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-              <p className="text-slate-400 leading-relaxed">{item.desc}</p>
-              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#4a6cf7]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+
+              <div className="mb-5 pl-4">{icons[item.icon]}</div>
+              <h3 className="text-xl font-bold text-white mb-3 pl-4">{item.title}</h3>
+              <p className="text-slate-300 leading-relaxed pl-4">{item.desc}</p>
+
+              {/* Bottom shimmer on hover */}
+              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
           ))}
         </div>
