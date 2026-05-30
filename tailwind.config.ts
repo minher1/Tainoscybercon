@@ -10,16 +10,17 @@ const config: Config = {
     extend: {
       colors: {
         cyber: {
-          black: "#050810",
-          navy: "#0a0f1e",
-          dark: "#0d1529",
-          card: "#111827",
-          border: "#1e2d4a",
-          gold: "#d4a017",
-          amber: "#f59e0b",
-          accent: "#e8b84b",
-          teal: "#0ea5e9",
-          glow: "#1d4ed8",
+          black: "#07091a",
+          navy: "#0d1035",
+          dark: "#111440",
+          brand: "#1c2460",
+          mid: "#252d7a",
+          border: "#2a3580",
+          white: "#ffffff",
+          blue: "#4a6cf7",
+          "blue-light": "#7b9bff",
+          red: "#e63946",
+          "red-light": "#ff6b77",
         },
       },
       fontFamily: {

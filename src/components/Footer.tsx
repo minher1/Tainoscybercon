@@ -45,18 +45,13 @@ export default function Footer() {
   const { t } = useLang();
 
   return (
-    <footer id="contact" className="py-16 px-4 border-t border-[#1e2d4a]">
+    <footer id="contact" className="py-16 px-4 border-t border-[#2a3580]/40 bg-[#07091a]">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-8 relative">
-                <Image src="/logo.png" alt="Tainos Cyber Con" fill className="object-contain" />
-              </div>
-              <span className="font-bold text-sm tracking-widest text-amber-400 uppercase">
-                Tainos<span className="text-white"> Cyber Con</span>
-              </span>
+            <div className="relative w-40 h-10 mb-4">
+              <Image src="/logo.png" alt="Tainos Cyber Con" fill className="object-contain object-left" />
             </div>
             <p className="text-slate-500 text-xs leading-relaxed max-w-xs">
               La conférence internationale de cybersécurité de la Rive-Nord de Montréal.
@@ -65,17 +60,17 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-xs font-bold text-amber-400 tracking-widest uppercase mb-4">
+            <h4 className="text-xs font-bold text-[#7b9bff] tracking-widest uppercase mb-4">
               {t.contact.title}
             </h4>
             <ul className="space-y-2 text-sm text-slate-400">
               <li>
-                <a href={`tel:${t.contact.phone}`} className="hover:text-amber-400 transition-colors">
+                <a href={`tel:${t.contact.phone}`} className="hover:text-white transition-colors">
                   {t.contact.phone}
                 </a>
               </li>
               <li>
-                <a href={`mailto:${t.contact.email}`} className="hover:text-amber-400 transition-colors">
+                <a href={`mailto:${t.contact.email}`} className="hover:text-white transition-colors">
                   {t.contact.email}
                 </a>
               </li>
@@ -85,7 +80,7 @@ export default function Footer() {
 
           {/* Socials */}
           <div>
-            <h4 className="text-xs font-bold text-amber-400 tracking-widest uppercase mb-4">
+            <h4 className="text-xs font-bold text-[#7b9bff] tracking-widest uppercase mb-4">
               Réseaux sociaux
             </h4>
             <div className="flex gap-3 flex-wrap">
@@ -96,7 +91,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.name}
-                  className="w-9 h-9 rounded-lg border border-[#1e2d4a] flex items-center justify-center text-slate-500 hover:border-amber-500/50 hover:text-amber-400 transition-all"
+                  className="w-9 h-9 rounded-lg border border-[#2a3580] flex items-center justify-center text-slate-500 hover:border-[#4a6cf7]/60 hover:text-[#7b9bff] transition-all"
                 >
                   {s.icon}
                 </a>
@@ -105,8 +100,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Previous edition note */}
-        <div className="py-6 border-t border-[#1e2d4a] border-b mb-6">
+        {/* Previous edition */}
+        <div className="py-6 border-t border-[#2a3580]/30 border-b mb-6">
           <p className="text-xs text-slate-600 text-center">
             {t.previous.title}: {t.previous.date} — &ldquo;{t.previous.theme}&rdquo;
           </p>

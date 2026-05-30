@@ -24,8 +24,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="fr" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-[#050810] text-slate-200">
+      <body className="min-h-full flex flex-col bg-[#07091a] text-slate-200">
         <LangProvider>{children}</LangProvider>
+
       </body>
     </html>
   );

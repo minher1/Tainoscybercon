@@ -26,7 +26,7 @@ export default function Nav() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#050810]/95 backdrop-blur-md border-b border-[#1e2d4a]"
+          ? "bg-[#07091a]/95 backdrop-blur-md border-b border-[#2a3580]/60"
           : "bg-transparent"
       }`}
     >
@@ -34,17 +34,15 @@ export default function Nav() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a href="#" className="flex items-center gap-3">
-            <div className="w-9 h-9 relative">
+            <div className="relative h-8 w-32">
               <Image
                 src="/logo.png"
                 alt="Tainos Cyber Con"
                 fill
-                className="object-contain"
+                className="object-contain object-left"
+                priority
               />
             </div>
-            <span className="font-bold text-sm tracking-widest text-amber-400 uppercase hidden sm:block">
-              Tainos<span className="text-white"> Cyber Con</span>
-            </span>
           </a>
 
           {/* Desktop links */}
@@ -53,7 +51,7 @@ export default function Nav() {
               <a
                 key={l.href}
                 href={l.href}
-                className="text-xs font-medium tracking-widest uppercase text-slate-400 hover:text-amber-400 transition-colors"
+                className="text-xs font-medium tracking-widest uppercase text-slate-400 hover:text-white transition-colors"
               >
                 {l.label}
               </a>
@@ -64,7 +62,7 @@ export default function Nav() {
           <div className="flex items-center gap-3">
             <button
               onClick={toggle}
-              className="flex items-center gap-1.5 text-xs font-semibold tracking-wider px-3 py-1.5 rounded border border-[#1e2d4a] text-slate-300 hover:border-amber-500 hover:text-amber-400 transition-all"
+              className="flex items-center gap-1.5 text-xs font-semibold tracking-wider px-3 py-1.5 rounded border border-[#2a3580] text-slate-300 hover:border-[#4a6cf7] hover:text-white transition-all"
               title={lang === "fr" ? "Switch to English" : "Passer en français"}
             >
               <span className="text-base leading-none">
@@ -74,7 +72,7 @@ export default function Nav() {
             </button>
             <button
               onClick={() => setOpen(!open)}
-              className="lg:hidden p-2 text-slate-400 hover:text-amber-400 transition-colors"
+              className="lg:hidden p-2 text-slate-400 hover:text-white transition-colors"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {open ? (
@@ -90,14 +88,14 @@ export default function Nav() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="lg:hidden bg-[#0a0f1e]/98 backdrop-blur-md border-b border-[#1e2d4a]">
+        <div className="lg:hidden bg-[#0d1035]/98 backdrop-blur-md border-b border-[#2a3580]/60">
           <div className="px-4 py-4 flex flex-col gap-4">
             {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="text-xs font-medium tracking-widest uppercase text-slate-300 hover:text-amber-400 transition-colors"
+                className="text-xs font-medium tracking-widest uppercase text-slate-300 hover:text-white transition-colors"
               >
                 {l.label}
               </a>

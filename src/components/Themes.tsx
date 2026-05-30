@@ -28,12 +28,12 @@ export default function Themes() {
   const { t } = useLang();
 
   return (
-    <section id="themes" className="py-24 px-4 bg-[#0a0f1e]">
+    <section id="themes" className="py-24 px-4 bg-[#0d1035]">
       <div className="max-w-7xl mx-auto">
         <div className="section-divider mb-16" />
 
         <div className="text-center mb-16">
-          <span className="text-amber-400 text-xs font-mono tracking-[0.3em] uppercase mb-3 block">
+          <span className="text-[#7b9bff] text-xs font-mono tracking-[0.3em] uppercase mb-3 block">
             {t.themes.title}
           </span>
           <p className="text-slate-500 text-sm tracking-widest uppercase">
@@ -45,19 +45,15 @@ export default function Themes() {
           {t.themes.items.map((item, i) => (
             <div
               key={i}
-              className="group relative p-8 rounded-xl border border-[#1e2d4a] bg-[#0d1529]/40 overflow-hidden hover:border-amber-500/30 transition-all duration-300"
+              className="group relative p-8 rounded-xl border border-[#2a3580]/60 bg-[#07091a]/60 overflow-hidden hover:border-[#4a6cf7]/50 hover:bg-[#1c2460]/20 transition-all duration-300"
             >
-              {/* Number watermark */}
-              <span className="absolute top-4 right-6 text-6xl font-black text-white/4 select-none">
+              <span className="absolute top-4 right-6 text-6xl font-black text-white/3 select-none">
                 0{i + 1}
               </span>
-
-              <div className="text-amber-400 mb-5">{icons[item.icon]}</div>
+              <div className="text-[#7b9bff] mb-5">{icons[item.icon]}</div>
               <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
               <p className="text-slate-400 leading-relaxed">{item.desc}</p>
-
-              {/* Bottom accent */}
-              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#4a6cf7]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
           ))}
         </div>

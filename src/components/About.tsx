@@ -32,9 +32,8 @@ export default function About() {
       <div className="max-w-7xl mx-auto">
         <div className="section-divider mb-16" />
 
-        {/* Header */}
         <div className="text-center mb-16">
-          <span className="text-amber-400 text-xs font-mono tracking-[0.3em] uppercase mb-3 block">
+          <span className="text-[#7b9bff] text-xs font-mono tracking-[0.3em] uppercase mb-3 block">
             {t.about.title}
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-white mb-4">
@@ -50,9 +49,9 @@ export default function About() {
           {t.about.benefits.map((b, i) => (
             <div
               key={i}
-              className="group p-6 rounded-xl border border-[#1e2d4a] bg-[#0d1529]/60 hover:border-amber-500/40 hover:bg-[#0d1529] transition-all duration-300"
+              className="group p-6 rounded-xl border border-[#2a3580]/60 bg-[#1c2460]/20 hover:border-[#4a6cf7]/60 hover:bg-[#1c2460]/40 transition-all duration-300"
             >
-              <div className="w-12 h-12 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400 mb-4 group-hover:bg-amber-500/20 transition-colors">
+              <div className="w-12 h-12 rounded-lg bg-[#1c2460] border border-[#2a3580] flex items-center justify-center text-[#7b9bff] mb-4 group-hover:border-[#4a6cf7] transition-colors">
                 {icons[b.icon]}
               </div>
               <h3 className="font-bold text-white mb-2">{b.title}</h3>
@@ -61,11 +60,11 @@ export default function About() {
           ))}
         </div>
 
-        {/* Location + Audience row */}
+        {/* Location + Audience */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="p-8 rounded-xl border border-[#1e2d4a] bg-[#0d1529]/60">
+          <div className="p-8 rounded-xl border border-[#2a3580]/60 bg-[#1c2460]/20">
             <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400 shrink-0 mt-1">
+              <div className="w-10 h-10 rounded-lg bg-[#1c2460] border border-[#2a3580] flex items-center justify-center text-[#7b9bff] shrink-0 mt-1">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
@@ -79,12 +78,12 @@ export default function About() {
             </div>
           </div>
 
-          <div className="p-8 rounded-xl border border-[#1e2d4a] bg-[#0d1529]/60">
+          <div className="p-8 rounded-xl border border-[#2a3580]/60 bg-[#1c2460]/20">
             <h3 className="font-bold text-white mb-4">{t.about.audience_title}</h3>
             <ul className="space-y-2">
               {t.about.audience.map((a, i) => (
                 <li key={i} className="flex items-center gap-2 text-sm text-slate-300">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#4a6cf7] shrink-0" />
                   {a}
                 </li>
               ))}

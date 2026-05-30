@@ -10,7 +10,7 @@ export default function Speakers() {
         <div className="section-divider mb-16" />
 
         <div className="text-center mb-16">
-          <span className="text-amber-400 text-xs font-mono tracking-[0.3em] uppercase mb-3 block">
+          <span className="text-[#7b9bff] text-xs font-mono tracking-[0.3em] uppercase mb-3 block">
             {t.speakers.title}
           </span>
           <p className="text-slate-400 text-sm">{t.speakers.subtitle}</p>
@@ -21,15 +21,15 @@ export default function Speakers() {
           {Array.from({ length: 10 }).map((_, i) => (
             <div
               key={i}
-              className="aspect-square rounded-xl border border-[#1e2d4a] bg-[#0d1529]/40 flex flex-col items-center justify-center gap-3 opacity-40"
+              className="aspect-square rounded-xl border border-[#2a3580]/40 bg-[#1c2460]/10 flex flex-col items-center justify-center gap-3 opacity-40"
             >
-              <div className="w-14 h-14 rounded-full border-2 border-dashed border-[#1e2d4a] flex items-center justify-center">
+              <div className="w-14 h-14 rounded-full border-2 border-dashed border-[#2a3580] flex items-center justify-center">
                 <svg className="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                 </svg>
               </div>
-              <div className="w-16 h-2 rounded bg-[#1e2d4a]" />
-              <div className="w-12 h-1.5 rounded bg-[#1e2d4a]" />
+              <div className="w-16 h-2 rounded bg-[#2a3580]/60" />
+              <div className="w-12 h-1.5 rounded bg-[#2a3580]/40" />
             </div>
           ))}
         </div>
@@ -43,7 +43,7 @@ export default function Speakers() {
             href="https://www.jotform.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3.5 border border-amber-500/50 text-amber-400 font-bold text-sm tracking-widest uppercase rounded hover:border-amber-400 hover:bg-amber-500/5 transition-all"
+            className="inline-flex items-center gap-2 px-8 py-3.5 border border-[#4a6cf7]/60 text-[#7b9bff] font-bold text-sm tracking-widest uppercase rounded hover:border-[#4a6cf7] hover:bg-[#1c2460]/40 transition-all"
           >
             {t.speakers.cta}
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
