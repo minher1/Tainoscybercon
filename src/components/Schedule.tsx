@@ -1,5 +1,7 @@
 "use client";
 import { useLang } from "@/context/LangContext";
+import Image from "next/image";
+import { CircuitTrace } from "./Silhouettes";
 
 const BREAKS = ["Dîner", "Lunch", "Café", "Coffee", "Clôture", "Closing", "Pause"];
 
@@ -10,8 +12,15 @@ export default function Schedule() {
     BREAKS.some((b) => title.toLowerCase().includes(b.toLowerCase()));
 
   return (
-    <section id="schedule" className="py-24 px-4 bg-[#0d1035]">
-      <div className="max-w-4xl mx-auto">
+    <section id="schedule" className="py-24 px-4 bg-[#0d1035] relative overflow-hidden">
+      {/* Stage photo */}
+      <div className="absolute inset-0 opacity-[0.07]">
+        <Image src="/photos/stage.jpg" alt="" fill className="object-cover object-center" />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0d1035] via-transparent to-[#0d1035]" />
+      <CircuitTrace className="absolute right-8 bottom-16 w-28 opacity-40 pointer-events-none select-none hidden lg:block" />
+
+      <div className="relative max-w-4xl mx-auto">
         <div className="section-divider mb-16" />
 
         <div className="text-center mb-16">

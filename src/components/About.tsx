@@ -72,27 +72,27 @@ export default function About() {
           ))}
         </div>
 
-        {/* Location + Audience */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="p-8 rounded-xl border border-[#2a3580]/60 bg-[#1c2460]/20">
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-lg bg-[#1c2460] border border-[#2a3580] flex items-center justify-center text-[#7b9bff] shrink-0 mt-1">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="font-bold text-white mb-1">Lieu</h3>
-                <p className="text-slate-300 text-sm">{t.about.location_detail}</p>
-                <p className="text-slate-500 text-xs mt-2">Rive-Nord de Montréal</p>
-              </div>
+        {/* Photo + Audience side by side */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          {/* Conference photo */}
+          <div className="relative h-64 lg:h-auto rounded-xl overflow-hidden border border-[#2a3580]/60">
+            <Image
+              src="/photos/audience.jpg"
+              alt="Conférence Tainos Cyber Con"
+              fill
+              className="object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#07091a]/80 to-transparent" />
+            <div className="absolute bottom-4 left-4">
+              <span className="text-xs font-mono text-[#7b9bff] tracking-wider uppercase opacity-80">
+                Tainos Cyber Con 2020
+              </span>
             </div>
           </div>
 
           <div className="p-8 rounded-xl border border-[#2a3580]/60 bg-[#1c2460]/20">
             <h3 className="font-bold text-white mb-4">{t.about.audience_title}</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2 mb-6">
               {t.about.audience.map((a, i) => (
                 <li key={i} className="flex items-center gap-2 text-sm text-slate-300">
                   <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-br from-[#e84444] to-[#7b35b0] shrink-0" />
@@ -100,8 +100,21 @@ export default function About() {
                 </li>
               ))}
             </ul>
+            <div className="flex items-start gap-3 pt-4 border-t border-[#2a3580]/40">
+              <div className="w-8 h-8 rounded-lg bg-[#1c2460] border border-[#2a3580] flex items-center justify-center text-[#7b9bff] shrink-0 mt-0.5">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                </svg>
+              </div>
+              <div>
+                <p className="text-slate-300 text-sm">{t.about.location_detail}</p>
+                <p className="text-slate-500 text-xs mt-1">Rive-Nord de Montréal</p>
+              </div>
+            </div>
           </div>
         </div>
+
       </div>
     </section>
   );

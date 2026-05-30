@@ -1,5 +1,6 @@
 "use client";
 import { useLang } from "@/context/LangContext";
+import Image from "next/image";
 import ContactForm from "./ContactForm";
 
 export default function Sponsors() {
@@ -32,8 +33,14 @@ export default function Sponsors() {
       ];
 
   return (
-    <section id="sponsors" className="py-24 px-4 bg-[#0d1035]">
-      <div className="max-w-5xl mx-auto">
+    <section id="sponsors" className="py-24 px-4 bg-[#0d1035] relative overflow-hidden">
+      {/* Networking photo */}
+      <div className="absolute inset-0 opacity-[0.07]">
+        <Image src="/photos/networking.jpg" alt="" fill className="object-cover object-center" />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0d1035] via-transparent to-[#0d1035]" />
+
+      <div className="relative max-w-5xl mx-auto">
         <div className="section-divider mb-16" />
 
         <div className="text-center mb-16">

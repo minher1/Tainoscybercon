@@ -1,12 +1,19 @@
 "use client";
 import { useLang } from "@/context/LangContext";
+import Image from "next/image";
 
 export default function Tickets() {
   const { t } = useLang();
 
   return (
-    <section id="tickets" className="py-24 px-4">
-      <div className="max-w-3xl mx-auto">
+    <section id="tickets" className="py-24 px-4 relative overflow-hidden">
+      {/* Conference photo */}
+      <div className="absolute inset-0 opacity-[0.08]">
+        <Image src="/photos/conference.jpg" alt="" fill className="object-cover object-top" />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-[#07091a] via-[#07091a]/80 to-[#07091a]" />
+
+      <div className="relative max-w-3xl mx-auto">
         <div className="section-divider mb-16" />
 
         <div className="text-center mb-12">
