@@ -50,10 +50,10 @@ export default function Hero() {
           <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#4a6cf7]" />
         </div>
 
-        {/* Logo */}
+        {/* Logo badge */}
         <div className="flex justify-center mb-6">
-          <div className="relative w-56 h-14">
-            <Image src="/logo.png" alt="Tainos Cyber Con" fill className="object-contain" priority />
+          <div className="relative w-32 h-32 rounded-2xl overflow-hidden shadow-2xl shadow-[#4a6cf7]/20 ring-1 ring-[#2a3580]">
+            <Image src="/logo-badge.png" alt="Tainos Cyber Con" fill className="object-cover" priority />
           </div>
         </div>
 

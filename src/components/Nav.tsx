@@ -33,8 +33,13 @@ export default function Nav() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3">
-            <div className="relative h-8 w-32">
+          <a href="#" className="flex items-center gap-2">
+            {/* Square badge in nav */}
+            <div className="relative w-8 h-8 rounded-md overflow-hidden shrink-0">
+              <Image src="/logo-badge.png" alt="" fill className="object-cover" priority />
+            </div>
+            {/* White wordmark */}
+            <div className="relative h-7 w-36 hidden sm:block">
               <Image
                 src="/logo.png"
                 alt="Tainos Cyber Con"

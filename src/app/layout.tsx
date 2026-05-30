@@ -6,14 +6,20 @@ import { LangProvider } from "@/context/LangContext";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://tainoscybercon.com"),
   title: "Tainos Cyber Con 2026",
   description:
     "La conférence internationale de cybersécurité — 29 août 2026, Mascouche QC",
+  icons: {
+    icon: "/icon.png",
+    apple: "/logo-badge.png",
+  },
   openGraph: {
     title: "Tainos Cyber Con 2026",
     description: "La cybersécurité à l'ère de l'IA, du cloud et des menaces persistantes",
     url: "https://tainoscybercon.com",
     siteName: "Tainos Cyber Con",
+    images: [{ url: "/logo-badge.png", width: 1080, height: 1080 }],
     locale: "fr_CA",
     type: "website",
   },
