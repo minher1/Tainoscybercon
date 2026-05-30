@@ -174,13 +174,22 @@ export async function POST(req: NextRequest) {
     }
 
     const label = FORM_LABELS[_formType] ?? "Soumission de formulaire";
-    const replyTo = fields.email ?? undefined;
+
+    // Fields arrive with display labels as keys — find email/name by partial match
+    const findVal = (keys: string[]) =>
+      Object.entries(fields).find(([k]) =>
+        keys.some((kw) => k.toLowerCase().includes(kw))
+      )?.[1] ?? "";
+
+    const replyTo = findVal(["email", "courriel"]) || undefined;
+    const senderName = findVal(["nom", "name"]);
+    const senderOrg = findVal(["organisation", "organization", "company", "titre", "title"]);
 
     const html = buildHtml(fields, label);
 
     const subjectParts: string[] = [label];
-    if (fields.name) subjectParts.push(`— ${fields.name}`);
-    if (fields.company) subjectParts.push(`(${fields.company})`);
+    if (senderName) subjectParts.push(`— ${senderName}`);
+    if (senderOrg) subjectParts.push(`(${senderOrg})`);
     const subject = subjectParts.join(" ");
 
     const { error } = await resend.emails.send({
