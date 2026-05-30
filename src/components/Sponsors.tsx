@@ -112,16 +112,33 @@ export default function Sponsors() {
           </div>
         </div>
 
-        {/* Sponsor logo placeholders */}
+        {/* Partner logos */}
         <div className="pt-12 border-t border-[#2a3580]/40">
-          <p className="text-center text-xs text-slate-600 tracking-widest uppercase mb-8">
+          <p className="text-center text-xs text-slate-500 tracking-widest uppercase mb-8">
             Nos partenaires
           </p>
-          <div className="flex flex-wrap justify-center gap-6">
-            {Array.from({ length: 6 }).map((_, i) => (
+          <div className="flex flex-wrap justify-center items-center gap-8">
+            {/* Yottasec */}
+            <a
+              href="https://yottasec.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="opacity-80 hover:opacity-100 transition-opacity"
+            >
+              <Image
+                src="/sponsors/yottasec.png"
+                alt="YottaSec"
+                width={160}
+                height={42}
+                className="object-contain"
+              />
+            </a>
+
+            {/* Remaining placeholder slots */}
+            {Array.from({ length: 5 }).map((_, i) => (
               <div
                 key={i}
-                className="w-28 h-14 rounded border border-dashed border-[#2a3580]/40 flex items-center justify-center opacity-30"
+                className="w-32 h-14 rounded border border-dashed border-[#2a3580]/30 flex items-center justify-center opacity-20"
               >
                 <span className="text-xs text-slate-600">Logo</span>
               </div>
