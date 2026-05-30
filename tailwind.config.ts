@@ -27,8 +27,9 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        mono: ["var(--font-mono)", "monospace"],
+        sans: ["var(--font-barlow)", "system-ui", "sans-serif"],
+        condensed: ["var(--font-barlow-condensed)", "var(--font-barlow)", "system-ui", "sans-serif"],
+        mono: ["'Courier New'", "Courier", "monospace"],
       },
       backgroundImage: {
         "grid-pattern":

@@ -1,10 +1,23 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Barlow, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "@/context/LangContext";
 import BrandDefs from "@/components/BrandDefs";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const barlow = Barlow({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-barlow",
+  display: "swap",
+});
+
+const barlowCondensed = Barlow_Condensed({
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "800", "900"],
+  variable: "--font-barlow-condensed",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://tainoscybercon.com"),
@@ -30,7 +43,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="fr" className={`${inter.variable} h-full antialiased`}>
+    <html lang="fr" className={`${barlow.variable} ${barlowCondensed.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-[#07091a] text-slate-200">
         <BrandDefs />
         <LangProvider>{children}</LangProvider>

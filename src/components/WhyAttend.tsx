@@ -12,7 +12,7 @@ export default function WhyAttend() {
         {/* Left: conference photo */}
         <div className="relative h-72 lg:h-auto order-2 lg:order-1">
           <Image
-            src="/photos/audience-why.jpg"
+            src="/photos/tainos-public.jpg"
             alt="Participants à Tainos Cyber Con"
             fill
             className="object-cover object-center"
