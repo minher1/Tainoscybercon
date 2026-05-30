@@ -97,7 +97,7 @@ export default function Hero() {
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
           <a
-            href="https://www.eventbrite.com"
+            href="https://www.eventbrite.ca/e/tainos-cybercon-2026-tickets-1989251250038"
             target="_blank"
             rel="noopener noreferrer"
             className="group px-8 py-3.5 bg-[#1c2460] border border-[#4a6cf7] text-white font-bold text-sm tracking-widest uppercase rounded hover:bg-[#4a6cf7] transition-all duration-200 shadow-lg shadow-[#4a6cf7]/20 font-mono"

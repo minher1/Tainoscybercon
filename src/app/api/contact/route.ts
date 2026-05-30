@@ -181,7 +181,7 @@ export async function POST(req: NextRequest) {
         keys.some((kw) => k.toLowerCase().includes(kw))
       )?.[1] ?? "";
 
-    const replyTo = findVal(["email", "courriel"]) || undefined;
+    const replyTo = (findVal(["email", "courriel"]) as string | undefined) || undefined;
     const senderName = findVal(["nom", "name"]);
     const senderOrg = findVal(["organisation", "organization", "company", "titre", "title"]);
 
