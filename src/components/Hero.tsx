@@ -105,7 +105,7 @@ export default function Hero() {
             {`> ${t.hero.cta_ticket}`}
           </a>
           <a
-            href="#sponsors"
+            href="/partners"
             className="px-8 py-3.5 border border-white/20 text-white font-bold text-sm tracking-widest uppercase rounded hover:border-white/50 hover:bg-white/5 transition-all duration-200 font-mono"
           >
             {`> ${t.hero.cta_sponsor}`}

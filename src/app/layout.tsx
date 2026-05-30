@@ -3,6 +3,8 @@ import { Barlow, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "@/context/LangContext";
 import BrandDefs from "@/components/BrandDefs";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 
 const barlow = Barlow({
   subsets: ["latin"],
@@ -46,7 +48,11 @@ export default function RootLayout({
     <html lang="fr" className={`${barlow.variable} ${barlowCondensed.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-[#07091a] text-slate-200">
         <BrandDefs />
-        <LangProvider>{children}</LangProvider>
+        <LangProvider>
+          <Nav />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </LangProvider>
 
       </body>
     </html>

@@ -1,5 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { useLang } from "@/context/LangContext";
 import Image from "next/image";
 
@@ -7,6 +9,7 @@ export default function Nav() {
   const { lang, t, toggle } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
@@ -15,12 +18,15 @@ export default function Nav() {
   }, []);
 
   const links = [
-    { href: "#about", label: t.nav.conference },
-    { href: "#themes", label: t.nav.program },
-    { href: "#speakers", label: t.nav.speakers },
-    { href: "#sponsors", label: t.nav.sponsors },
-    { href: "#tickets", label: t.nav.tickets },
+    { href: "/",          label: t.nav.conference },
+    { href: "/programme", label: t.nav.program },
+    { href: "/speakers",  label: t.nav.speakers },
+    { href: "/partners",  label: t.nav.sponsors },
+    { href: "/tickets",   label: t.nav.tickets },
   ];
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <nav
@@ -33,7 +39,7 @@ export default function Nav() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#" className="flex items-center">
+          <Link href="/" className="flex items-center">
             <div className="relative h-9 w-44">
               <Image
                 src="/logo.png"
@@ -43,18 +49,22 @@ export default function Nav() {
                 priority
               />
             </div>
-          </a>
+          </Link>
 
           {/* Desktop links */}
           <div className="hidden lg:flex items-center gap-8">
             {links.map((l) => (
-              <a
+              <Link
                 key={l.href}
                 href={l.href}
-                className="text-xs font-medium tracking-widest uppercase text-slate-400 hover:text-white transition-colors"
+                className={`text-xs font-medium tracking-widest uppercase transition-colors ${
+                  isActive(l.href)
+                    ? "text-white border-b border-[#e84444] pb-0.5"
+                    : "text-slate-400 hover:text-white"
+                }`}
               >
                 {l.label}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -91,14 +101,18 @@ export default function Nav() {
         <div className="lg:hidden bg-[#0d1035]/98 backdrop-blur-md border-b border-[#2a3580]/60">
           <div className="px-4 py-4 flex flex-col gap-4">
             {links.map((l) => (
-              <a
+              <Link
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="text-xs font-medium tracking-widest uppercase text-slate-300 hover:text-white transition-colors"
+                className={`text-xs font-medium tracking-widest uppercase transition-colors ${
+                  isActive(l.href)
+                    ? "text-white"
+                    : "text-slate-300 hover:text-white"
+                }`}
               >
                 {l.label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
