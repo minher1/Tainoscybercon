@@ -121,6 +121,29 @@
       { "time": "17h00", "title": "Clôture & réseautage" }
     ]
   },
+  "why": {
+    "title": "Pourquoi participer à cette conférence ?",
+    "subtitle": "Une journée. Quatre bénéfices concrets pour vous et votre organisation.",
+    "cta": "ACHETEZ VOTRE BILLET",
+    "benefits": [
+      {
+        "icon": "threat",
+        "text": "Une lecture claire des menaces 2026 : ransomwares, IA offensive, compromission du cloud — comprenez ce qui vous cible vraiment."
+      },
+      {
+        "icon": "sessions",
+        "text": "Plusieurs sessions menées par des praticiens, des cas concrets et des outils que vous pourrez déployer dès le lendemain."
+      },
+      {
+        "icon": "topics",
+        "text": "Les thèmes choisis sont d'actualité et directement pertinents pour votre secteur d'activité."
+      },
+      {
+        "icon": "network",
+        "text": "Plus d'une cinquantaine de professionnels et décideurs de la cybersécurité du Québec réunis sur une même journée — l'occasion idéale pour bâtir votre réseau."
+      }
+    ]
+  },
   "tickets": {
     "title": "BILLETS",
     "subtitle": "Accès complet à la journée",

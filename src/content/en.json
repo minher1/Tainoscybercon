@@ -121,6 +121,29 @@
       { "time": "5:00 PM", "title": "Closing & Networking" }
     ]
   },
+  "why": {
+    "title": "Why attend this conference?",
+    "subtitle": "One day. Four concrete benefits for you and your organization.",
+    "cta": "BUY YOUR TICKET",
+    "benefits": [
+      {
+        "icon": "threat",
+        "text": "A clear read on 2026 threats: ransomware, offensive AI, cloud compromise — understand what's actually targeting you."
+      },
+      {
+        "icon": "sessions",
+        "text": "Multiple practitioner-led sessions with real-world cases and tools you can deploy the very next day."
+      },
+      {
+        "icon": "topics",
+        "text": "Carefully curated topics that are current and directly relevant to your industry."
+      },
+      {
+        "icon": "network",
+        "text": "50+ Quebec cybersecurity professionals and decision-makers in one room — the ideal moment to build relationships that matter."
+      }
+    ]
+  },
   "tickets": {
     "title": "TICKETS",
     "subtitle": "Full day access",

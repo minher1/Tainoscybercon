@@ -7,6 +7,7 @@ import Themes from "@/components/Themes";
 import Speakers from "@/components/Speakers";
 import Schedule from "@/components/Schedule";
 import Tickets from "@/components/Tickets";
+import WhyAttend from "@/components/WhyAttend";
 import Sponsors from "@/components/Sponsors";
 import Footer from "@/components/Footer";
 
@@ -22,6 +23,7 @@ export default function Home() {
         <Themes />
         <Speakers />
         <Schedule />
+        <WhyAttend />
         <Tickets />
         <Sponsors />
       </main>

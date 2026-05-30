@@ -33,7 +33,7 @@ export default function About() {
     <section id="about" className="py-24 px-4 relative overflow-hidden">
       {/* Conference audience photo as subtle background */}
       <div className="absolute inset-0 opacity-[0.07]">
-        <Image src="/photos/audience.jpg" alt="" fill className="object-cover object-center" />
+        <Image src="/photos/event-crowd.jpg" alt="" fill className="object-cover object-center" />
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-[#07091a] via-transparent to-[#07091a]" />
 
@@ -77,7 +77,7 @@ export default function About() {
           {/* Conference photo */}
           <div className="relative h-64 lg:h-auto rounded-xl overflow-hidden border border-[#2a3580]/60">
             <Image
-              src="/photos/audience.jpg"
+              src="/photos/event-crowd.jpg"
               alt="Conférence Tainos Cyber Con"
               fill
               className="object-cover object-center"
