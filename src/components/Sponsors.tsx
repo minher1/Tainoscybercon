@@ -134,8 +134,24 @@ export default function Sponsors() {
               />
             </a>
 
+            {/* TEKAP */}
+            <a
+              href="https://tekap.ca"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="opacity-80 hover:opacity-100 transition-opacity"
+            >
+              <Image
+                src="/sponsors/tekap.png"
+                alt="TEKAP"
+                width={140}
+                height={42}
+                className="object-contain"
+              />
+            </a>
+
             {/* Remaining placeholder slots */}
-            {Array.from({ length: 5 }).map((_, i) => (
+            {Array.from({ length: 4 }).map((_, i) => (
               <div
                 key={i}
                 className="w-32 h-14 rounded border border-dashed border-[#2a3580]/30 flex items-center justify-center opacity-20"

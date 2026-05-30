@@ -1,5 +1,6 @@
 import WhyAttend from "@/components/WhyAttend";
 import Tickets from "@/components/Tickets";
+import FAQ from "@/components/FAQ";
 
 export const metadata = {
   title: "Billets — Tainos Cyber Con 2026",
@@ -11,6 +12,7 @@ export default function TicketsPage() {
     <>
       <WhyAttend />
       <Tickets />
+      <FAQ />
     </>
   );
 }

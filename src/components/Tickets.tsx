@@ -29,6 +29,18 @@ export default function Tickets() {
             <div className="absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 border-[#4a6cf7]/40" />
             <div className="absolute top-0 right-0 w-8 h-8 border-r-2 border-t-2 border-[#4a6cf7]/40" />
 
+            {/* Price badge */}
+            <div className="text-center mb-8">
+              <div className="inline-flex flex-col items-center gap-1 px-8 py-4 rounded-2xl logo-gradient shadow-lg shadow-[#c03880]/20">
+                <span className="text-4xl font-black text-white leading-none">
+                  {(t.tickets as any).price}
+                </span>
+                <span className="text-white/80 text-xs font-mono tracking-widest uppercase">
+                  {t.tickets.subtitle}
+                </span>
+              </div>
+            </div>
+
             <h3 className="text-2xl font-black text-white text-center mb-8">
               {t.tickets.includes_title}
             </h3>

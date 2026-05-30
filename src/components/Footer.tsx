@@ -111,6 +111,9 @@ export default function Footer() {
         <div className="flex flex-col items-center gap-3">
           <TainoSun className="w-10 h-10 opacity-70" />
           <p className="text-center text-xs text-slate-600">{t.footer.copyright}</p>
+          <a href="/privacy" className="text-xs text-slate-600 hover:text-slate-400 transition-colors underline underline-offset-2">
+            Politique de confidentialité
+          </a>
           <BinaryStream className="w-40 opacity-30" />
         </div>
       </div>

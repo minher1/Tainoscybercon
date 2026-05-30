@@ -147,6 +147,7 @@
   "tickets": {
     "title": "BILLETS",
     "subtitle": "Accès complet à la journée",
+    "price": "60 $CA",
     "includes_title": "Inclus avec votre billet",
     "includes": [
       "Café de bienvenue",
@@ -185,5 +186,11 @@
   },
   "footer": {
     "copyright": "© 2026 Tainos Cyber Con. Tous droits réservés."
-  }
+  },
+  "stats": [
+    { "value": "5ème", "label": "Édition" },
+    { "value": "12+", "label": "Intervenants" },
+    { "value": "8", "label": "Thèmes" },
+    { "value": "250+", "label": "Places disponibles" }
+  ]
 }

@@ -147,6 +147,7 @@
   "tickets": {
     "title": "TICKETS",
     "subtitle": "Full day access",
+    "price": "CA$60",
     "includes_title": "Included with your ticket",
     "includes": [
       "Welcome coffee",
@@ -185,5 +186,11 @@
   },
   "footer": {
     "copyright": "© 2026 Tainos Cyber Con. All rights reserved."
-  }
+  },
+  "stats": [
+    { "value": "5th", "label": "Edition" },
+    { "value": "12+", "label": "Speakers" },
+    { "value": "8", "label": "Themes" },
+    { "value": "250+", "label": "Seats available" }
+  ]
 }
