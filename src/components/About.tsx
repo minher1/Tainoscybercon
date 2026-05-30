@@ -1,5 +1,6 @@
 "use client";
 import { useLang } from "@/context/LangContext";
+import Image from "next/image";
 
 const icons: Record<string, React.ReactNode> = {
   shield: (
@@ -28,8 +29,14 @@ export default function About() {
   const { t } = useLang();
 
   return (
-    <section id="about" className="py-24 px-4">
-      <div className="max-w-7xl mx-auto">
+    <section id="about" className="py-24 px-4 relative overflow-hidden">
+      {/* Conference audience photo as subtle background */}
+      <div className="absolute inset-0 opacity-[0.07]">
+        <Image src="/photos/audience.jpg" alt="" fill className="object-cover object-center" />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-[#07091a] via-transparent to-[#07091a]" />
+
+      <div className="relative max-w-7xl mx-auto">
         <div className="section-divider mb-16" />
 
         <div className="text-center mb-16">
@@ -94,3 +101,4 @@ export default function About() {
     </section>
   );
 }
+

@@ -23,6 +23,10 @@ export default function Hero() {
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
       {/* Background layers */}
       <div className="absolute inset-0 bg-[#07091a]" />
+      {/* Circuit board photo — very subtle */}
+      <div className="absolute inset-0 opacity-[0.08]">
+        <Image src="/photos/circuit.jpg" alt="" fill className="object-cover object-center" priority />
+      </div>
       <div
         className="absolute inset-0 opacity-[0.15]"
         style={{

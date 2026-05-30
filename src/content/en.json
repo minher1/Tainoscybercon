@@ -83,7 +83,27 @@
     "subtitle": "Announced progressively starting June 2026",
     "cta": "SUBMIT A PROPOSAL",
     "cta_desc": "Practitioners, researchers, and decision-makers — share your expertise with our community.",
-    "placeholder": "Speakers will be announced soon."
+    "placeholder": "Speakers will be announced soon.",
+    "confirmed": [
+      {
+        "name": "Mike Arbrouet",
+        "title": "Field CTO, IBM",
+        "bio": "Technology leader guiding organizations through the complexity of AI, cloud, and constant change. Builder of secure, scalable solutions and featured speaker at AFROTECH™ 2025.",
+        "tags": ["AI & Cloud", "Cyber Strategy", "Leadership"],
+        "photo": "/speakers/mike.jpg",
+        "linkedin": "https://linkedin.com/in/michalarbrouet",
+        "website": "https://arbrouet.com"
+      },
+      {
+        "name": "Blaise Arbouet",
+        "title": "Co-founder, YottaSec Inc.",
+        "bio": "Cyber Evangelist and information security governance expert. CISSP, C-CISO, ISO 27001. Co-founder of Tainos CyberCon and YottaSec Inc., focused on digital inclusion for developing nations.",
+        "tags": ["CISSP", "IT Governance", "Audit"],
+        "photo": "/speakers/blaise.jpg",
+        "linkedin": "https://linkedin.com/in/blaisearbouet",
+        "website": "https://blaisearbouet.com"
+      }
+    ]
   },
   "schedule": {
     "title": "SCHEDULE",
