@@ -84,6 +84,18 @@
     "cta": "SOUMETTRE UNE PROPOSITION",
     "cta_desc": "Praticiens, chercheurs et décideurs — partagez votre expertise avec notre communauté.",
     "placeholder": "Les conférenciers seront annoncés prochainement.",
+    "call_title": "Devenez conférencier",
+    "call_intro": "Nous lançons l'appel à conférenciers pour cette édition de Tainos Cyber Con 2026. Si vous avez des connaissances, des expériences terrain ou des recherches qui peuvent aider notre auditoire à mieux comprendre, mieux protéger et mieux anticiper la cybersécurité, votre voix doit être sur cette scène.",
+    "formats_title": "Formats de présentation",
+    "formats": ["Présentation 45 min", "Présentation 30 min", "Tables rondes", "Démonstrations techniques", "Ateliers"],
+    "who_title": "Qui devrait postuler",
+    "who": ["Professionnels de la cybersécurité", "Responsables informatiques et de sécurité", "Chercheurs et universitaires", "Consultants", "Experts du gouvernement et du secteur public", "Professionnels du secteur privé"],
+    "deadline_label": "Date limite",
+    "deadline": "26 juin 2026",
+    "notification_label": "Notification",
+    "notification": "17 juillet 2026",
+    "topics_title": "Sujets suggérés",
+    "topics": ["Menaces et technologies émergentes", "Cyberdéfense et opérations", "Sécurité sectorielle", "Sécurité des infrastructures et du cloud", "Protection des données et vie privée", "Gestion des risques et gouvernance"],
     "confirmed": [
       {
         "name": "Mike Arbrouet",
@@ -180,7 +192,30 @@
       "Reconnaissance sectorielle et association communautaire",
       "Soutien à la cyber-résilience régionale"
     ],
-    "cta": "CONTACTEZ-NOUS"
+    "cta": "CONTACTEZ-NOUS",
+    "tiers_title": "Niveaux de partenariat",
+    "tiers_subtitle": "Commandites thématiques",
+    "tiers": [
+      {
+        "name": "Bronze",
+        "price": "1 000 $",
+        "color": "#cd7f32",
+        "perks": ["Logo sur le site web de l'événement", "Reconnaissance lors de l'événement", "1 inscription gratuite"]
+      },
+      {
+        "name": "Argent",
+        "price": "2 500 $",
+        "color": "#a8a9ad",
+        "featured": true,
+        "perks": ["Logo sur tous les supports de l'événement", "Stand d'exposition", "Reconnaissance du site Web", "2 inscriptions gratuites"]
+      },
+      {
+        "name": "Or",
+        "price": "5 000 $",
+        "color": "#d4af37",
+        "perks": ["Logo sur tous les supports", "Prise de parole", "Stand d'exposition", "Reconnaissance du site Web", "3 inscriptions gratuites", "Promotion sur les réseaux sociaux"]
+      }
+    ]
   },
   "previous": {
     "title": "ÉDITION PRÉCÉDENTE",

@@ -84,6 +84,18 @@
     "cta": "SUBMIT A PROPOSAL",
     "cta_desc": "Practitioners, researchers, and decision-makers — share your expertise with our community.",
     "placeholder": "Speakers will be announced soon.",
+    "call_title": "Become a Speaker",
+    "call_intro": "We are launching the call for speakers for this edition of Tainos Cyber Con 2026. If you have knowledge, field experience, or research that can help our audience better understand, protect, and anticipate cybersecurity threats, your voice belongs on this stage.",
+    "formats_title": "Presentation Formats",
+    "formats": ["45-minute presentation", "30-minute presentation", "Panel / roundtable", "Technical demonstration", "Workshop"],
+    "who_title": "Who Should Apply",
+    "who": ["Cybersecurity professionals", "IT and security managers", "Researchers and academics", "Consultants", "Government and public sector experts", "Private sector professionals"],
+    "deadline_label": "Deadline",
+    "deadline": "June 26, 2026",
+    "notification_label": "Notification",
+    "notification": "July 17, 2026",
+    "topics_title": "Suggested Topics",
+    "topics": ["Emerging threats and technologies", "Cyber defense and operations", "Sector-specific security", "Infrastructure and cloud security", "Data protection and privacy", "Risk management and governance"],
     "confirmed": [
       {
         "name": "Mike Arbrouet",
@@ -180,7 +192,30 @@
       "Industry recognition and community association",
       "Support for regional cyber-resilience"
     ],
-    "cta": "CONTACT US"
+    "cta": "CONTACT US",
+    "tiers_title": "Partnership Levels",
+    "tiers_subtitle": "Thematic sponsorships",
+    "tiers": [
+      {
+        "name": "Bronze",
+        "price": "$1,000",
+        "color": "#cd7f32",
+        "perks": ["Logo on the event website", "Recognition at the event", "1 complimentary registration"]
+      },
+      {
+        "name": "Silver",
+        "price": "$2,500",
+        "color": "#a8a9ad",
+        "featured": true,
+        "perks": ["Logo on all event materials", "Exhibition booth", "Website recognition", "2 complimentary registrations"]
+      },
+      {
+        "name": "Gold",
+        "price": "$5,000",
+        "color": "#d4af37",
+        "perks": ["Logo on all materials", "Speaking opportunity", "Exhibition booth", "Website recognition", "3 complimentary registrations", "Social media promotion"]
+      }
+    ]
   },
   "previous": {
     "title": "PREVIOUS EDITION",

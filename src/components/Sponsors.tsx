@@ -103,7 +103,7 @@ export default function Sponsors() {
           </div>
 
           {/* Contact form */}
-          <div className="p-8 rounded-xl border border-[#2a3580] bg-gradient-to-br from-[#1c2460]/30 to-transparent">
+          <div id="sponsor-form" className="p-8 rounded-xl border border-[#2a3580] bg-gradient-to-br from-[#1c2460]/30 to-transparent">
             <h3 className="text-lg font-bold text-white mb-6">{t.sponsors.cta}</h3>
             <ContactForm
               fields={fields}
@@ -115,6 +115,61 @@ export default function Sponsors() {
                   : "Message sent! We'll get back to you within 48h."
               }
             />
+          </div>
+        </div>
+
+        {/* Sponsorship tiers */}
+        <div className="mb-16">
+          <div className="text-center mb-10">
+            <span className="text-[#7b9bff] text-xs font-mono tracking-[0.3em] uppercase mb-2 block">
+              {t.sponsors.tiers_subtitle}
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-black text-white">{t.sponsors.tiers_title}</h3>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {(t.sponsors.tiers as Array<{ name: string; price: string; color: string; featured?: boolean; perks: string[] }>).map((tier) => (
+              <div
+                key={tier.name}
+                className={`relative rounded-2xl overflow-hidden flex flex-col ${tier.featured ? "ring-2 ring-[#7b35b0] scale-[1.03]" : "border border-[#2a3580]"}`}
+              >
+                {/* Top color bar */}
+                <div className="h-1.5 w-full" style={{ background: tier.color }} />
+
+                {tier.featured && (
+                  <div className="absolute top-0 right-4 translate-y-3">
+                    <span className="px-2 py-0.5 text-[10px] font-black uppercase tracking-widest rounded-full text-white" style={{ background: "linear-gradient(135deg,#c03880,#7b35b0)" }}>
+                      {lang === "fr" ? "Populaire" : "Popular"}
+                    </span>
+                  </div>
+                )}
+
+                <div className="bg-[#0d1035] px-7 pt-7 pb-6 flex flex-col flex-1">
+                  <p className="text-xs font-mono font-bold tracking-[0.25em] uppercase mb-1" style={{ color: tier.color }}>{tier.name}</p>
+                  <p className="text-4xl font-black text-white mb-6">{tier.price}</p>
+
+                  <ul className="space-y-3 flex-1">
+                    {tier.perks.map((perk, i) => (
+                      <li key={i} className="flex items-start gap-2.5 text-sm text-slate-300">
+                        <svg className="w-4 h-4 shrink-0 mt-0.5" style={{ color: tier.color }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                        </svg>
+                        {perk}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <a
+                    href="#contact-form"
+                    className="mt-7 block text-center py-2.5 rounded-lg text-sm font-black tracking-widest uppercase transition-colors"
+                    style={{ background: tier.color, color: "#07091a" }}
+                    onClick={(e) => { e.preventDefault(); document.getElementById("sponsor-form")?.scrollIntoView({ behavior: "smooth" }); }}
+                  >
+                    {lang === "fr" ? "Nous contacter" : "Contact us"}
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 

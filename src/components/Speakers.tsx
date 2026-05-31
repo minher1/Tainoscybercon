@@ -166,21 +166,100 @@ export default function Speakers() {
           </div>
         )}
 
-        {/* Call for speakers form */}
-        <div className="max-w-2xl mx-auto">
-          <div className="p-8 rounded-xl border border-[#2a3580] bg-gradient-to-br from-[#1c2460]/30 to-transparent">
-            <h3 className="text-lg font-bold text-white mb-2">{t.speakers.cta}</h3>
-            <p className="text-slate-200 text-sm mb-6">{t.speakers.cta_desc}</p>
-            <ContactForm
-              fields={formFields}
-              formType="speaker"
-              submitLabel={lang === "fr" ? "Soumettre ma proposition" : "Submit proposal"}
-              successMessage={
-                lang === "fr"
-                  ? "Proposition reçue ! Nous vous contacterons prochainement."
-                  : "Proposal received! We'll be in touch soon."
-              }
-            />
+        {/* Call for speakers */}
+        <div className="mt-4">
+          {/* Hero banner */}
+          <div className="rounded-2xl overflow-hidden mb-10" style={{ background: "linear-gradient(135deg, #c03880 0%, #7b35b0 50%, #1c2460 100%)" }}>
+            <div className="px-10 py-12 relative">
+              <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)", backgroundSize: "32px 32px" }} />
+              <div className="relative max-w-3xl">
+                <span className="text-xs font-mono font-bold tracking-[0.3em] uppercase text-white/60 mb-2 block">// APPEL À CONFÉRENCIERS</span>
+                <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">{t.speakers.call_title}</h2>
+                <p className="text-white/80 text-base leading-relaxed">{t.speakers.call_intro}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+            {/* Formats */}
+            <div className="rounded-xl border border-[#2a3580] bg-[#0d1035]/60 p-7">
+              <h3 className="text-sm font-black text-white tracking-widest uppercase mb-5 flex items-center gap-2">
+                <span className="w-5 h-5 rounded bg-[#c03880]/30 border border-[#c03880]/50 flex items-center justify-center shrink-0">
+                  <svg className="w-3 h-3 text-[#c03880]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                </span>
+                {t.speakers.formats_title}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {(t.speakers.formats as string[]).map((f, i) => (
+                  <span key={i} className="px-3 py-1.5 rounded-lg border border-[#4a6cf7]/40 bg-[#1c2460]/40 text-[#7b9bff] text-xs font-mono font-bold">
+                    {f}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Who should apply */}
+            <div className="rounded-xl border border-[#2a3580] bg-[#0d1035]/60 p-7">
+              <h3 className="text-sm font-black text-white tracking-widest uppercase mb-5 flex items-center gap-2">
+                <span className="w-5 h-5 rounded bg-[#7b35b0]/30 border border-[#7b35b0]/50 flex items-center justify-center shrink-0">
+                  <svg className="w-3 h-3 text-[#b07bff]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                </span>
+                {t.speakers.who_title}
+              </h3>
+              <ul className="space-y-2">
+                {(t.speakers.who as string[]).map((w, i) => (
+                  <li key={i} className="flex items-center gap-2.5 text-sm text-slate-300">
+                    <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "linear-gradient(135deg,#c03880,#7b35b0)" }} />
+                    {w}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Deadline + topics row */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
+            {/* Deadline badges */}
+            <div className="rounded-xl border border-[#2a3580] bg-[#0d1035]/60 p-7 flex flex-col gap-4">
+              <div>
+                <p className="text-xs font-mono text-slate-400 uppercase tracking-widest mb-1">{t.speakers.deadline_label}</p>
+                <p className="text-xl font-black text-white">{t.speakers.deadline}</p>
+              </div>
+              <div className="border-t border-[#2a3580]/60 pt-4">
+                <p className="text-xs font-mono text-slate-400 uppercase tracking-widest mb-1">{t.speakers.notification_label}</p>
+                <p className="text-xl font-black text-[#7b9bff]">{t.speakers.notification}</p>
+              </div>
+            </div>
+
+            {/* Suggested topics */}
+            <div className="lg:col-span-2 rounded-xl border border-[#2a3580] bg-[#0d1035]/60 p-7">
+              <h3 className="text-sm font-black text-white tracking-widest uppercase mb-5">{t.speakers.topics_title}</h3>
+              <div className="flex flex-wrap gap-2">
+                {(t.speakers.topics as string[]).map((topic, i) => (
+                  <span key={i} className="px-3 py-1.5 rounded-full border border-[#2a3580] bg-[#1c2460]/30 text-slate-200 text-xs font-mono">
+                    {topic}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Form */}
+          <div className="max-w-2xl mx-auto">
+            <div className="p-8 rounded-xl border border-[#2a3580] bg-gradient-to-br from-[#1c2460]/30 to-transparent">
+              <h3 className="text-lg font-bold text-white mb-2">{t.speakers.cta}</h3>
+              <p className="text-slate-200 text-sm mb-6">{t.speakers.cta_desc}</p>
+              <ContactForm
+                fields={formFields}
+                formType="speaker"
+                submitLabel={lang === "fr" ? "Soumettre ma proposition" : "Submit proposal"}
+                successMessage={
+                  lang === "fr"
+                    ? "Proposition reçue ! Nous vous contacterons prochainement."
+                    : "Proposal received! We'll be in touch soon."
+                }
+              />
+            </div>
           </div>
         </div>
       </div>
