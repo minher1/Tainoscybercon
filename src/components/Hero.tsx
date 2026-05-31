@@ -60,28 +60,14 @@ export default function Hero() {
           <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#4a6cf7]" />
         </div>
 
-        {/* Logo */}
-        <div className="flex justify-center mb-6">
-          <div className="relative h-20 w-72">
+        {/* Logo — sole brand mark, no duplicate text heading */}
+        <div className="flex justify-center mb-4">
+          <div className="relative h-28 w-96">
             <Image src="/logo.png" alt="Tainos Cyber Con" fill className="object-contain" priority />
           </div>
         </div>
 
-        {/* Title with glitch effect */}
-        <h1 className="glitch text-5xl sm:text-7xl md:text-8xl font-black tracking-tight leading-none mb-2" data-text="TAINOS CYBER CON">
-          <span className="text-white">TAINOS </span>
-          <span
-            style={{
-              background: "linear-gradient(135deg, #7b9bff 0%, #4a6cf7 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
-            CYBER CON
-          </span>
-        </h1>
-        <div className="text-white/10 text-3xl sm:text-4xl font-black tracking-[0.25em] font-mono mb-8">
+        <div className="text-white/20 text-2xl sm:text-3xl font-black tracking-[0.35em] font-mono mb-8">
           2026
         </div>
 
