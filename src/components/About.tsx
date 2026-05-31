@@ -70,8 +70,8 @@ export default function About() {
           {/* Conference photo */}
           <div className="relative h-72 lg:h-auto rounded-2xl overflow-hidden shadow-xl">
             <Image
-              src="/photos/event-crowd.jpg"
-              alt="Conférence Tainos Cyber Con"
+              src="/photos/audience-engaged.jpg"
+              alt="Participants à Tainos Cyber Con"
               fill
               className="object-cover object-center"
             />
