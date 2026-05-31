@@ -8,53 +8,59 @@ export default function Sponsors() {
 
   const fields = lang === "fr"
     ? [
-        { name: "nom",          label: "Nom",                             required: true },
-        { name: "email",        label: "E-mail",        type: "email",    required: true },
-        { name: "telephone",    label: "Numéro de contact", type: "tel",  required: true },
-        { name: "adresse",      label: "Adresse complète (rue, ville, province, code postal)" },
+        { name: "nom",          label: "Nom",                                         required: true },
+        { name: "email",        label: "E-mail",            type: "email",            required: true },
+        { name: "telephone",    label: "Numéro de contact", type: "tel",              required: true },
+        { name: "adresse",      label: "Adresse complète (numéro, rue, ville, province, code postal)", required: true },
         {
           name: "source",
           label: "Comment avez-vous entendu parler de nous ?",
           options: ["Instagram", "Amis", "Facebook", "Autres"],
+          required: true,
         },
         { name: "source_autre", label: "Si « Autres », précisez" },
-        { name: "entreprise",   label: "Nom de votre entreprise",         required: true },
-        { name: "website",      label: "Site web de l'organisation" },
+        { name: "entreprise",   label: "Nom de votre entreprise",                     required: true },
+        { name: "website",      label: "Site web de l'organisation",                  required: true },
         {
           name: "niveau",
           label: "Niveau de partenariat envisagé",
           options: ["Bronze", "Argent", "Or"],
+          required: true,
         },
         { name: "commentaires", label: "Commentaires", type: "textarea" },
         {
           name: "consentement",
           label: "Vous consentez à nous laisser vous contacter ?",
           options: ["Oui", "Non"],
+          required: true,
         },
       ]
     : [
-        { name: "nom",          label: "Name",                            required: true },
-        { name: "email",        label: "Email",         type: "email",    required: true },
-        { name: "telephone",    label: "Contact number", type: "tel",     required: true },
-        { name: "adresse",      label: "Full address (street, city, province, postal code)" },
+        { name: "nom",          label: "Name",                                        required: true },
+        { name: "email",        label: "Email",             type: "email",            required: true },
+        { name: "telephone",    label: "Contact number",    type: "tel",              required: true },
+        { name: "adresse",      label: "Full address (number, street, city, province, postal code)", required: true },
         {
           name: "source",
           label: "How did you hear about us?",
           options: ["Instagram", "Friends", "Facebook", "Other"],
+          required: true,
         },
         { name: "source_autre", label: "If \"Other\", please specify" },
-        { name: "entreprise",   label: "Company name",                    required: true },
-        { name: "website",      label: "Organization website" },
+        { name: "entreprise",   label: "Company name",                                required: true },
+        { name: "website",      label: "Organization website",                        required: true },
         {
           name: "niveau",
           label: "Desired partnership level",
           options: ["Bronze", "Silver", "Gold"],
+          required: true,
         },
         { name: "commentaires", label: "Comments", type: "textarea" },
         {
           name: "consentement",
           label: "Do you consent to being contacted?",
           options: ["Yes", "No"],
+          required: true,
         },
       ];
 
