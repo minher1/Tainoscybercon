@@ -124,9 +124,9 @@ export default function Speakers() {
 
   return (
     <section id="speakers" className="py-24 px-4 relative overflow-hidden">
-      {/* Microphone photo background */}
-      <div className="absolute inset-0 opacity-[0.06]">
-        <Image src="/photos/microphone.jpg" alt="" fill className="object-cover" />
+      {/* Speaker at mic — real Tainos event photo */}
+      <div className="absolute inset-0 opacity-[0.12]">
+        <Image src="/photos/speaker-mic.jpg" alt="" fill className="object-cover object-top" />
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-[#07091a] via-transparent to-[#07091a]" />
 
