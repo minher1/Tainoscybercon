@@ -75,7 +75,7 @@ export default function Nav() {
               className="flex items-center gap-1.5 text-xs font-semibold tracking-wider px-3 py-1.5 rounded border border-[#2a3580] text-slate-300 hover:border-[#4a6cf7] hover:text-white transition-all"
               title={lang === "fr" ? "Switch to English" : "Passer en français"}
             >
-              <span className="text-base leading-none">
+              <span className="text-base leading-none" style={{ fontFamily: "Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji, sans-serif" }}>
                 {lang === "fr" ? "🇺🇸" : "🇫🇷"}
               </span>
               <span>{lang === "fr" ? "EN" : "FR"}</span>
