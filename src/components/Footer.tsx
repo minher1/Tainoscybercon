@@ -2,6 +2,7 @@
 import { useLang } from "@/context/LangContext";
 import Image from "next/image";
 import { TainoSun, BinaryStream } from "./Silhouettes";
+import Newsletter from "./Newsletter";
 
 const socials = [
   {
@@ -46,8 +47,9 @@ export default function Footer() {
   const { t } = useLang();
 
   return (
-    <footer id="contact" className="py-16 px-4 border-t border-[#2a3580]/40 bg-[#07091a]">
-      <div className="max-w-7xl mx-auto">
+    <footer id="contact" className="border-t border-[#2a3580]/40 bg-[#07091a]">
+      <Newsletter />
+      <div className="max-w-7xl mx-auto py-16 px-4">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div>
@@ -111,9 +113,14 @@ export default function Footer() {
         <div className="flex flex-col items-center gap-3">
           <TainoSun className="w-10 h-10 opacity-70" />
           <p className="text-center text-xs text-slate-400">{t.footer.copyright}</p>
-          <a href="/privacy" className="text-xs text-slate-400 hover:text-slate-200 transition-colors underline underline-offset-2">
-            Politique de confidentialité
-          </a>
+          <div className="flex gap-4">
+            <a href="/privacy" className="text-xs text-slate-400 hover:text-slate-200 transition-colors underline underline-offset-2">
+              Politique de confidentialité
+            </a>
+            <a href="/terms" className="text-xs text-slate-400 hover:text-slate-200 transition-colors underline underline-offset-2">
+              Conditions d'utilisation
+            </a>
+          </div>
           <BinaryStream className="w-40 opacity-30" />
         </div>
       </div>

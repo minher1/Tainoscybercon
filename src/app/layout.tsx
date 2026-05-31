@@ -5,6 +5,8 @@ import { LangProvider } from "@/context/LangContext";
 import BrandDefs from "@/components/BrandDefs";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import CookieBanner from "@/components/CookieBanner";
+import Script from "next/script";
 
 const barlow = Barlow({
   subsets: ["latin"],
@@ -47,13 +49,25 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${barlow.variable} ${barlowCondensed.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-[#07091a] text-slate-200">
+        {/* Google Analytics */}
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`} strategy="afterInteractive" />
+            <Script id="ga-init" strategy="afterInteractive">{`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+            `}</Script>
+          </>
+        )}
         <BrandDefs />
         <LangProvider>
           <Nav />
           <main className="flex-1">{children}</main>
           <Footer />
+          <CookieBanner />
         </LangProvider>
-
       </body>
     </html>
   );

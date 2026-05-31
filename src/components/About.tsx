@@ -108,6 +108,31 @@ export default function About() {
             </div>
           </div>
         </div>
+
+        {/* Google Maps embed */}
+        <div className="mt-10 rounded-2xl overflow-hidden shadow-xl border border-slate-200">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2782.4!2d-73.5960!3d45.7500!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc921b5e8c14b0f%3A0x8b0e2f6c4e5a7d3e!2s3235+Ave+de+la+Gare%2C+Mascouche%2C+QC+J7K+3C1!5e0!3m2!1sfr!2sca!4v1700000000000"
+            width="100%"
+            height="280"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Tainos Cyber Con 2026 — 3235 Ave de la Gare, Mascouche"
+          />
+        </div>
+        <div className="mt-3 flex items-center justify-between px-1">
+          <p className="text-slate-500 text-xs">3235 Ave de la Gare, Mascouche, QC J7K 3C1 · Salle 2C2B · Stationnement gratuit</p>
+          <a
+            href="https://maps.google.com/?q=3235+Ave+de+la+Gare,+Mascouche,+QC"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-[#1c2460] font-semibold hover:underline shrink-0 ml-4"
+          >
+            Ouvrir dans Google Maps →
+          </a>
+        </div>
       </div>
 
       {/* Bottom edge — white-to-dark transition */}

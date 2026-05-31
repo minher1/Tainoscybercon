@@ -2,6 +2,11 @@
 import { useLang } from "@/context/LangContext";
 import ContactForm from "./ContactForm";
 import Image from "next/image";
+import Link from "next/link";
+
+function slugify(name: string) {
+  return name.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+}
 
 type Speaker = {
   name: string;
@@ -15,7 +20,7 @@ type Speaker = {
 
 function SpeakerCard({ speaker }: { speaker: Speaker }) {
   return (
-    <div className="group relative flex flex-col rounded-2xl border border-[#2a3580]/60 bg-[#0d1035]/60 overflow-hidden hover:border-[#4a6cf7]/50 transition-all duration-300">
+    <Link href={`/speakers/${slugify(speaker.name)}`} className="group relative flex flex-col rounded-2xl border border-[#2a3580]/60 bg-[#0d1035]/60 overflow-hidden hover:border-[#4a6cf7]/50 transition-all duration-300">
       {/* Photo */}
       <div className="relative h-72 w-full overflow-hidden bg-[#1c2460]/40">
         <Image
@@ -75,7 +80,7 @@ function SpeakerCard({ speaker }: { speaker: Speaker }) {
           </a>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

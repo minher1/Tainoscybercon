@@ -205,6 +205,52 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Email send failed" }, { status: 500 });
     }
 
+    // Auto-reply confirmation to submitter
+    if (replyTo) {
+      const confirmationMessages: Record<string, { subject: string; body: string }> = {
+        speaker: {
+          subject: "Proposition reçue — Tainos Cyber Con 2026",
+          body: `<p>Bonjour,</p><p>Nous avons bien reçu votre proposition de conférence. Notre comité de programmation l'examinera et vous contactera prochainement.</p><p>Merci de votre intérêt pour Tainos Cyber Con 2026 !</p>`,
+        },
+        sponsor: {
+          subject: "Demande de partenariat reçue — Tainos Cyber Con 2026",
+          body: `<p>Bonjour,</p><p>Nous avons bien reçu votre demande de partenariat. Un membre de notre équipe vous contactera dans les 48 heures.</p><p>Merci de votre intérêt pour Tainos Cyber Con 2026 !</p>`,
+        },
+        newsletter: {
+          subject: "Inscription confirmée — Tainos Cyber Con 2026",
+          body: `<p>Bonjour,</p><p>Votre inscription à notre liste de diffusion est confirmée. Vous serez parmi les premiers à recevoir nos annonces, le programme et les offres spéciales.</p><p>À bientôt !</p>`,
+        },
+        contact: {
+          subject: "Message reçu — Tainos Cyber Con 2026",
+          body: `<p>Bonjour,</p><p>Nous avons bien reçu votre message et vous répondrons dans les meilleurs délais.</p>`,
+        },
+      };
+
+      const conf = confirmationMessages[_formType] ?? confirmationMessages.contact;
+      const confirmHtml = `<!DOCTYPE html><html><body style="font-family:sans-serif;background:#f0f2f5;padding:40px 16px;">
+        <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 auto;border-radius:12px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.15);">
+          <tr><td style="background:linear-gradient(135deg,#e84444 0%,#c03880 50%,#7b35b0 100%);height:6px;"></td></tr>
+          <tr><td style="background:#07091a;padding:32px 40px;">
+            <p style="margin:0;font-size:11px;font-weight:700;letter-spacing:0.25em;color:#7b9bff;text-transform:uppercase;font-family:monospace;">// TAINOS CYBER CON 2026</p>
+            <h1 style="margin:8px 0 0;font-size:20px;font-weight:900;color:#fff;text-transform:uppercase;">${conf.subject}</h1>
+          </td></tr>
+          <tr><td style="background:#0d1035;padding:32px 40px;color:#e8eaf6;font-size:15px;line-height:1.7;">${conf.body}
+            <p style="margin-top:24px;padding-top:24px;border-top:1px solid #1e2a5e;font-size:12px;color:#6b7280;">
+              29 août 2026 · Mascouche, QC · <a href="https://tainoscybercon.com" style="color:#7b9bff;">tainoscybercon.com</a>
+            </p>
+          </td></tr>
+          <tr><td style="background:linear-gradient(135deg,#e84444 0%,#c03880 50%,#7b35b0 100%);height:4px;"></td></tr>
+        </table>
+      </body></html>`;
+
+      await resend.emails.send({
+        from: "Tainos Cyber Con <no-reply@tainoscybercon.com>",
+        to: replyTo,
+        subject: conf.subject,
+        html: confirmHtml,
+      }).catch((err) => console.error("Auto-reply error:", err));
+    }
+
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("Contact API error:", err);
