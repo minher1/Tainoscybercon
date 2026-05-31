@@ -84,42 +84,25 @@ export default function Sponsors() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start mb-16">
-          {/* Benefits list */}
-          <div>
-            <h3 className="text-sm font-bold text-[#7b9bff] tracking-widest uppercase mb-6">
-              {t.sponsors.benefits_title}
-            </h3>
-            <ul className="space-y-4">
-              {t.sponsors.benefits.map((b, i) => (
-                <li key={i} className="flex items-start gap-4">
-                  <span className="shrink-0 w-7 h-7 rounded-full border border-[#4a6cf7]/40 flex items-center justify-center text-xs font-bold text-[#7b9bff]">
-                    {i + 1}
-                  </span>
-                  <p className="text-slate-300 text-sm leading-relaxed pt-0.5">{b}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact form */}
-          <div id="sponsor-form" className="p-8 rounded-xl border border-[#2a3580] bg-gradient-to-br from-[#1c2460]/30 to-transparent">
-            <h3 className="text-lg font-bold text-white mb-6">{t.sponsors.cta}</h3>
-            <ContactForm
-              fields={fields}
-              formType="sponsor"
-              submitLabel={lang === "fr" ? "Envoyer" : "Send"}
-              successMessage={
-                lang === "fr"
-                  ? "Message envoyé ! Nous vous répondrons sous 48h."
-                  : "Message sent! We'll get back to you within 48h."
-              }
-            />
+        {/* Why partner — full-width benefit pills */}
+        <div className="mb-14">
+          <h3 className="text-sm font-bold text-[#7b9bff] tracking-widest uppercase mb-6 text-center">
+            {t.sponsors.benefits_title}
+          </h3>
+          <div className="flex flex-wrap justify-center gap-3">
+            {t.sponsors.benefits.map((b, i) => (
+              <div key={i} className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-[#2a3580] bg-[#0d1035]/60 text-slate-300 text-sm">
+                <span className="w-5 h-5 rounded-full shrink-0 flex items-center justify-center text-[10px] font-black text-white" style={{ background: "linear-gradient(135deg,#c03880,#7b35b0)" }}>
+                  {i + 1}
+                </span>
+                {b}
+              </div>
+            ))}
           </div>
         </div>
 
         {/* Sponsorship tiers */}
-        <div className="mb-16">
+        <div className="mb-14">
           <div className="text-center mb-10">
             <span className="text-[#7b9bff] text-xs font-mono tracking-[0.3em] uppercase mb-2 block">
               {t.sponsors.tiers_subtitle}
@@ -133,9 +116,7 @@ export default function Sponsors() {
                 key={tier.name}
                 className={`relative rounded-2xl overflow-hidden flex flex-col ${tier.featured ? "ring-2 ring-[#7b35b0] scale-[1.03]" : "border border-[#2a3580]"}`}
               >
-                {/* Top color bar */}
                 <div className="h-1.5 w-full" style={{ background: tier.color }} />
-
                 {tier.featured && (
                   <div className="absolute top-0 right-4 translate-y-3">
                     <span className="px-2 py-0.5 text-[10px] font-black uppercase tracking-widest rounded-full text-white" style={{ background: "linear-gradient(135deg,#c03880,#7b35b0)" }}>
@@ -143,11 +124,9 @@ export default function Sponsors() {
                     </span>
                   </div>
                 )}
-
                 <div className="bg-[#0d1035] px-7 pt-7 pb-6 flex flex-col flex-1">
                   <p className="text-xs font-mono font-bold tracking-[0.25em] uppercase mb-1" style={{ color: tier.color }}>{tier.name}</p>
                   <p className="text-4xl font-black text-white mb-6">{tier.price}</p>
-
                   <ul className="space-y-3 flex-1">
                     {tier.perks.map((perk, i) => (
                       <li key={i} className="flex items-start gap-2.5 text-sm text-slate-300">
@@ -158,18 +137,38 @@ export default function Sponsors() {
                       </li>
                     ))}
                   </ul>
-
-                  <a
-                    href="#contact-form"
-                    className="mt-7 block text-center py-2.5 rounded-lg text-sm font-black tracking-widest uppercase transition-colors"
+                  <button
+                    className="mt-7 block w-full text-center py-2.5 rounded-lg text-sm font-black tracking-widest uppercase transition-opacity hover:opacity-80"
                     style={{ background: tier.color, color: "#07091a" }}
-                    onClick={(e) => { e.preventDefault(); document.getElementById("sponsor-form")?.scrollIntoView({ behavior: "smooth" }); }}
+                    onClick={() => document.getElementById("sponsor-form")?.scrollIntoView({ behavior: "smooth" })}
                   >
                     {lang === "fr" ? "Nous contacter" : "Contact us"}
-                  </a>
+                  </button>
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Contact form */}
+        <div id="sponsor-form" className="max-w-2xl mx-auto mb-16">
+          <div className="p-8 rounded-xl border border-[#2a3580] bg-gradient-to-br from-[#1c2460]/30 to-transparent">
+            <h3 className="text-lg font-bold text-white mb-2">{t.sponsors.cta}</h3>
+            <p className="text-slate-400 text-sm mb-6">
+              {lang === "fr"
+                ? "Sélectionnez un niveau et notre équipe vous contactera sous 48h."
+                : "Select a level and our team will reach out within 48 hours."}
+            </p>
+            <ContactForm
+              fields={fields}
+              formType="sponsor"
+              submitLabel={lang === "fr" ? "Envoyer" : "Send"}
+              successMessage={
+                lang === "fr"
+                  ? "Message envoyé ! Nous vous répondrons sous 48h."
+                  : "Message sent! We'll get back to you within 48h."
+              }
+            />
           </div>
         </div>
 
