@@ -75,6 +75,11 @@
         "icon": "key",
         "title": "Gestion des identités & accès",
         "desc": "Zero trust, MFA et gouvernance des privilèges."
+      },
+      {
+        "icon": "atom",
+        "title": "Informatique quantique & cryptographie",
+        "desc": "L'impact du quantique sur le chiffrement et la préparation post-quantique."
       }
     ]
   },

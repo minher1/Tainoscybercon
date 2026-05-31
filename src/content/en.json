@@ -75,6 +75,11 @@
         "icon": "key",
         "title": "Identity & Access Management",
         "desc": "Zero trust, MFA, and privilege governance."
+      },
+      {
+        "icon": "atom",
+        "title": "Quantum Computing & Cryptography",
+        "desc": "The impact of quantum on encryption and post-quantum readiness."
       }
     ]
   },
