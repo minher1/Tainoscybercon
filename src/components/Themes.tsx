@@ -37,6 +37,24 @@ const icons: Record<string, React.ReactNode> = {
       <circle cx="12" cy="12" r="1.5" fill="url(#g5)" />
     </svg>
   ),
+  shield: (
+    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24">
+      <defs><linearGradient id="g6" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#e84444"/><stop offset="100%" stopColor="#7b35b0"/></linearGradient></defs>
+      <path stroke="url(#g6)" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+    </svg>
+  ),
+  scale: (
+    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24">
+      <defs><linearGradient id="g7" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#e84444"/><stop offset="100%" stopColor="#7b35b0"/></linearGradient></defs>
+      <path stroke="url(#g7)" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0012 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 01-2.031.352 5.988 5.988 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.97zm-13.5 0L2.63 15.696c-.122.499.106 1.028.589 1.202a5.989 5.989 0 002.031.352 5.989 5.989 0 002.031-.352c.483-.174.711-.703.59-1.202L5.25 4.97z" />
+    </svg>
+  ),
+  network: (
+    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24">
+      <defs><linearGradient id="g8" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#e84444"/><stop offset="100%" stopColor="#7b35b0"/></linearGradient></defs>
+      <path stroke="url(#g8)" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z" />
+    </svg>
+  ),
 };
 
 export default function Themes() {
@@ -58,7 +76,7 @@ export default function Themes() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {t.themes.items.map((item, i) => (
             <div
               key={i}

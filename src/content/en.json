@@ -58,28 +58,38 @@
     "items": [
       {
         "icon": "cpu",
-        "title": "AI & Cybersecurity",
-        "desc": "Artificial intelligence as an attack vector and defense tool."
+        "title": "When AI Becomes Cybercriminals' Weapon of Choice",
+        "desc": "Deepfakes, automated phishing, adaptive attacks: understand the mechanics of these threats to better decide where to invest your defenses."
       },
       {
-        "icon": "alert",
-        "title": "Ransomware & Incident Response",
-        "desc": "Detection, containment, and recovery strategies."
+        "icon": "shield",
+        "title": "Defensive AI: Turning Cybersecurity into an Intelligent Immune System",
+        "desc": "From the theory of behavioral detection to its concrete deployment within your infrastructure."
       },
       {
-        "icon": "cloud",
-        "title": "Cloud & SaaS Security",
-        "desc": "Protecting your assets in hybrid and multi-cloud environments."
-      },
-      {
-        "icon": "key",
-        "title": "Identity & Access Management",
-        "desc": "Zero trust, MFA, and privilege governance."
+        "icon": "scale",
+        "title": "Regulation, Ethics and Trust: Building Responsible AI",
+        "desc": "Translating compliance (Bill 25, GDPR, AI Act) into concrete technical requirements and reputational advantages."
       },
       {
         "icon": "atom",
-        "title": "Quantum Computing & Cryptography",
-        "desc": "The impact of quantum on encryption and post-quantum readiness."
+        "title": "Cybersecurity in the Quantum Era",
+        "desc": "Why your current encryption will become obsolete, and how to start a post-quantum migration now."
+      },
+      {
+        "icon": "alert",
+        "title": "The Risks of AI: Between Hype and Blind Spots",
+        "desc": "Hallucinations, algorithmic bias, excessive dependency and loss of control: understanding the real dangers behind the promise of AI, and the safeguards to put in place before an incident occurs."
+      },
+      {
+        "icon": "network",
+        "title": "OT Security: Protecting the Connected Factory in the Age of Automation and AI",
+        "desc": "The convergence of IT and OT worlds now exposes industrial systems, PLCs and production lines to unprecedented cyber threats. Understand how automation and AI both strengthen resilience and expand the attack surface, and adopt a protection strategy suited to critical environments."
+      },
+      {
+        "icon": "key",
+        "title": "Incident Response: From Detection to Recovery",
+        "desc": "When a cyberattack strikes, every minute counts. Building an effective incident response capability: clear action plans, well-trained teams, forensic tools and crisis communication. How AI and automation accelerate detection and remediation, and why prior preparation determines success."
       }
     ]
   },

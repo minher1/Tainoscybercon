@@ -58,28 +58,38 @@
     "items": [
       {
         "icon": "cpu",
-        "title": "IA & Cybersécurité",
-        "desc": "L'intelligence artificielle comme vecteur d'attaque et outil de défense."
+        "title": "Quand l'IA devient l'arme préférée des cybercriminels",
+        "desc": "Deepfakes, phishing automatisé, attaques adaptatives : comprendre la mécanique de ces menaces pour mieux décider où investir vos défenses."
       },
       {
-        "icon": "alert",
-        "title": "Rançongiciels & Réponse aux incidents",
-        "desc": "Stratégies de détection, confinement et récupération."
+        "icon": "shield",
+        "title": "L'IA défensive : transformer la cybersécurité en système immunitaire intelligent",
+        "desc": "De la théorie de la détection comportementale à son déploiement concret au sein de votre infrastructure."
       },
       {
-        "icon": "cloud",
-        "title": "Sécurité cloud & SaaS",
-        "desc": "Protéger vos actifs dans des environnements hybrides et multi-cloud."
-      },
-      {
-        "icon": "key",
-        "title": "Gestion des identités & accès",
-        "desc": "Zero trust, MFA et gouvernance des privilèges."
+        "icon": "scale",
+        "title": "Régulation, éthique et confiance : bâtir une IA responsable",
+        "desc": "Traduire la conformité (Loi 25, RGPD, AI Act) en exigences techniques concrètes et en avantages en matière de réputation."
       },
       {
         "icon": "atom",
-        "title": "Informatique quantique & cryptographie",
-        "desc": "L'impact du quantique sur le chiffrement et la préparation post-quantique."
+        "title": "La cybersécurité à l'ère quantique",
+        "desc": "Pourquoi vos chiffrements actuels deviendront obsolètes, et comment amorcer dès maintenant une migration post-quantique."
+      },
+      {
+        "icon": "alert",
+        "title": "Les risques de l'IA : entre emballement et angles morts",
+        "desc": "Hallucinations, biais algorithmiques, dépendance excessive et perte de maîtrise : comprendre les vrais dangers derrière la promesse de l'IA, et les garde-fous à mettre en place avant qu'un incident ne survienne."
+      },
+      {
+        "icon": "network",
+        "title": "Sécurité OT : protéger l'usine connectée à l'heure de l'automatisation et de l'IA",
+        "desc": "La convergence des mondes IT et OT expose désormais les systèmes industriels, les automates et les chaînes de production à des cybermenaces inédites. Comprendre comment l'automatisation et l'IA renforcent à la fois la résilience et la surface d'attaque, et adopter une stratégie de protection adaptée aux environnements critiques."
+      },
+      {
+        "icon": "key",
+        "title": "Réponse aux incidents : de la détection à la récupération",
+        "desc": "Quand une cyberattaque frappe, chaque minute compte. Construire une capacité de réponse aux incidents efficace : plans d'action clairs, équipes bien entraînées, outils de forensique et communication de crise. Comment l'IA et l'automatisation accélèrent la détection et la remédiation, et pourquoi la préparation préalable détermine le succès."
       }
     ]
   },
