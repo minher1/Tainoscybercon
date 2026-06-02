@@ -128,6 +128,15 @@
         "photo": "/speakers/valentin.webp",
         "linkedin": "https://www.linkedin.com/in/valentin-bromont",
         "website": "https://www.bnc.ca"
+      },
+      {
+        "name": "Anglade Perrier",
+        "title": "Fondateur & vCISO, TEKAP",
+        "bio": "Expert en cybersécurité et gouvernance des risques, Anglade Perrier est fondateur de TEKAP, firme québécoise spécialisée en vCISO, conformité (CMMC, SOC2, ISO 27001) et gestion des risques. Détenteur des désignations ASC, C.Dir et NACD.DC, il accompagne les organisations dans la protection de leurs actifs numériques.",
+        "tags": ["vCISO", "GRC", "Gouvernance"],
+        "photo": "/speakers/anglade.jpg",
+        "linkedin": "https://ca.linkedin.com/in/anglade-perrier-asc-c-dir-nacd-dc-7b78253",
+        "website": "https://tekap.ca"
       }
     ]
   },
