@@ -52,34 +52,36 @@ export default function Newsletter() {
             {lang === "fr" ? "Inscription confirmée !" : "You're on the list!"}
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder={lang === "fr" ? "Votre adresse courriel" : "Your email address"}
-              required
-              className="flex-1 px-4 py-3 rounded-lg bg-[#07091a] border border-[#2a3580] text-white text-sm placeholder-slate-500 focus:outline-none focus:border-[#4a6cf7] transition-colors"
-            />
-            <button
-              type="submit"
-              disabled={status === "sending" || (!!siteKey && !turnstileToken)}
-              className="px-6 py-3 logo-gradient text-white font-bold text-sm tracking-wider uppercase rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50 shrink-0"
-            >
-              {status === "sending"
-                ? "..."
-                : lang === "fr" ? "S'inscrire" : "Subscribe"}
-            </button>
-          </form>
-          {siteKey && (
-            <div className="flex justify-center mt-3">
-              <Turnstile
-                siteKey={siteKey}
-                onSuccess={setTurnstileToken}
-                onExpire={() => setTurnstileToken("")}
+          <>
+            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder={lang === "fr" ? "Votre adresse courriel" : "Your email address"}
+                required
+                className="flex-1 px-4 py-3 rounded-lg bg-[#07091a] border border-[#2a3580] text-white text-sm placeholder-slate-500 focus:outline-none focus:border-[#4a6cf7] transition-colors"
               />
-            </div>
-          )}
+              <button
+                type="submit"
+                disabled={status === "sending" || (!!siteKey && !turnstileToken)}
+                className="px-6 py-3 logo-gradient text-white font-bold text-sm tracking-wider uppercase rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50 shrink-0"
+              >
+                {status === "sending"
+                  ? "..."
+                  : lang === "fr" ? "S'inscrire" : "Subscribe"}
+              </button>
+            </form>
+            {siteKey && (
+              <div className="flex justify-center mt-3">
+                <Turnstile
+                  siteKey={siteKey}
+                  onSuccess={setTurnstileToken}
+                  onExpire={() => setTurnstileToken("")}
+                />
+              </div>
+            )}
+          </>
         )}
         {status === "error" && (
           <p className="text-red-400 text-xs font-mono mt-3">
