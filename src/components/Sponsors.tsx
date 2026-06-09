@@ -23,7 +23,7 @@ function TierCard({
   tier,
   lang,
 }: {
-  tier: { name: string; price: string; color: string; featured?: boolean; perks: string[] };
+  tier: { name: string; price: string; color: string; featured?: boolean; perks: string[]; paypal: string };
   lang: string;
 }) {
   const [open, setOpen] = useState(false);
@@ -90,11 +90,28 @@ function TierCard({
         </ul>
 
         {status === "success" ? (
-          <div className="flex items-center gap-2 justify-center py-3 text-green-400 text-sm font-mono">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-            </svg>
-            {label("Demande envoyée ! Nous vous contacterons sous 48h.", "Request sent! We'll reach out within 48h.")}
+          <div className="space-y-4">
+            <div className="flex items-center gap-2 justify-center py-2 text-green-400 text-sm font-mono">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+              </svg>
+              {label("Informations reçues !", "Information received!")}
+            </div>
+            <p className="text-slate-400 text-xs text-center">
+              {label("Complétez votre paiement pour confirmer votre partenariat.", "Complete your payment to confirm your partnership.")}
+            </p>
+            <a
+              href={tier.paypal}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 w-full py-3 rounded-lg font-black text-sm tracking-widest uppercase transition-opacity hover:opacity-80"
+              style={{ background: tier.color, color: "#07091a" }}
+            >
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M7.076 21.337H2.47a.641.641 0 01-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.291-.077.443-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.1zm14.146-14.42a3.35 3.35 0 00-.607-.541c-.013.076-.026.175-.041.254-.93 4.778-4.005 7.201-9.138 7.201h-2.19a.563.563 0 00-.556.479l-1.187 7.527h-.506l-.24 1.516a.56.56 0 00.554.647h3.882c.46 0 .85-.334.922-.788l.038-.197 1.73-.437.12-.063.001-.007.033-.202.707-4.478.046-.243a.932.932 0 01.92-.789h.58c3.76 0 6.7-1.528 7.558-5.946.36-1.847.174-3.388-.57-4.433z"/>
+              </svg>
+              {label("Payer via PayPal", "Pay via PayPal")} — {tier.price}
+            </a>
           </div>
         ) : (
           <>
@@ -230,7 +247,7 @@ export default function Sponsors() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 items-start">
-            {(t.sponsors.tiers as Array<{ name: string; price: string; color: string; featured?: boolean; perks: string[] }>).map((tier) => (
+            {(t.sponsors.tiers as Array<{ name: string; price: string; color: string; featured?: boolean; perks: string[]; paypal: string }>).map((tier) => (
               <TierCard key={tier.name} tier={tier} lang={lang} />
             ))}
           </div>

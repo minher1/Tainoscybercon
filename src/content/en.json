@@ -224,6 +224,7 @@
         "name": "Bronze",
         "price": "$1,000",
         "color": "#cd7f32",
+        "paypal": "https://www.paypal.com/ncp/payment/6D2L9V6X2PF7Y",
         "perks": ["Logo on the event website", "Recognition at the event", "1 complimentary registration"]
       },
       {
@@ -231,12 +232,14 @@
         "price": "$2,500",
         "color": "#a8a9ad",
         "featured": true,
+        "paypal": "https://www.paypal.com/ncp/payment/LG5YWMN2QT3N4",
         "perks": ["Logo on all event materials", "Exhibition booth", "Website recognition", "2 complimentary registrations"]
       },
       {
         "name": "Gold",
         "price": "$5,000",
         "color": "#d4af37",
+        "paypal": "https://www.paypal.com/ncp/payment/KBGPYR67VMDYW",
         "perks": ["Logo on all materials", "Speaking opportunity", "Exhibition booth", "Website recognition", "3 complimentary registrations", "Social media promotion"]
       }
     ]

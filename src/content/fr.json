@@ -224,6 +224,7 @@
         "name": "Bronze",
         "price": "1 000 $",
         "color": "#cd7f32",
+        "paypal": "https://www.paypal.com/ncp/payment/6D2L9V6X2PF7Y",
         "perks": ["Logo sur le site web de l'événement", "Reconnaissance lors de l'événement", "1 inscription gratuite"]
       },
       {
@@ -231,12 +232,14 @@
         "price": "2 500 $",
         "color": "#a8a9ad",
         "featured": true,
+        "paypal": "https://www.paypal.com/ncp/payment/LG5YWMN2QT3N4",
         "perks": ["Logo sur tous les supports de l'événement", "Stand d'exposition", "Reconnaissance du site Web", "2 inscriptions gratuites"]
       },
       {
         "name": "Or",
         "price": "5 000 $",
         "color": "#d4af37",
+        "paypal": "https://www.paypal.com/ncp/payment/KBGPYR67VMDYW",
         "perks": ["Logo sur tous les supports", "Prise de parole", "Stand d'exposition", "Reconnaissance du site Web", "3 inscriptions gratuites", "Promotion sur les réseaux sociaux"]
       }
     ]
