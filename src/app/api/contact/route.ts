@@ -167,10 +167,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Too fast" }, { status: 429 });
     }
 
-    // Cloudflare Turnstile verification (skip for newsletter — no widget shown)
-    if (_formType !== "newsletter") {
+    // Cloudflare Turnstile verification (only when a token is actually provided)
+    if (_turnstile) {
       const ip = req.headers.get("cf-connecting-ip") ?? req.headers.get("x-forwarded-for") ?? "";
-      const turnstileOk = await verifyTurnstile(_turnstile ?? "", ip);
+      const turnstileOk = await verifyTurnstile(_turnstile, ip);
       if (!turnstileOk) {
         return NextResponse.json({ error: "Turnstile failed" }, { status: 403 });
       }
