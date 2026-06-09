@@ -1,17 +1,13 @@
 "use client";
 import { useLang } from "@/context/LangContext";
 import Image from "next/image";
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect } from "react";
+
+type Tier = { name: string; price: string; color: string; featured?: boolean; perks: string[]; paypal: string };
 
 type TierForm = {
-  nom: string;
-  prenom: string;
-  email: string;
-  telephone: string;
-  entreprise: string;
-  website: string;
-  logo_url: string;
-  commentaires: string;
+  nom: string; prenom: string; email: string; telephone: string;
+  entreprise: string; website: string; logo_url: string; commentaires: string;
 };
 
 const emptyForm = (): TierForm => ({
@@ -19,16 +15,15 @@ const emptyForm = (): TierForm => ({
   entreprise: "", website: "", logo_url: "", commentaires: "",
 });
 
-function TierCard({
-  tier,
-  lang,
-}: {
-  tier: { name: string; price: string; color: string; featured?: boolean; perks: string[]; paypal: string };
-  lang: string;
-}) {
-  const [open, setOpen] = useState(false);
+function SponsorModal({ tier, lang, onClose }: { tier: Tier; lang: string; onClose: () => void }) {
   const [form, setForm] = useState<TierForm>(emptyForm());
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+
+  // Lock body scroll while modal is open
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = ""; };
+  }, []);
 
   const set = (k: keyof TierForm) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
@@ -60,139 +55,158 @@ function TierCard({
     }
   }
 
-  const label = (fr: string, en: string) => lang === "fr" ? fr : en;
+  const L = (fr: string, en: string) => lang === "fr" ? fr : en;
 
   return (
-    <div className={`relative rounded-2xl overflow-hidden flex flex-col ${tier.featured ? "ring-2 ring-[#7b35b0] scale-[1.03]" : "border border-[#2a3580]"}`}>
-      <div className="h-1.5 w-full" style={{ background: tier.color }} />
+    /* Backdrop */
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      style={{ background: "rgba(7,9,26,0.85)", backdropFilter: "blur(6px)" }}
+      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+    >
+      <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl border border-[#2a3580] bg-[#0d1035] shadow-2xl">
+        {/* Top accent bar */}
+        <div className="h-1.5 w-full rounded-t-2xl" style={{ background: tier.color }} />
 
-      {tier.featured && (
-        <div className="absolute top-0 right-4 translate-y-3 z-10">
-          <span className="px-2 py-0.5 text-[10px] font-black uppercase tracking-widest rounded-full text-white" style={{ background: "linear-gradient(135deg,#c03880,#7b35b0)" }}>
-            {label("Populaire", "Popular")}
-          </span>
-        </div>
-      )}
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#1c2460] flex items-center justify-center text-slate-400 hover:text-white transition-colors"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
 
-      <div className="bg-[#0d1035] px-7 pt-7 pb-6 flex flex-col flex-1">
-        <p className="text-xs font-mono font-bold tracking-[0.25em] uppercase mb-1" style={{ color: tier.color }}>{tier.name}</p>
-        <p className="text-4xl font-black text-white mb-6">{tier.price}</p>
+        <div className="px-8 pt-7 pb-8">
+          {/* Tier badge */}
+          <p className="text-xs font-mono font-bold tracking-[0.25em] uppercase mb-1" style={{ color: tier.color }}>
+            {tier.name}
+          </p>
+          <p className="text-3xl font-black text-white mb-1">{tier.price}</p>
+          <p className="text-slate-400 text-sm mb-6">
+            {L("Partenariat Tainos Cyber Con 2026", "Tainos Cyber Con 2026 Partnership")}
+          </p>
 
-        <ul className="space-y-3 flex-1 mb-7">
-          {tier.perks.map((perk, i) => (
-            <li key={i} className="flex items-start gap-2.5 text-sm text-slate-300">
-              <svg className="w-4 h-4 shrink-0 mt-0.5" style={{ color: tier.color }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-              </svg>
-              {perk}
-            </li>
-          ))}
-        </ul>
+          {status === "success" ? (
+            /* ── Step 2: Payment ── */
+            <div className="text-center space-y-6">
+              <div className="w-16 h-16 rounded-full bg-green-500/10 border border-green-500/30 flex items-center justify-center mx-auto">
+                <svg className="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <div>
+                <p className="text-white font-black text-lg mb-1">
+                  {L("Informations reçues !", "Information received!")}
+                </p>
+                <p className="text-slate-400 text-sm">
+                  {L(
+                    "Dernière étape : complétez votre paiement pour confirmer votre partenariat.",
+                    "Last step: complete your payment to confirm your partnership."
+                  )}
+                </p>
+              </div>
 
-        {status === "success" ? (
-          <div className="space-y-4">
-            <div className="flex items-center gap-2 justify-center py-2 text-green-400 text-sm font-mono">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-              </svg>
-              {label("Informations reçues !", "Information received!")}
-            </div>
-            <p className="text-slate-400 text-xs text-center">
-              {label("Complétez votre paiement pour confirmer votre partenariat.", "Complete your payment to confirm your partnership.")}
-            </p>
-            <a
-              href={tier.paypal}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full py-3 rounded-lg font-black text-sm tracking-widest uppercase transition-opacity hover:opacity-80"
-              style={{ background: tier.color, color: "#07091a" }}
-            >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M7.076 21.337H2.47a.641.641 0 01-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.291-.077.443-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.1zm14.146-14.42a3.35 3.35 0 00-.607-.541c-.013.076-.026.175-.041.254-.93 4.778-4.005 7.201-9.138 7.201h-2.19a.563.563 0 00-.556.479l-1.187 7.527h-.506l-.24 1.516a.56.56 0 00.554.647h3.882c.46 0 .85-.334.922-.788l.038-.197 1.73-.437.12-.063.001-.007.033-.202.707-4.478.046-.243a.932.932 0 01.92-.789h.58c3.76 0 6.7-1.528 7.558-5.946.36-1.847.174-3.388-.57-4.433z"/>
-              </svg>
-              {label("Payer via PayPal", "Pay via PayPal")} — {tier.price}
-            </a>
-          </div>
-        ) : (
-          <>
-            <button
-              className="w-full text-center py-2.5 rounded-lg text-sm font-black tracking-widest uppercase transition-opacity hover:opacity-80 mb-0"
-              style={{ background: tier.color, color: "#07091a" }}
-              onClick={() => setOpen((o) => !o)}
-            >
-              {open
-                ? label("Annuler", "Cancel")
-                : label("Devenir partenaire", "Become a partner")}
-            </button>
+              <a
+                href={tier.paypal}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3 w-full py-4 rounded-xl font-black text-base tracking-wider uppercase shadow-lg transition-opacity hover:opacity-90"
+                style={{ background: tier.color, color: "#07091a" }}
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M7.076 21.337H2.47a.641.641 0 01-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.291-.077.443-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.1zm14.146-14.42a3.35 3.35 0 00-.607-.541c-.013.076-.026.175-.041.254-.93 4.778-4.005 7.201-9.138 7.201h-2.19a.563.563 0 00-.556.479l-1.187 7.527h-.506l-.24 1.516a.56.56 0 00.554.647h3.882c.46 0 .85-.334.922-.788l.038-.197 1.73-.437.12-.063.001-.007.033-.202.707-4.478.046-.243a.932.932 0 01.92-.789h.58c3.76 0 6.7-1.528 7.558-5.946.36-1.847.174-3.388-.57-4.433z"/>
+                </svg>
+                {L("Payer maintenant via PayPal", "Pay now via PayPal")} — {tier.price}
+              </a>
 
-            {open && (
-              <form onSubmit={handleSubmit} className="mt-5 space-y-3 border-t border-[#2a3580]/40 pt-5">
-                <div className="grid grid-cols-2 gap-3">
-                  <div>
-                    <label className="block text-xs text-slate-400 mb-1">{label("Nom *", "Last name *")}</label>
-                    <input required value={form.nom} onChange={set("nom")}
-                      className="w-full px-3 py-2 rounded-lg bg-[#07091a] border border-[#2a3580] text-white text-sm focus:outline-none focus:border-[#4a6cf7]" />
-                  </div>
-                  <div>
-                    <label className="block text-xs text-slate-400 mb-1">{label("Prénom *", "First name *")}</label>
-                    <input required value={form.prenom} onChange={set("prenom")}
-                      className="w-full px-3 py-2 rounded-lg bg-[#07091a] border border-[#2a3580] text-white text-sm focus:outline-none focus:border-[#4a6cf7]" />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-xs text-slate-400 mb-1">{label("E-mail *", "Email *")}</label>
-                  <input required type="email" value={form.email} onChange={set("email")}
-                    className="w-full px-3 py-2 rounded-lg bg-[#07091a] border border-[#2a3580] text-white text-sm focus:outline-none focus:border-[#4a6cf7]" />
-                </div>
-
-                <div>
-                  <label className="block text-xs text-slate-400 mb-1">{label("Téléphone", "Phone")}</label>
-                  <input type="tel" value={form.telephone} onChange={set("telephone")}
-                    className="w-full px-3 py-2 rounded-lg bg-[#07091a] border border-[#2a3580] text-white text-sm focus:outline-none focus:border-[#4a6cf7]" />
-                </div>
-
-                <div>
-                  <label className="block text-xs text-slate-400 mb-1">{label("Nom de l'entreprise *", "Company name *")}</label>
-                  <input required value={form.entreprise} onChange={set("entreprise")}
-                    className="w-full px-3 py-2 rounded-lg bg-[#07091a] border border-[#2a3580] text-white text-sm focus:outline-none focus:border-[#4a6cf7]" />
-                </div>
-
-                <div>
-                  <label className="block text-xs text-slate-400 mb-1">{label("Site web", "Website")}</label>
-                  <input type="url" value={form.website} onChange={set("website")} placeholder="https://"
-                    className="w-full px-3 py-2 rounded-lg bg-[#07091a] border border-[#2a3580] text-white text-sm focus:outline-none focus:border-[#4a6cf7]" />
-                </div>
-
-                <div>
-                  <label className="block text-xs text-slate-400 mb-1">{label("URL de votre logo", "Logo URL")}</label>
-                  <input type="url" value={form.logo_url} onChange={set("logo_url")} placeholder="https://"
-                    className="w-full px-3 py-2 rounded-lg bg-[#07091a] border border-[#2a3580] text-white text-sm focus:outline-none focus:border-[#4a6cf7]" />
-                  <p className="text-[10px] text-slate-500 mt-1">{label("Lien direct vers votre logo (PNG ou SVG recommandé)", "Direct link to your logo (PNG or SVG recommended)")}</p>
-                </div>
-
-                <div>
-                  <label className="block text-xs text-slate-400 mb-1">{label("Commentaires", "Comments")}</label>
-                  <textarea value={form.commentaires} onChange={set("commentaires")} rows={3}
-                    className="w-full px-3 py-2 rounded-lg bg-[#07091a] border border-[#2a3580] text-white text-sm focus:outline-none focus:border-[#4a6cf7] resize-none" />
-                </div>
-
-                {status === "error" && (
-                  <p className="text-red-400 text-xs font-mono">{label("Erreur — réessayez.", "Error — please try again.")}</p>
+              <p className="text-slate-500 text-xs">
+                {L(
+                  "Vous serez redirigé vers PayPal. Revenez ici une fois le paiement complété.",
+                  "You will be redirected to PayPal. Return here once payment is complete."
                 )}
+              </p>
+            </div>
+          ) : (
+            /* ── Step 1: Company info form ── */
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs text-slate-400 mb-1">{L("Nom *", "Last name *")}</label>
+                  <input required value={form.nom} onChange={set("nom")}
+                    className="w-full px-3 py-2.5 rounded-lg bg-[#07091a] border border-[#2a3580] text-white text-sm focus:outline-none focus:border-[#4a6cf7]" />
+                </div>
+                <div>
+                  <label className="block text-xs text-slate-400 mb-1">{L("Prénom *", "First name *")}</label>
+                  <input required value={form.prenom} onChange={set("prenom")}
+                    className="w-full px-3 py-2.5 rounded-lg bg-[#07091a] border border-[#2a3580] text-white text-sm focus:outline-none focus:border-[#4a6cf7]" />
+                </div>
+              </div>
 
-                <button
-                  type="submit"
-                  disabled={status === "sending"}
-                  className="w-full py-2.5 rounded-lg text-sm font-black tracking-widest uppercase transition-opacity hover:opacity-80 disabled:opacity-50"
-                  style={{ background: tier.color, color: "#07091a" }}
-                >
-                  {status === "sending" ? "..." : label("Envoyer ma demande", "Submit my request")}
-                </button>
-              </form>
-            )}
-          </>
-        )}
+              <div>
+                <label className="block text-xs text-slate-400 mb-1">{L("E-mail *", "Email *")}</label>
+                <input required type="email" value={form.email} onChange={set("email")}
+                  className="w-full px-3 py-2.5 rounded-lg bg-[#07091a] border border-[#2a3580] text-white text-sm focus:outline-none focus:border-[#4a6cf7]" />
+              </div>
+
+              <div>
+                <label className="block text-xs text-slate-400 mb-1">{L("Téléphone", "Phone")}</label>
+                <input type="tel" value={form.telephone} onChange={set("telephone")}
+                  className="w-full px-3 py-2.5 rounded-lg bg-[#07091a] border border-[#2a3580] text-white text-sm focus:outline-none focus:border-[#4a6cf7]" />
+              </div>
+
+              <div>
+                <label className="block text-xs text-slate-400 mb-1">{L("Nom de l'entreprise *", "Company name *")}</label>
+                <input required value={form.entreprise} onChange={set("entreprise")}
+                  className="w-full px-3 py-2.5 rounded-lg bg-[#07091a] border border-[#2a3580] text-white text-sm focus:outline-none focus:border-[#4a6cf7]" />
+              </div>
+
+              <div>
+                <label className="block text-xs text-slate-400 mb-1">{L("Site web", "Website")}</label>
+                <input type="url" value={form.website} onChange={set("website")} placeholder="https://"
+                  className="w-full px-3 py-2.5 rounded-lg bg-[#07091a] border border-[#2a3580] text-white text-sm focus:outline-none focus:border-[#4a6cf7]" />
+              </div>
+
+              <div>
+                <label className="block text-xs text-slate-400 mb-1">{L("URL de votre logo", "Logo URL")}</label>
+                <input type="url" value={form.logo_url} onChange={set("logo_url")} placeholder="https://"
+                  className="w-full px-3 py-2.5 rounded-lg bg-[#07091a] border border-[#2a3580] text-white text-sm focus:outline-none focus:border-[#4a6cf7]" />
+                <p className="text-[10px] text-slate-500 mt-1">{L("PNG ou SVG recommandé", "PNG or SVG recommended")}</p>
+              </div>
+
+              <div>
+                <label className="block text-xs text-slate-400 mb-1">{L("Commentaires", "Comments")}</label>
+                <textarea value={form.commentaires} onChange={set("commentaires")} rows={3}
+                  className="w-full px-3 py-2.5 rounded-lg bg-[#07091a] border border-[#2a3580] text-white text-sm focus:outline-none focus:border-[#4a6cf7] resize-none" />
+              </div>
+
+              {status === "error" && (
+                <p className="text-red-400 text-xs font-mono">{L("Erreur — réessayez.", "Error — please try again.")}</p>
+              )}
+
+              {/* Progress indicator */}
+              <div className="flex items-center gap-2 text-xs text-slate-500 pb-1">
+                <span className="w-5 h-5 rounded-full flex items-center justify-center text-white text-[10px] font-black" style={{ background: tier.color }}>1</span>
+                <span className="text-slate-400">{L("Informations", "Info")}</span>
+                <div className="flex-1 h-px bg-[#2a3580]" />
+                <span className="w-5 h-5 rounded-full border border-[#2a3580] flex items-center justify-center text-slate-600 text-[10px] font-black">2</span>
+                <span>{L("Paiement PayPal", "PayPal Payment")}</span>
+              </div>
+
+              <button
+                type="submit"
+                disabled={status === "sending"}
+                className="w-full py-3.5 rounded-xl font-black text-sm tracking-widest uppercase transition-opacity hover:opacity-80 disabled:opacity-50"
+                style={{ background: tier.color, color: "#07091a" }}
+              >
+                {status === "sending"
+                  ? L("Envoi...", "Sending...")
+                  : L("Continuer vers le paiement →", "Continue to payment →")}
+              </button>
+            </form>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -200,6 +214,7 @@ function TierCard({
 
 export default function Sponsors() {
   const { t, lang } = useLang();
+  const [activeTier, setActiveTier] = useState<Tier | null>(null);
 
   return (
     <section id="sponsors" className="py-24 px-4 bg-[#0d1035] relative overflow-hidden">
@@ -207,6 +222,11 @@ export default function Sponsors() {
         <Image src="/photos/networking.jpg" alt="" fill className="object-cover object-center" />
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-[#0d1035] via-transparent to-[#0d1035]" />
+
+      {/* Modal */}
+      {activeTier && (
+        <SponsorModal tier={activeTier} lang={lang} onClose={() => setActiveTier(null)} />
+      )}
 
       <div className="relative max-w-5xl mx-auto">
         <div className="section-divider mb-16" />
@@ -237,7 +257,7 @@ export default function Sponsors() {
           </div>
         </div>
 
-        {/* Tier cards with inline forms */}
+        {/* Tier cards */}
         <div className="mb-14">
           <div className="text-center mb-10">
             <span className="text-[#7b9bff] text-xs font-mono tracking-[0.3em] uppercase mb-2 block">
@@ -247,8 +267,41 @@ export default function Sponsors() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 items-start">
-            {(t.sponsors.tiers as Array<{ name: string; price: string; color: string; featured?: boolean; perks: string[]; paypal: string }>).map((tier) => (
-              <TierCard key={tier.name} tier={tier} lang={lang} />
+            {(t.sponsors.tiers as Tier[]).map((tier) => (
+              <div
+                key={tier.name}
+                className={`relative rounded-2xl overflow-hidden flex flex-col ${tier.featured ? "ring-2 ring-[#7b35b0] scale-[1.03]" : "border border-[#2a3580]"}`}
+              >
+                <div className="h-1.5 w-full" style={{ background: tier.color }} />
+                {tier.featured && (
+                  <div className="absolute top-0 right-4 translate-y-3 z-10">
+                    <span className="px-2 py-0.5 text-[10px] font-black uppercase tracking-widest rounded-full text-white" style={{ background: "linear-gradient(135deg,#c03880,#7b35b0)" }}>
+                      {lang === "fr" ? "Populaire" : "Popular"}
+                    </span>
+                  </div>
+                )}
+                <div className="bg-[#0d1035] px-7 pt-7 pb-6 flex flex-col flex-1">
+                  <p className="text-xs font-mono font-bold tracking-[0.25em] uppercase mb-1" style={{ color: tier.color }}>{tier.name}</p>
+                  <p className="text-4xl font-black text-white mb-6">{tier.price}</p>
+                  <ul className="space-y-3 flex-1 mb-7">
+                    {tier.perks.map((perk, i) => (
+                      <li key={i} className="flex items-start gap-2.5 text-sm text-slate-300">
+                        <svg className="w-4 h-4 shrink-0 mt-0.5" style={{ color: tier.color }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                        </svg>
+                        {perk}
+                      </li>
+                    ))}
+                  </ul>
+                  <button
+                    className="w-full text-center py-2.5 rounded-lg text-sm font-black tracking-widest uppercase transition-opacity hover:opacity-80"
+                    style={{ background: tier.color, color: "#07091a" }}
+                    onClick={() => setActiveTier(tier)}
+                  >
+                    {lang === "fr" ? "Devenir partenaire" : "Become a partner"}
+                  </button>
+                </div>
+              </div>
             ))}
           </div>
         </div>
