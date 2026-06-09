@@ -1,7 +1,8 @@
 import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Lazy init so build doesn't fail without the key set locally
+const getResend = () => new Resend(process.env.RESEND_API_KEY ?? "missing");
 const TO = "hello@tainoscybercon.com";
 const TURNSTILE_SECRET = process.env.TURNSTILE_SECRET_KEY ?? "";
 
@@ -192,7 +193,7 @@ export async function POST(req: NextRequest) {
     if (senderOrg) subjectParts.push(`(${senderOrg})`);
     const subject = subjectParts.join(" ");
 
-    const { error } = await resend.emails.send({
+    const { error } = await getResend().emails.send({
       from: "Tainos Cyber Con <no-reply@tainoscybercon.com>",
       to: TO,
       replyTo,
@@ -243,7 +244,7 @@ export async function POST(req: NextRequest) {
         </table>
       </body></html>`;
 
-      await resend.emails.send({
+      await getResend().emails.send({
         from: "Tainos Cyber Con <no-reply@tainoscybercon.com>",
         to: replyTo,
         subject: conf.subject,
