@@ -147,6 +147,15 @@
         "photo": "/speakers/anglade.jpg",
         "linkedin": "https://ca.linkedin.com/in/anglade-perrier-asc-c-dir-nacd-dc-7b78253",
         "website": "https://tekap.ca"
+      },
+      {
+        "name": "Jean-François Brouillette",
+        "title": "Gestionnaire - Surveillance, réponse aux incidents et juricomptabilité numérique",
+        "bio": "Professionnel cumulant plus de dix ans d'expérience, débutant en gestion de systèmes informatiques avant de se spécialiser en cybersécurité. Il a agi comme consultant en gestion de crise lors de cyberattaques pour de grandes organisations à travers le monde, et appuie aujourd'hui l'équipe de cyberdéfense de la Banque Nationale du Canada. Sa mission : prévenir les cyberattaques et compliquer la vie des cybercriminels.",
+        "tags": ["Réponse aux incidents", "Juricomptabilité numérique", "Cyberdéfense"],
+        "photo": "/speakers/jfbrouillette.jpg",
+        "linkedin": "https://ca.linkedin.com/in/jfrancoisb",
+        "website": "https://www.bnc.ca"
       }
     ]
   },

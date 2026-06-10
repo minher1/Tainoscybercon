@@ -147,6 +147,15 @@
         "photo": "/speakers/anglade.jpg",
         "linkedin": "https://ca.linkedin.com/in/anglade-perrier-asc-c-dir-nacd-dc-7b78253",
         "website": "https://tekap.ca"
+      },
+      {
+        "name": "Jean-François Brouillette",
+        "title": "Manager - Surveillance, Incident Response and Digital Forensics",
+        "bio": "Professional with over a decade of experience, starting in IT systems management before specializing in cybersecurity. He has worked as a crisis management consultant during cyberattacks for major organizations worldwide, and currently supports the National Bank of Canada's cyber defense team. His mission: prevent cyberattacks and complicate the lives of cybercriminals.",
+        "tags": ["Incident Response", "Digital Forensics", "Cyber Defense"],
+        "photo": "/speakers/jfbrouillette.jpg",
+        "linkedin": "https://ca.linkedin.com/in/jfrancoisb",
+        "website": "https://www.bnc.ca"
       }
     ]
   },
