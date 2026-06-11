@@ -37,7 +37,6 @@ export const metadata: Metadata = {
     description: "La cybersécurité à l'ère de l'IA, du cloud et des menaces persistantes",
     url: "https://tainoscybercon.com",
     siteName: "Tainos Cyber Con",
-    images: [{ url: "/logo.png", width: 800, height: 200 }],
     locale: "fr_CA",
     type: "website",
   },
