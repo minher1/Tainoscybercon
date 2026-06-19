@@ -271,6 +271,43 @@
       }
     ]
   },
+  "mission": {
+    "nav": "Notre mission",
+    "badge": "ORGANISME À BUT NON LUCRATIF 501(c)(3)",
+    "title": "Haiti Cyber Con Corporation",
+    "subtitle": "La cybersécurité comme levier d'inclusion sociale",
+    "description": "Haiti Cyber Con Corporation est un organisme à but non lucratif basé en Floride, dont la mission est d'offrir une éducation, une formation et des ressources en cybersécurité aux communautés à faibles revenus et mal desservies — en réduisant la fracture numérique et en renforçant la sécurité en ligne pour tous.",
+    "ein_label": "EIN / Numéro fiscal fédéral",
+    "ein": "83-3126788",
+    "status": "501(c)(3) reconnu par l'IRS · Actif depuis 2018",
+    "pillars": [
+      { "icon": "book", "title": "Éducation", "desc": "Programmes de sensibilisation et de formation à la cybersécurité pour les populations vulnérables." },
+      { "icon": "wifi", "title": "Réduction de la fracture numérique", "desc": "Accès équitable aux ressources numériques pour les communautés sous-représentées." },
+      { "icon": "shield", "title": "Sécurité en ligne", "desc": "Outiller les individus pour naviguer et se protéger dans un monde connecté." },
+      { "icon": "users", "title": "Inclusion communautaire", "desc": "Construire des ponts entre les communautés et les opportunités du secteur cybernétique." }
+    ],
+    "cta_learn": "En savoir plus",
+    "cta_donate": "Faire un don",
+    "page_title": "Notre mission",
+    "page_intro": "Tainos Cyber Con est le volet événementiel d'une mission plus large portée par Haiti Cyber Con Corporation — un organisme 501(c)(3) dédié à démocratiser l'accès à la cybersécurité.",
+    "who_title": "Qui nous servons",
+    "who": [
+      "Individus à faibles revenus sans accès aux formations en sécurité",
+      "Communautés sous-représentées dans le secteur technologique",
+      "Jeunes en quête d'une carrière en cybersécurité",
+      "Organisations communautaires et OBNL",
+      "Diasporas et communautés immigrantes"
+    ],
+    "transparency_title": "Transparence & légitimité",
+    "transparency": [
+      { "label": "Statut", "value": "Organisme à but non lucratif 501(c)(3)" },
+      { "label": "EIN", "value": "83-3126788" },
+      { "label": "Numéro Florida", "value": "N18000011682" },
+      { "label": "Date de fondation", "value": "1er novembre 2018" },
+      { "label": "Siège social", "value": "Pensacola, Floride, É.-U." },
+      { "label": "Statut", "value": "Actif" }
+    ]
+  },
   "previous": {
     "title": "ÉDITION PRÉCÉDENTE",
     "date": "16 octobre 2020",

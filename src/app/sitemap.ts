@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/speakers`,    lastModified: lastMod, changeFrequency: "weekly",  priority: 0.9 },
     { url: `${base}/tickets`,     lastModified: lastMod, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/partners`,    lastModified: lastMod, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${base}/mission`,     lastModified: lastMod, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/privacy`,     lastModified: lastMod, changeFrequency: "yearly",  priority: 0.3 },
   ];
 }

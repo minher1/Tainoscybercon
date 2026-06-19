@@ -271,6 +271,43 @@
       }
     ]
   },
+  "mission": {
+    "nav": "Our Mission",
+    "badge": "501(c)(3) NONPROFIT ORGANIZATION",
+    "title": "Haiti Cyber Con Corporation",
+    "subtitle": "Cybersecurity as a tool for social inclusion",
+    "description": "Haiti Cyber Con Corporation is a Florida-based nonprofit organization dedicated to providing cybersecurity education, training, and resources to low-income and underserved communities — bridging the digital divide and improving online safety for everyone.",
+    "ein_label": "EIN / Federal Tax ID",
+    "ein": "83-3126788",
+    "status": "IRS-recognized 501(c)(3) · Active since 2018",
+    "pillars": [
+      { "icon": "book", "title": "Education", "desc": "Cybersecurity awareness and training programs for vulnerable populations." },
+      { "icon": "wifi", "title": "Digital Divide", "desc": "Equitable access to digital resources for underrepresented communities." },
+      { "icon": "shield", "title": "Online Safety", "desc": "Equipping individuals to navigate and protect themselves in a connected world." },
+      { "icon": "users", "title": "Community Inclusion", "desc": "Building bridges between communities and opportunities in the cyber sector." }
+    ],
+    "cta_learn": "Learn more",
+    "cta_donate": "Donate",
+    "page_title": "Our Mission",
+    "page_intro": "Tainos Cyber Con is the event arm of a broader mission carried by Haiti Cyber Con Corporation — a 501(c)(3) organization dedicated to democratizing access to cybersecurity.",
+    "who_title": "Who We Serve",
+    "who": [
+      "Low-income individuals without access to security training",
+      "Underrepresented communities in the technology sector",
+      "Young people seeking a career in cybersecurity",
+      "Community organizations and nonprofits",
+      "Diaspora and immigrant communities"
+    ],
+    "transparency_title": "Transparency & Legitimacy",
+    "transparency": [
+      { "label": "Status", "value": "501(c)(3) Nonprofit Organization" },
+      { "label": "EIN", "value": "83-3126788" },
+      { "label": "Florida Document #", "value": "N18000011682" },
+      { "label": "Date Founded", "value": "November 1, 2018" },
+      { "label": "Headquarters", "value": "Pensacola, Florida, USA" },
+      { "label": "Status", "value": "Active" }
+    ]
+  },
   "previous": {
     "title": "PREVIOUS EDITION",
     "date": "October 16, 2020",

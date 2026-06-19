@@ -23,6 +23,7 @@ export default function Nav() {
     { href: "/speakers",  label: t.nav.speakers },
     { href: "/partners",  label: t.nav.sponsors },
     { href: "/tickets",   label: t.nav.tickets },
+    { href: "/mission",   label: t.mission.nav, accent: true },
   ];
 
   const isActive = (href: string) =>
@@ -52,19 +53,30 @@ export default function Nav() {
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6">
             {links.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className={`text-xs font-medium tracking-widest uppercase transition-colors ${
-                  isActive(l.href)
-                    ? "text-white border-b border-[#e84444] pb-0.5"
-                    : "text-slate-400 hover:text-white"
-                }`}
-              >
-                {l.label}
-              </Link>
+              l.accent ? (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="text-xs font-black tracking-widest uppercase px-3 py-1.5 rounded-full transition-opacity hover:opacity-80"
+                  style={{ background: "linear-gradient(135deg,#c03880,#7b35b0)", color: "#fff" }}
+                >
+                  ❤ {l.label}
+                </Link>
+              ) : (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className={`text-xs font-medium tracking-widest uppercase transition-colors ${
+                    isActive(l.href)
+                      ? "text-white border-b border-[#e84444] pb-0.5"
+                      : "text-slate-400 hover:text-white"
+                  }`}
+                >
+                  {l.label}
+                </Link>
+              )
             ))}
           </div>
 
