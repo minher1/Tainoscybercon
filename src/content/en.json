@@ -156,6 +156,24 @@
         "photo": "/speakers/jfbrouillette.jpg",
         "linkedin": "https://ca.linkedin.com/in/jfrancoisb",
         "website": "https://www.bnc.ca"
+      },
+      {
+        "name": "Dr. Abdoul Karim Ganame",
+        "title": "Founder & Chief of Cybersecurity, StreamScan",
+        "bio": "Ph.D. in Cybersecurity with 19 years of IT experience, including 16 years specializing in information security. Founder of StreamScan, he pioneered an AI-powered threat detection system (CDS) recognized by the Canadian federal government as an innovation. Expert in IDS, MDR/SOC services, CMMC compliance, and cyber incident response, serving Energy, Aerospace & Defense, Manufacturing, and Public Sector organizations across Canada and internationally.",
+        "tags": ["AI & Threat Detection", "MDR / SOC", "CISSP"],
+        "photo": "/speakers/karim.webp",
+        "linkedin": "https://ca.linkedin.com/company/streamscan",
+        "website": "https://streamscan.ai"
+      },
+      {
+        "name": "Christian Kengne",
+        "title": "Principal Director of Cybersecurity Technologies, Fiera Capital",
+        "bio": "ing., ASC, C.Dir., CISSP. Computer Engineering graduate with a Master's in AI (Université de Sherbrooke), Christian Kengne is a recognized cybersecurity leader named among Canada's Top 50 Most Influential Cybersecurity Experts on LinkedIn (2024) and IFSEC Global Top Influencer (2021). Previously Director of Cyber-Resilience Consulting at Accenture, he now leads cybersecurity strategy at Fiera Capital and sits on the boards of the Quebec Revenue Agency and Mobility Infra Quebec. Active member of ISACA, OWASP, and the Quebec Order of Engineers.",
+        "tags": ["CISSP", "Cyber Governance", "AI & Risk"],
+        "photo": "/speakers/ChristianKengne.webp",
+        "linkedin": "https://ca.linkedin.com/in/christian-kengne",
+        "website": "https://www.cas.ulaval.ca/college-administrateurs/formateurs-experts-gouvernance/formateur/?uuid=3ep5937zsugakfai3"
       }
     ]
   },

@@ -156,6 +156,24 @@
         "photo": "/speakers/jfbrouillette.jpg",
         "linkedin": "https://ca.linkedin.com/in/jfrancoisb",
         "website": "https://www.bnc.ca"
+      },
+      {
+        "name": "Dr. Abdoul Karim Ganame",
+        "title": "Fondateur & Chef de la cybersécurité, StreamScan",
+        "bio": "Docteur en cybersécurité avec 19 ans d'expérience en TI, dont 16 ans spécialisés en sécurité de l'information. Fondateur de StreamScan, il a développé CDS, un système de détection des menaces basé sur l'IA reconnu comme innovation par le gouvernement fédéral canadien. Expert en détection d'intrusions, services MDR/SOC, conformité CMMC et réponse aux incidents, il accompagne des organisations des secteurs de l'énergie, de l'aérospatiale, de la fabrication et du secteur public au Canada et à l'international.",
+        "tags": ["Détection IA", "MDR / SOC", "CISSP"],
+        "photo": "/speakers/karim.webp",
+        "linkedin": "https://ca.linkedin.com/company/streamscan",
+        "website": "https://streamscan.ai"
+      },
+      {
+        "name": "Christian Kengne",
+        "title": "Directeur principal des technologies de cybersécurité, Fiera Capital",
+        "bio": "ing., ASC, C.Dir., CISSP. Diplômé en génie informatique et titulaire d'une maîtrise en intelligence artificielle (Université de Sherbrooke), Christian Kengne est reconnu parmi les 50 experts en cybersécurité les plus influents du Canada sur LinkedIn (2024) et influenceur mondial IFSEC (2021). Ancien Directeur des services-conseils en cyberrésilience chez Accenture, il dirige aujourd'hui la stratégie de cybersécurité chez Fiera Capital et siège aux conseils d'administration de Revenu Québec et d'Infra Mobilité Québec. Membre actif de l'ISACA, de l'OWASP et de l'Ordre des ingénieurs du Québec.",
+        "tags": ["CISSP", "Gouvernance cyber", "IA & Risque"],
+        "photo": "/speakers/ChristianKengne.webp",
+        "linkedin": "https://ca.linkedin.com/in/christian-kengne",
+        "website": "https://www.cas.ulaval.ca/college-administrateurs/formateurs-experts-gouvernance/formateur/?uuid=3ep5937zsugakfai3"
       }
     ]
   },
