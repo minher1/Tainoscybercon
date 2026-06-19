@@ -275,28 +275,47 @@
     "nav": "Notre mission",
     "badge": "ORGANISME À BUT NON LUCRATIF 501(c)(3)",
     "title": "Haiti Cyber Con Corporation",
-    "subtitle": "La cybersécurité comme levier d'inclusion sociale",
-    "description": "Haiti Cyber Con Corporation est un organisme à but non lucratif basé en Floride, dont la mission est d'offrir une éducation, une formation et des ressources en cybersécurité aux communautés à faibles revenus et mal desservies — en réduisant la fracture numérique et en renforçant la sécurité en ligne pour tous.",
+    "subtitle": "Démocratiser la cybersécurité dans les Caraïbes et en Amérique du Nord",
+    "statement": "Nous croyons que la cybersécurité n'est pas un privilège réservé à quelques-uns. Depuis 2018, Haiti Cyber Con Corporation organise des conférences estivales en Haïti, distribue des bons de certification en sécurité à des étudiants qui n'auraient autrement aucun accès à ces ressources, et fournit des formations pratiques aux communautés sous-desservies. Nous avons vu de nos propres yeux comment combler la fracture numérique transforme des vies.\n\nEn portant notre impact à l'échelle des Caraïbes et de l'Amérique du Nord, nous relançons notre programme phare sous le nom Tainos Cyber Con — en hommage aux Taïnos, peuple autochtone des Caraïbes, dont la résilience et l'interconnexion inspirent notre mission. La conférence n'est qu'un programme parmi d'autres. Notre travail se poursuit à l'année : bourses, partenariats de formation, programmes communautaires — pour que la cybersécurité soit accessible à ceux qui en ont le plus besoin.",
+    "description": "Haiti Cyber Con Corporation est un organisme 501(c)(3) fondé en 2018 à Pensacola, Floride. Notre mission : fournir une éducation, une formation et des ressources en cybersécurité aux communautés à faibles revenus et mal desservies des Caraïbes et de l'Amérique du Nord.",
     "ein_label": "EIN / Numéro fiscal fédéral",
     "ein": "83-3126788",
     "status": "501(c)(3) reconnu par l'IRS · Actif depuis 2018",
+    "impact_title": "Notre impact",
+    "impact": [
+      { "value": "2018", "label": "Année de fondation" },
+      { "value": "Haiti", "label": "Conférences estivales" },
+      { "value": "Caraïbes+", "label": "Expansion en cours" },
+      { "value": "501(c)(3)", "label": "Don déductible d'impôt" }
+    ],
     "pillars": [
-      { "icon": "book", "title": "Éducation", "desc": "Programmes de sensibilisation et de formation à la cybersécurité pour les populations vulnérables." },
-      { "icon": "wifi", "title": "Réduction de la fracture numérique", "desc": "Accès équitable aux ressources numériques pour les communautés sous-représentées." },
-      { "icon": "shield", "title": "Sécurité en ligne", "desc": "Outiller les individus pour naviguer et se protéger dans un monde connecté." },
-      { "icon": "users", "title": "Inclusion communautaire", "desc": "Construire des ponts entre les communautés et les opportunités du secteur cybernétique." }
+      { "icon": "book", "title": "Conférences & formations", "desc": "Conférences estivales organisées en Haïti pour sensibiliser et former les communautés locales à la cybersécurité." },
+      { "icon": "badge", "title": "Bons de certification", "desc": "Distribution de bons pour des certifications en sécurité aux étudiants qui n'ont pas les moyens de les financer." },
+      { "icon": "wifi", "title": "Accès à la formation", "desc": "Programmes de formation pratique pour réduire la fracture numérique dans les communautés sous-desservies." },
+      { "icon": "globe", "title": "Expansion caribéenne", "desc": "Sous la bannière Tainos Cyber Con, nous étendons notre mission à l'ensemble des Caraïbes et de l'Amérique du Nord." }
+    ],
+    "taino_title": "Pourquoi « Tainos » ?",
+    "taino_text": "Les Taïnos étaient le peuple autochtone des Grandes Antilles — Haïti, Cuba, Porto Rico, la Jamaïque. Leur résilience, leur sens de la communauté et leur interconnexion à travers les îles incarnent exactement ce que nous bâtissons : un réseau de cybersécurité ancré dans l'identité caribéenne, qui transcende les frontières pour élever chaque communauté.",
+    "programs_title": "Nos programmes",
+    "programs": [
+      { "name": "Tainos Cyber Con", "desc": "La conférence annuelle internationale de cybersécurité — notre programme phare, désormais ouvert aux Caraïbes et à l'Amérique du Nord." },
+      { "name": "Bons de certification", "desc": "Financement de certifications reconnues (CompTIA, CISSP, CEH) pour les étudiants admissibles à faibles revenus." },
+      { "name": "Formation communautaire", "desc": "Ateliers et sessions de sensibilisation organisés dans les communautés tout au long de l'année." }
     ],
     "cta_learn": "En savoir plus",
     "cta_donate": "Faire un don",
+    "donate_title": "Soutenez notre mission",
+    "donate_text": "Votre don permet de financer des bons de certification, des programmes de formation et des conférences dans des communautés qui en ont besoin. Haiti Cyber Con Corporation est un organisme 501(c)(3) — vos dons sont déductibles d'impôt aux États-Unis.",
     "page_title": "Notre mission",
-    "page_intro": "Tainos Cyber Con est le volet événementiel d'une mission plus large portée par Haiti Cyber Con Corporation — un organisme 501(c)(3) dédié à démocratiser l'accès à la cybersécurité.",
+    "page_intro": "Tainos Cyber Con est le programme phare de Haiti Cyber Con Corporation — un organisme 501(c)(3) qui œuvre depuis 2018 à démocratiser l'accès à la cybersécurité dans les communautés sous-desservies des Caraïbes et de l'Amérique du Nord.",
     "who_title": "Qui nous servons",
     "who": [
-      "Individus à faibles revenus sans accès aux formations en sécurité",
-      "Communautés sous-représentées dans le secteur technologique",
+      "Étudiants sans accès aux certifications en cybersécurité",
+      "Communautés à faibles revenus des Caraïbes et d'Amérique du Nord",
+      "Professionnels sous-représentés dans le secteur technologique",
       "Jeunes en quête d'une carrière en cybersécurité",
       "Organisations communautaires et OBNL",
-      "Diasporas et communautés immigrantes"
+      "Diasporas caribéennes et communautés immigrantes"
     ],
     "transparency_title": "Transparence & légitimité",
     "transparency": [

@@ -275,28 +275,47 @@
     "nav": "Our Mission",
     "badge": "501(c)(3) NONPROFIT ORGANIZATION",
     "title": "Haiti Cyber Con Corporation",
-    "subtitle": "Cybersecurity as a tool for social inclusion",
-    "description": "Haiti Cyber Con Corporation is a Florida-based nonprofit organization dedicated to providing cybersecurity education, training, and resources to low-income and underserved communities — bridging the digital divide and improving online safety for everyone.",
+    "subtitle": "Democratizing cybersecurity across the Caribbean and North America",
+    "statement": "We believe cybersecurity is not a privilege reserved for the few. Since 2018, Haiti Cyber Con Corporation has organized summer conferences in Haiti, placed security certification vouchers in the hands of students who could never afford them, and provided hands-on training to underserved communities. We have seen firsthand how closing the digital divide transforms lives.\n\nAs we scale our impact across the Caribbean and North America, we relaunch our flagship program under the name Tainos Cyber Con — named after the Taíno people, the indigenous inhabitants of the Caribbean, whose resilience and interconnectedness inspire our mission. The conference is one program among many. Our work continues year-round: scholarships, training partnerships, and community programs designed to bring cybersecurity to those who need it most.",
+    "description": "Haiti Cyber Con Corporation is a Florida-based 501(c)(3) nonprofit founded in 2018 in Pensacola, Florida. Our mission: provide cybersecurity education, training, and resources to low-income and underserved communities across the Caribbean and North America.",
     "ein_label": "EIN / Federal Tax ID",
     "ein": "83-3126788",
     "status": "IRS-recognized 501(c)(3) · Active since 2018",
+    "impact_title": "Our Impact",
+    "impact": [
+      { "value": "2018", "label": "Year founded" },
+      { "value": "Haiti", "label": "Summer conferences" },
+      { "value": "Caribbean+", "label": "Expansion underway" },
+      { "value": "501(c)(3)", "label": "Tax-deductible giving" }
+    ],
     "pillars": [
-      { "icon": "book", "title": "Education", "desc": "Cybersecurity awareness and training programs for vulnerable populations." },
-      { "icon": "wifi", "title": "Digital Divide", "desc": "Equitable access to digital resources for underrepresented communities." },
-      { "icon": "shield", "title": "Online Safety", "desc": "Equipping individuals to navigate and protect themselves in a connected world." },
-      { "icon": "users", "title": "Community Inclusion", "desc": "Building bridges between communities and opportunities in the cyber sector." }
+      { "icon": "book", "title": "Conferences & Training", "desc": "Summer conferences organized in Haiti to educate and train local communities in cybersecurity." },
+      { "icon": "badge", "title": "Certification Vouchers", "desc": "Security certification vouchers distributed to students who would otherwise have no means to obtain them." },
+      { "icon": "wifi", "title": "Training Access", "desc": "Hands-on training programs that close the digital divide for underserved communities." },
+      { "icon": "globe", "title": "Caribbean Expansion", "desc": "Under the Tainos Cyber Con banner, we are extending our mission across the Caribbean and North America." }
+    ],
+    "taino_title": "Why \"Tainos\"?",
+    "taino_text": "The Taíno people were the original inhabitants of the Greater Antilles — Haiti, Cuba, Puerto Rico, Jamaica. Their resilience, their sense of community, and their interconnectedness across the islands embody exactly what we are building: a cybersecurity network rooted in Caribbean identity, reaching across borders to lift every community.",
+    "programs_title": "Our Programs",
+    "programs": [
+      { "name": "Tainos Cyber Con", "desc": "The annual international cybersecurity conference — our flagship program, now open to the Caribbean and North America." },
+      { "name": "Certification Vouchers", "desc": "Funding for recognized certifications (CompTIA, CISSP, CEH) for eligible low-income students." },
+      { "name": "Community Training", "desc": "Workshops and awareness sessions held in communities throughout the year." }
     ],
     "cta_learn": "Learn more",
     "cta_donate": "Donate",
+    "donate_title": "Support Our Mission",
+    "donate_text": "Your donation funds certification vouchers, training programs, and conferences in communities that need them most. Haiti Cyber Con Corporation is a 501(c)(3) organization — donations are tax-deductible in the United States.",
     "page_title": "Our Mission",
-    "page_intro": "Tainos Cyber Con is the event arm of a broader mission carried by Haiti Cyber Con Corporation — a 501(c)(3) organization dedicated to democratizing access to cybersecurity.",
+    "page_intro": "Tainos Cyber Con is the flagship program of Haiti Cyber Con Corporation — a 501(c)(3) organization working since 2018 to democratize access to cybersecurity in underserved communities across the Caribbean and North America.",
     "who_title": "Who We Serve",
     "who": [
-      "Low-income individuals without access to security training",
-      "Underrepresented communities in the technology sector",
+      "Students without access to cybersecurity certifications",
+      "Low-income communities across the Caribbean and North America",
+      "Underrepresented professionals in the technology sector",
       "Young people seeking a career in cybersecurity",
       "Community organizations and nonprofits",
-      "Diaspora and immigrant communities"
+      "Caribbean diaspora and immigrant communities"
     ],
     "transparency_title": "Transparency & Legitimacy",
     "transparency": [
