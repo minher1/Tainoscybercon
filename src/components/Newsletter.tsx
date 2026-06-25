@@ -1,15 +1,11 @@
 "use client";
 import { useState, FormEvent } from "react";
 import { useLang } from "@/context/LangContext";
-import { Turnstile } from "@marsidev/react-turnstile";
-
-const SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
 export default function Newsletter() {
   const { lang } = useLang();
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [email, setEmail] = useState("");
-  const [turnstileToken, setTurnstileToken] = useState<string>("");
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -23,7 +19,6 @@ export default function Newsletter() {
         body: JSON.stringify({
           _formType: "newsletter",
           _loadedAt: String(Date.now() - 5000),
-          _turnstile: turnstileToken,
           "E-mail": email,
         }),
       });
@@ -65,7 +60,7 @@ export default function Newsletter() {
               />
               <button
                 type="submit"
-                disabled={status === "sending" || (!!SITE_KEY && !turnstileToken)}
+                disabled={status === "sending"}
                 className="px-6 py-3 logo-gradient text-white font-bold text-sm tracking-wider uppercase rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50 shrink-0"
               >
                 {status === "sending"
@@ -73,17 +68,6 @@ export default function Newsletter() {
                   : lang === "fr" ? "S'inscrire" : "Subscribe"}
               </button>
             </div>
-            {SITE_KEY && (
-              <div className="flex justify-center" style={{ minHeight: 70, overflow: "visible" }}>
-                <Turnstile
-                  siteKey={SITE_KEY}
-                  onSuccess={(token) => setTurnstileToken(token)}
-                  onExpire={() => setTurnstileToken("")}
-                  onError={() => setTurnstileToken("")}
-                  options={{ size: "normal", theme: "dark" }}
-                />
-              </div>
-            )}
           </form>
         )}
 
