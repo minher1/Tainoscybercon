@@ -1,5 +1,18 @@
 "use client";
-import { useState, useRef, FormEvent } from "react";
+import { useState, useRef, useEffect, FormEvent } from "react";
+import Script from "next/script";
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (
+        container: HTMLElement,
+        options: { sitekey: string; callback: (token: string) => void }
+      ) => string;
+      reset: (widgetId?: string) => void;
+    };
+  }
+}
 
 interface Field {
   name: string;
@@ -26,6 +39,20 @@ export default function ContactForm({
 }: Props) {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error" | "spam">("idle");
   const loadedAt = useRef(Date.now());
+  const turnstileToken = useRef<string>("");
+  const turnstileRef = useRef<HTMLDivElement>(null);
+  const turnstileWidgetId = useRef<string | undefined>(undefined);
+  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+
+  useEffect(() => {
+    if (!siteKey || !turnstileRef.current || !window.turnstile) return;
+    turnstileWidgetId.current = window.turnstile.render(turnstileRef.current, {
+      sitekey: siteKey,
+      callback: (token) => {
+        turnstileToken.current = token;
+      },
+    });
+  }, [siteKey]);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -42,10 +69,19 @@ export default function ContactForm({
       return;
     }
 
+    if (siteKey && !turnstileToken.current) {
+      setStatus("error");
+      return;
+    }
+
     setStatus("sending");
 
     // Collect all named fields into a plain object
-    const data: Record<string, string> = { _formType: formType, _loadedAt: String(loadedAt.current) };
+    const data: Record<string, string> = {
+      _formType: formType,
+      _loadedAt: String(loadedAt.current),
+      _turnstile: turnstileToken.current,
+    };
     fields.forEach((f) => {
       const el = form.elements.namedItem(f.name) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | null;
       if (el) data[f.label || f.name] = el.value;
@@ -62,6 +98,10 @@ export default function ContactForm({
         form.reset();
       } else {
         setStatus("error");
+        if (window.turnstile && turnstileWidgetId.current) {
+          window.turnstile.reset(turnstileWidgetId.current);
+          turnstileToken.current = "";
+        }
       }
     } catch {
       setStatus("error");
@@ -83,6 +123,22 @@ export default function ContactForm({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      {siteKey && (
+        <Script
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+          strategy="afterInteractive"
+          onLoad={() => {
+            if (turnstileRef.current && window.turnstile && !turnstileWidgetId.current) {
+              turnstileWidgetId.current = window.turnstile.render(turnstileRef.current, {
+                sitekey: siteKey,
+                callback: (token) => {
+                  turnstileToken.current = token;
+                },
+              });
+            }
+          }}
+        />
+      )}
       {/* Honeypot */}
       <input
         type="text"
@@ -132,7 +188,9 @@ export default function ContactForm({
         );
       })}
 
-{status === "spam" && (
+{siteKey && <div ref={turnstileRef} />}
+
+      {status === "spam" && (
         <p className="text-yellow-400 text-xs font-mono">
           [ERR] Soumission trop rapide. Veuillez réessayer.
         </p>
