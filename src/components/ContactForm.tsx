@@ -149,7 +149,7 @@ export default function ContactForm({
       {SITE_KEY && (
         <Turnstile
           siteKey={SITE_KEY}
-          onVerify={(token) => setTurnstileToken(token)}
+          onSuccess={(token) => setTurnstileToken(token)}
           onExpire={() => setTurnstileToken("")}
           theme="dark"
         />

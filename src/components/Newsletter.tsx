@@ -77,7 +77,7 @@ export default function Newsletter() {
               <div className="flex justify-center">
                 <Turnstile
                   siteKey={SITE_KEY}
-                  onVerify={(token) => setTurnstileToken(token)}
+                  onSuccess={(token) => setTurnstileToken(token)}
                   onExpire={() => setTurnstileToken("")}
                   theme="dark"
                 />
