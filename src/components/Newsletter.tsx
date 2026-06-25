@@ -74,11 +74,13 @@ export default function Newsletter() {
               </button>
             </div>
             {SITE_KEY && (
-              <div className="flex justify-center" style={{ minHeight: 65, overflow: "visible" }}>
+              <div className="flex justify-center" style={{ minHeight: 70, overflow: "visible" }}>
                 <Turnstile
                   siteKey={SITE_KEY}
                   onSuccess={(token) => setTurnstileToken(token)}
                   onExpire={() => setTurnstileToken("")}
+                  onError={() => setTurnstileToken("")}
+                  options={{ size: "normal", theme: "dark" }}
                 />
               </div>
             )}

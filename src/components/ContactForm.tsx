@@ -147,11 +147,13 @@ export default function ContactForm({
       )}
 
       {SITE_KEY && (
-        <div style={{ minHeight: 65, overflow: "visible" }}>
+        <div style={{ minHeight: 70, overflow: "visible" }}>
           <Turnstile
             siteKey={SITE_KEY}
             onSuccess={(token) => setTurnstileToken(token)}
             onExpire={() => setTurnstileToken("")}
+            onError={() => setTurnstileToken("")}
+            options={{ size: "normal", theme: "dark" }}
           />
         </div>
       )}
