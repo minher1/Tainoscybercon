@@ -123,7 +123,7 @@ export default function Speakers() {
       ];
 
   return (
-    <section id="speakers" className="py-24 px-4 relative overflow-hidden">
+    <section id="speakers" className="py-24 px-4 relative overflow-x-hidden">
       {/* Speaker at mic — real Tainos event photo */}
       <div className="absolute inset-0 opacity-[0.12]">
         <Image src="/photos/speaker-mic.jpg" alt="" fill className="object-cover object-top" />
