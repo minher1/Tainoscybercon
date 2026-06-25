@@ -151,7 +151,6 @@ export default function ContactForm({
           siteKey={SITE_KEY}
           onSuccess={(token) => setTurnstileToken(token)}
           onExpire={() => setTurnstileToken("")}
-          theme="dark"
         />
       )}
 
