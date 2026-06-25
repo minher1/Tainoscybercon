@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef, FormEvent } from "react";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 interface Field {
   name: string;
@@ -17,6 +18,7 @@ interface Props {
 }
 
 const MIN_FILL_MS = 3000;
+const SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
 export default function ContactForm({
   fields,
@@ -25,6 +27,7 @@ export default function ContactForm({
   formType = "contact",
 }: Props) {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error" | "spam">("idle");
+  const [turnstileToken, setTurnstileToken] = useState<string>("");
   const loadedAt = useRef(Date.now());
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -45,7 +48,7 @@ export default function ContactForm({
     setStatus("sending");
 
     // Collect all named fields into a plain object
-    const data: Record<string, string> = { _formType: formType, _loadedAt: String(loadedAt.current) };
+    const data: Record<string, string> = { _formType: formType, _loadedAt: String(loadedAt.current), _turnstile: turnstileToken };
     fields.forEach((f) => {
       const el = form.elements.namedItem(f.name) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | null;
       if (el) data[f.label || f.name] = el.value;
@@ -143,9 +146,18 @@ export default function ContactForm({
         </p>
       )}
 
+      {SITE_KEY && (
+        <Turnstile
+          sitekey={SITE_KEY}
+          onVerify={(token) => setTurnstileToken(token)}
+          onExpire={() => setTurnstileToken("")}
+          theme="dark"
+        />
+      )}
+
       <button
         type="submit"
-        disabled={status === "sending"}
+        disabled={status === "sending" || (!!SITE_KEY && !turnstileToken)}
         className="w-full py-3.5 bg-[#1c2460] border border-[#4a6cf7] text-white font-bold text-sm tracking-widest uppercase rounded-lg hover:bg-[#4a6cf7] transition-all disabled:opacity-50 disabled:cursor-not-allowed font-mono"
       >
         {status === "sending" ? "> Envoi en cours..." : `> ${submitLabel}`}
