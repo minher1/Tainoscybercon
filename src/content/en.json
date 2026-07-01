@@ -174,6 +174,15 @@
         "photo": "/speakers/ChristianKengne.webp",
         "linkedin": "https://ca.linkedin.com/in/christian-kengne",
         "website": "https://www.cas.ulaval.ca/college-administrateurs/formateurs-experts-gouvernance/formateur/?uuid=3ep5937zsugakfai3"
+      },
+      {
+        "name": "Stéphane Gagnon",
+        "title": "Cybersecurity Expert & Instructor, Collège de Maisonneuve",
+        "bio": "Cybersecurity, information security, and IT governance expert with over 12 years of teaching experience at Collège de Maisonneuve, where he trains the next generation of IT and cybersecurity professionals. A former Assistant Director responsible for information security and IT infrastructure at Cégep de Saint-Jérôme, he also served as Chief Information Security Officer (CISO), leading initiatives in risk management, service continuity, incident response, information asset protection, and cybersecurity governance framework implementation.",
+        "tags": ["IT Governance", "CISO", "Education & Talent"],
+        "photo": "/speakers/stephane-gagnon.jpg",
+        "linkedin": "",
+        "website": ""
       }
     ]
   },
