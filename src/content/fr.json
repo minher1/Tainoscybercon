@@ -183,6 +183,15 @@
         "photo": "/speakers/stephane-gagnon.jpg",
         "linkedin": "",
         "website": ""
+      },
+      {
+        "name": "Nourhene Ben Youssef",
+        "title": "Professeure titulaire & coordonnatrice, Gouvernance, audit et sécurité des TI — Université de Sherbrooke",
+        "bio": "Ph.D. en comptabilité (UQAM), Nourhene Ben Youssef est professeure titulaire à l'École de gestion de l'Université de Sherbrooke et coordonnatrice des programmes de 2e cycle en gouvernance, audit et sécurité des technologies de l'information. Ses travaux portent sur la divulgation de l'information financière, la gouvernance d'entreprise, les irrégularités comptables et les redressements financiers. À l'intersection de la comptabilité et de la cybersécurité, elle forme la prochaine génération de professionnels en gouvernance TI.",
+        "tags": ["Gouvernance TI", "Audit", "Ph.D."],
+        "photo": "/speakers/nourhene-ben-youssef.jpg",
+        "linkedin": "https://ca.linkedin.com/in/nourhene-benyoussef-ph-d-87ba8b1a1",
+        "website": "https://www.usherbrooke.ca/ecole-gestion/personnel/professeurs/sciences-comptables/nourhene-ben-youssef"
       }
     ]
   },

@@ -183,6 +183,15 @@
         "photo": "/speakers/stephane-gagnon.jpg",
         "linkedin": "",
         "website": ""
+      },
+      {
+        "name": "Nourhene Ben Youssef",
+        "title": "Full Professor & Program Coordinator, IT Governance, Audit & Security — Université de Sherbrooke",
+        "bio": "Ph.D. in Accounting (UQAM), Nourhene Ben Youssef is a Full Professor at the École de gestion of Université de Sherbrooke and coordinator of the graduate programs in IT governance, audit, and security. Her research focuses on financial information disclosure, corporate governance, accounting irregularities, and financial restatements. At the intersection of accounting and cybersecurity, she trains the next generation of IT governance professionals.",
+        "tags": ["IT Governance", "Audit", "Ph.D."],
+        "photo": "/speakers/nourhene-ben-youssef.jpg",
+        "linkedin": "https://ca.linkedin.com/in/nourhene-benyoussef-ph-d-87ba8b1a1",
+        "website": "https://www.usherbrooke.ca/ecole-gestion/personnel/professeurs/sciences-comptables/nourhene-ben-youssef"
       }
     ]
   },
