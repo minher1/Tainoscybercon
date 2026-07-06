@@ -185,6 +185,15 @@
         "website": ""
       },
       {
+        "name": "Evan Wagner",
+        "title": "Fondateur, HackNWA",
+        "bio": "Humanitaire cyber et fondateur de HackNWA, Evan Wagner œuvre à l'intersection de la cybersécurité technique et de l'engagement communautaire. Certifié GCIA et MSFPCS, il se spécialise dans l'infrastructure de commande et contrôle (C2) et le développement d'outils d'implants, tout en organisant des événements et des formations pour autonomiser les communautés à travers l'éducation, la collaboration et la pratique hands-on.",
+        "tags": ["C2 & Implants", "GCIA", "Communauté cyber"],
+        "photo": "/speakers/evan-wagner.jpg",
+        "linkedin": "https://linkedin.com/in/wagnerevan/",
+        "website": "https://hacknwa.org"
+      },
+      {
         "name": "Nourhene Ben Youssef",
         "title": "Professeure titulaire & coordonnatrice, Gouvernance, audit et sécurité des TI — Université de Sherbrooke",
         "bio": "Ph.D. en comptabilité (UQAM), Nourhene Ben Youssef est professeure titulaire à l'École de gestion de l'Université de Sherbrooke et coordonnatrice des programmes de 2e cycle en gouvernance, audit et sécurité des technologies de l'information. Ses travaux portent sur la divulgation de l'information financière, la gouvernance d'entreprise, les irrégularités comptables et les redressements financiers. À l'intersection de la comptabilité et de la cybersécurité, elle forme la prochaine génération de professionnels en gouvernance TI.",
