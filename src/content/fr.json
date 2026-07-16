@@ -201,6 +201,15 @@
         "photo": "/speakers/nourhene-ben-youssef.jpg",
         "linkedin": "https://ca.linkedin.com/in/nourhene-benyoussef-ph-d-87ba8b1a1",
         "website": "https://www.usherbrooke.ca/ecole-gestion/personnel/professeurs/sciences-comptables/nourhene-ben-youssef"
+      },
+      {
+        "name": "Alice A-Khalil",
+        "title": "Députée de Fabre & Adjointe parlementaire au ministre de la Cybersécurité et du Numérique",
+        "bio": "Élue à l'Assemblée nationale du Québec et experte reconnue en technologies de l'information et en cybersécurité. Forte de plus de 30 ans d'expérience dans ce domaine, elle a dirigé des projets stratégiques en architecture, intégration, sécurité des applications, surveillance et gestion des menaces. Multilingue (français, anglais, arabe et serbe), elle possède une expertise internationale qui lui permet de naviguer entre enjeux technologiques, politiques et sociétaux. Son parcours l'a amenée à collaborer avec des acteurs majeurs, à négocier avec des fournisseurs et à accompagner la transformation numérique de grandes organisations.",
+        "tags": ["Politique cyber", "Transformation numérique", "Architecture TI"],
+        "photo": "/speakers/alice.jpeg",
+        "linkedin": "",
+        "website": "https://www.assnat.qc.ca"
       }
     ]
   },

@@ -201,6 +201,15 @@
         "photo": "/speakers/nourhene-ben-youssef.jpg",
         "linkedin": "https://ca.linkedin.com/in/nourhene-benyoussef-ph-d-87ba8b1a1",
         "website": "https://www.usherbrooke.ca/ecole-gestion/personnel/professeurs/sciences-comptables/nourhene-ben-youssef"
+      },
+      {
+        "name": "Alice A-Khalil",
+        "title": "Member of the National Assembly of Québec (Fabre) & Parliamentary Assistant to the Minister of Cybersecurity and Digital Affairs",
+        "bio": "Elected to the National Assembly of Québec and recognized expert in information technology and cybersecurity. With over 30 years of experience in the field, she has led strategic projects in architecture, application integration, security, monitoring, and threat management. Multilingual (French, English, Arabic, and Serbian), her international expertise allows her to navigate the intersection of technological, political, and societal issues. Her career has taken her to collaborate with major industry players, negotiate with vendors, and support the digital transformation of large organizations.",
+        "tags": ["Cybersecurity Policy", "Digital Transformation", "IT Architecture"],
+        "photo": "/speakers/alice.jpeg",
+        "linkedin": "",
+        "website": "https://www.assnat.qc.ca"
       }
     ]
   },
