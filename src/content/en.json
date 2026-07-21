@@ -210,6 +210,15 @@
         "photo": "/speakers/alice.jpeg",
         "linkedin": "",
         "website": "https://www.assnat.qc.ca"
+      },
+      {
+        "name": "Olivier Gaston",
+        "title": "Vice-President, Cybersecurity Strategy, KPMG Canada",
+        "bio": "Cybersecurity leader with over 20 years of experience advising organizations across multiple industries. As Vice-President, Cybersecurity Strategy at KPMG Canada, he specializes in cybersecurity transformation within large and complex environments. Throughout his career, he has held roles as Chief Information Security Officer, Director of Professional Services, and strategic advisor, guiding organizations through cyber risk management, security governance, and digital resilience.",
+        "tags": ["Cyber Strategy", "CISO", "Risk Management"],
+        "photo": "/speakers/Olivier.jpg",
+        "linkedin": "https://ca.linkedin.com/in/oliviergaston",
+        "website": "https://kpmg.com/ca/en/home/contacts/g/olivier-gaston.html"
       }
     ]
   },
