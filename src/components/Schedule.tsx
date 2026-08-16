@@ -3,7 +3,7 @@ import { useLang } from "@/context/LangContext";
 import Image from "next/image";
 import { CircuitTrace } from "./Silhouettes";
 
-const BREAKS = ["Dîner", "Lunch", "Café", "Coffee", "Clôture", "Closing", "Pause"];
+const BREAKS = ["Dîner", "Lunch", "Café", "Coffee", "Clôture", "Closing", "Pause", "Accueil", "Welcome"];
 
 export default function Schedule() {
   const { t } = useLang();
@@ -50,8 +50,13 @@ export default function Schedule() {
                   />
                 </div>
                 <div className={`flex-1 pb-6 ${isBreak(item.title) ? "opacity-40" : ""}`}>
-                  <div className="px-4 py-3 rounded-lg text-sm font-medium text-slate-300 group-hover:text-white transition-colors">
-                    {item.title}
+                  <div className="px-4 py-3 rounded-lg">
+                    <div className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors">
+                      {item.title}
+                    </div>
+                    {item.speaker && !isBreak(item.title) && (
+                      <div className="text-xs text-[#7b9bff] mt-1 font-mono">{item.speaker}</div>
+                    )}
                   </div>
                 </div>
               </div>

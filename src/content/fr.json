@@ -226,16 +226,16 @@
     "title": "PROGRAMMATION",
     "subtitle": "29 août 2026 · 9h – 17h",
     "items": [
-      { "time": "9h00", "title": "Accueil & café de bienvenue" },
-      { "time": "9h30", "title": "Conférence d'ouverture" },
-      { "time": "10h30", "title": "Session 1 — IA & Cybersécurité" },
-      { "time": "11h30", "title": "Session 2 — Rançongiciels" },
-      { "time": "12h30", "title": "Dîner" },
-      { "time": "13h30", "title": "Session 3 — Sécurité cloud" },
-      { "time": "14h30", "title": "Session 4 — Gestion des identités" },
-      { "time": "15h30", "title": "Pause-café & réseautage" },
-      { "time": "16h00", "title": "Table ronde & panel d'experts" },
-      { "time": "17h00", "title": "Clôture & réseautage" }
+      { "time": "9h00", "title": "Accueil des invités", "speaker": "Bénévoles et organisateurs" },
+      { "time": "9h30", "title": "Cérémonie d'ouverture et Keynote Speakers", "speaker": "Organisateurs, élus des villes de Mascouche et Terrebonne" },
+      { "time": "10h30", "title": "Des données aux décisions : transformer l'IA d'entreprise en résultats commerciaux concrets", "speaker": "Olivier Gaston" },
+      { "time": "11h30", "title": "Régulation, éthique et confiance : bâtir une IA responsable", "speaker": "Nourhene Ben Youssef" },
+      { "time": "12h30", "title": "Pause dîner", "speaker": "Tous" },
+      { "time": "13h30", "title": "De la souveraineté numérique à la souveraineté architecturale : reprendre le contrôle des fondations technologiques", "speaker": "Christian Kengne" },
+      { "time": "14h30", "title": "Pause café et réseautage", "speaker": "Tous" },
+      { "time": "14h45", "title": "L'ère quantique : repenser la cryptographie pour protéger le monde de demain", "speaker": "Mike Arbrouet" },
+      { "time": "15h45", "title": "Réponse aux incidents : de la détection à la récupération", "speaker": "Valentin Bromont et Jean-François Brouillette" },
+      { "time": "16h45", "title": "Clôture et réseautage", "speaker": "Bénévoles et organisateurs" }
     ]
   },
   "why": {

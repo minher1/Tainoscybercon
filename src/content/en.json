@@ -226,16 +226,16 @@
     "title": "SCHEDULE",
     "subtitle": "August 29, 2026 · 9 AM – 5 PM",
     "items": [
-      { "time": "9:00 AM", "title": "Welcome & Morning Coffee" },
-      { "time": "9:30 AM", "title": "Opening Keynote" },
-      { "time": "10:30 AM", "title": "Session 1 — AI & Cybersecurity" },
-      { "time": "11:30 AM", "title": "Session 2 — Ransomware" },
-      { "time": "12:30 PM", "title": "Lunch" },
-      { "time": "1:30 PM", "title": "Session 3 — Cloud Security" },
-      { "time": "2:30 PM", "title": "Session 4 — Identity Management" },
-      { "time": "3:30 PM", "title": "Coffee Break & Networking" },
-      { "time": "4:00 PM", "title": "Expert Panel & Roundtable" },
-      { "time": "5:00 PM", "title": "Closing & Networking" }
+      { "time": "9:00 AM", "title": "Welcome of Guests", "speaker": "Volunteers & Organizers" },
+      { "time": "9:30 AM", "title": "Opening Ceremony & Keynote Speakers", "speaker": "Organizers, elected officials from Mascouche and Terrebonne" },
+      { "time": "10:30 AM", "title": "From Data to Decisions: Turning Enterprise AI into Concrete Business Results", "speaker": "Olivier Gaston" },
+      { "time": "11:30 AM", "title": "Regulation, Ethics and Trust: Building Responsible AI", "speaker": "Nourhene Ben Youssef" },
+      { "time": "12:30 PM", "title": "Lunch Break", "speaker": "All" },
+      { "time": "1:30 PM", "title": "From Digital Sovereignty to Architectural Sovereignty: Reclaiming Control of Technology Foundations", "speaker": "Christian Kengne" },
+      { "time": "2:30 PM", "title": "Coffee Break & Networking", "speaker": "All" },
+      { "time": "2:45 PM", "title": "The Quantum Era: Rethinking Cryptography to Protect Tomorrow's World", "speaker": "Mike Arbrouet" },
+      { "time": "3:45 PM", "title": "Incident Response: From Detection to Recovery", "speaker": "Valentin Bromont & Jean-François Brouillette" },
+      { "time": "4:45 PM", "title": "Closing & Networking", "speaker": "Volunteers & Organizers" }
     ]
   },
   "why": {
