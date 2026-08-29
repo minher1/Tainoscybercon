@@ -14,14 +14,36 @@ const SCHEDULE = [
   { time: "16:45", end: "17:00", title: "Clôture & réseautage",                                          speaker: "",                                    icon: "🎉" },
 ];
 
-const SLIDE_DURATION = 6000; // ms per slide
+const SPONSORS = [
+  { name: "Les Ateliers Bromont", url: "https://lesateliersbromont.ca", logo: "https://lesateliersbromont.ca/cdn/shop/files/LesAteliersBromont_2cdbb6bf-4cfc-449d-bed1-ac39af732ac4.svg?height=80&v=1772938029" },
+  { name: "YottaSec",             url: "https://yottasec.com",          logo: "https://cdn.prod.website-files.com/67294090dd06d01abfca83b4/672943bd6393c2fc5a19375c_Logo-YoyyaSec-horizontal-couleur-xsmall-1.png" },
+  { name: "TEKAP",                url: "https://tekap.ca",              logo: "https://www.tekap.ca/_next/image?url=%2F_next%2Fstatic%2Fimmutable%2Fmedia%2Flogo_white.2emsvyojcdsi1.png&w=640&q=75" },
+  { name: "First City Internet",  url: "https://firstcityinternet.com", logo: "https://firstcityinternet.com/logo.png" },
+];
+
+// Build slide deck: schedule slides with a sponsor slide injected every 3 sessions
+type ScheduleSlide = { kind: "session"; idx: number };
+type SponsorSlide  = { kind: "sponsor" };
+type Slide = ScheduleSlide | SponsorSlide;
+
+const SLIDES: Slide[] = [];
+SCHEDULE.forEach((_, i) => {
+  SLIDES.push({ kind: "session", idx: i });
+  if ((i + 1) % 3 === 0 && i < SCHEDULE.length - 1) {
+    SLIDES.push({ kind: "sponsor" });
+  }
+});
+SLIDES.push({ kind: "sponsor" }); // always end with sponsors
+
+const SLIDE_DURATION = 6000;
+const SPONSOR_DURATION = 8000;
 
 function toMinutes(t: string) {
   const [h, m] = t.split(":").map(Number);
   return h * 60 + (m || 0);
 }
 
-function getCurrentIndex(now: Date) {
+function getCurrentScheduleIndex(now: Date) {
   const mins = now.getHours() * 60 + now.getMinutes();
   for (let i = SCHEDULE.length - 1; i >= 0; i--) {
     if (mins >= toMinutes(SCHEDULE[i].time)) return i;
@@ -39,54 +61,50 @@ const GRADIENTS = [
 
 export default function DisplayPage() {
   const [now, setNow] = useState(new Date());
-  const [slide, setSlide] = useState(0);
+  const [slideIdx, setSlideIdx] = useState(0);
   const [progress, setProgress] = useState(0);
   const [fade, setFade] = useState(true);
 
-  const currentIdx = getCurrentIndex(now);
-  const next = currentIdx >= 0 ? SCHEDULE[currentIdx + 1] : null;
+  const currentScheduleIdx = getCurrentScheduleIndex(now);
+  const currentSlide = SLIDES[slideIdx];
+  const duration = currentSlide.kind === "sponsor" ? SPONSOR_DURATION : SLIDE_DURATION;
 
-  // Clock
   useEffect(() => {
     const tick = setInterval(() => setNow(new Date()), 1000);
     return () => clearInterval(tick);
   }, []);
 
-  // Slideshow
   useEffect(() => {
     let start = Date.now();
     let raf: number;
-
     const animate = () => {
       const elapsed = Date.now() - start;
-      setProgress(Math.min(elapsed / SLIDE_DURATION, 1));
-      if (elapsed >= SLIDE_DURATION) {
+      setProgress(Math.min(elapsed / duration, 1));
+      if (elapsed >= duration) {
         setFade(false);
         setTimeout(() => {
-          setSlide((s) => (s + 1) % SCHEDULE.length);
+          setSlideIdx((s) => (s + 1) % SLIDES.length);
           setFade(true);
           start = Date.now();
         }, 400);
       }
       raf = requestAnimationFrame(animate);
     };
-
     raf = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(raf);
-  }, [slide]);
-
-  const item = SCHEDULE[slide];
-  const isCurrentSlide = slide === currentIdx;
-  const isPastSlide = slide < currentIdx;
-  const gradient = GRADIENTS[slide % GRADIENTS.length];
+  }, [slideIdx, duration]);
 
   const timeStr = now.toLocaleTimeString("fr-CA", { hour: "2-digit", minute: "2-digit" });
   const dateStr = now.toLocaleDateString("fr-CA", { weekday: "long", day: "numeric", month: "long" });
 
+  const sessionGradient = currentSlide.kind === "session"
+    ? GRADIENTS[currentSlide.idx % GRADIENTS.length]
+    : "linear-gradient(135deg,#07091a 0%,#1a1060 100%)";
+
   return (
     <div className="fixed inset-0 overflow-hidden bg-[#07091a] flex flex-col" style={{ fontFamily: "'Segoe UI', sans-serif" }}>
 
-      {/* Top bar — always visible */}
+      {/* Top bar */}
       <div className="flex items-center justify-between px-14 py-5 z-10 shrink-0"
         style={{ background: "rgba(7,9,26,0.95)", borderBottom: "1px solid rgba(42,53,128,0.5)" }}>
         <div>
@@ -97,79 +115,100 @@ export default function DisplayPage() {
           style={{ background: "linear-gradient(135deg,#e84444,#c03880,#7b35b0)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
           {timeStr}
         </div>
-        {currentIdx >= 0 && (
+        {currentScheduleIdx >= 0 && (
           <div className="text-right">
             <div className="text-[9px] font-black tracking-[0.4em] text-[#ff6eb0] uppercase mb-0.5">En cours</div>
-            <div className="text-sm font-bold text-white">{SCHEDULE[currentIdx].icon} {SCHEDULE[currentIdx].title}</div>
-            <div className="text-xs text-slate-400">{SCHEDULE[currentIdx].time} – {SCHEDULE[currentIdx].end}</div>
+            <div className="text-sm font-bold text-white">{SCHEDULE[currentScheduleIdx].icon} {SCHEDULE[currentScheduleIdx].title}</div>
+            <div className="text-xs text-slate-400">{SCHEDULE[currentScheduleIdx].time} – {SCHEDULE[currentScheduleIdx].end}</div>
           </div>
         )}
       </div>
 
       {/* Main slide */}
       <div className="flex-1 relative flex items-center justify-center overflow-hidden"
-        style={{ background: gradient, transition: "background 0.8s ease" }}>
+        style={{ background: sessionGradient, transition: "background 0.8s ease" }}>
 
-        {/* Grid overlay */}
         <div className="absolute inset-0 opacity-[0.05]" style={{
           backgroundImage: "linear-gradient(rgba(255,255,255,0.8) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.8) 1px,transparent 1px)",
           backgroundSize: "60px 60px",
         }} />
-
-        {/* Glow */}
         <div className="absolute inset-0 opacity-30" style={{
           background: "radial-gradient(ellipse at center, rgba(255,255,255,0.15) 0%, transparent 70%)"
         }} />
 
-        {/* Slide content */}
-        <div className={`relative text-center px-20 transition-all duration-400 ${fade ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-          style={{ transition: "opacity 0.4s ease, transform 0.4s ease" }}>
-
-          {/* Status badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-8"
-            style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.25)" }}>
-            {isCurrentSlide && <span className="w-2 h-2 rounded-full bg-white animate-pulse inline-block" />}
-            <span className="text-xs font-black tracking-[0.4em] text-white uppercase">
-              {isCurrentSlide ? "EN COURS" : isPastSlide ? "TERMINÉ" : `À ${item.time}`}
-            </span>
-          </div>
-
-          {/* Icon */}
-          <div className="text-[120px] leading-none mb-6 select-none">{item.icon}</div>
-
-          {/* Time */}
-          <div className="text-2xl font-bold text-white/70 mb-4 tabular-nums">
-            {item.time} – {item.end}
-          </div>
-
-          {/* Title */}
-          <div className="text-6xl font-black text-white leading-tight mb-6" style={{ textShadow: "0 4px 40px rgba(0,0,0,0.4)" }}>
-            {item.title}
-          </div>
-
-          {/* Speaker */}
-          {item.speaker && (
-            <div className="text-2xl font-semibold text-white/70 mb-8">{item.speaker}</div>
-          )}
-
-          {/* Next session */}
-          {isCurrentSlide && next && (
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-xl"
-              style={{ background: "rgba(0,0,0,0.25)", border: "1px solid rgba(255,255,255,0.15)" }}>
-              <span className="text-white/50 text-sm font-bold tracking-widest uppercase">Prochain</span>
-              <span className="text-white font-bold">{next.icon} {next.title}</span>
-              <span className="text-white/50 text-sm">{next.time}</span>
+        {/* SESSION SLIDE */}
+        {currentSlide.kind === "session" && (() => {
+          const item = SCHEDULE[currentSlide.idx];
+          const isCurrentSlide = currentSlide.idx === currentScheduleIdx;
+          const isPastSlide = currentSlide.idx < currentScheduleIdx;
+          const next = currentScheduleIdx >= 0 ? SCHEDULE[currentScheduleIdx + 1] : null;
+          return (
+            <div className={`relative text-center px-20 ${fade ? "opacity-100" : "opacity-0"}`}
+              style={{ transition: "opacity 0.5s ease" }}>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-8"
+                style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.25)" }}>
+                {isCurrentSlide && <span className="w-2 h-2 rounded-full bg-white animate-pulse inline-block" />}
+                <span className="text-xs font-black tracking-[0.4em] text-white uppercase">
+                  {isCurrentSlide ? "EN COURS" : isPastSlide ? "TERMINÉ" : `À ${item.time}`}
+                </span>
+              </div>
+              <div className="text-[120px] leading-none mb-6 select-none">{item.icon}</div>
+              <div className="text-2xl font-bold text-white/70 mb-4 tabular-nums">{item.time} – {item.end}</div>
+              <div className="text-6xl font-black text-white leading-tight mb-6" style={{ textShadow: "0 4px 40px rgba(0,0,0,0.4)" }}>
+                {item.title}
+              </div>
+              {item.speaker && (
+                <div className="text-2xl font-semibold text-white/70 mb-8">{item.speaker}</div>
+              )}
+              {isCurrentSlide && next && (
+                <div className="inline-flex items-center gap-3 px-6 py-3 rounded-xl"
+                  style={{ background: "rgba(0,0,0,0.25)", border: "1px solid rgba(255,255,255,0.15)" }}>
+                  <span className="text-white/50 text-sm font-bold tracking-widest uppercase">Prochain</span>
+                  <span className="text-white font-bold">{next.icon} {next.title}</span>
+                  <span className="text-white/50 text-sm">{next.time}</span>
+                </div>
+              )}
             </div>
-          )}
-        </div>
+          );
+        })()}
 
-        {/* Slide counter */}
+        {/* SPONSOR SLIDE */}
+        {currentSlide.kind === "sponsor" && (
+          <div className={`relative text-center px-20 w-full max-w-5xl ${fade ? "opacity-100" : "opacity-0"}`}
+            style={{ transition: "opacity 0.5s ease" }}>
+            <div className="text-[9px] font-black tracking-[0.6em] text-[#7b9bff] uppercase mb-4">Tainos Cyber Con 2026</div>
+            <h2 className="text-5xl font-black text-white mb-3">Merci à nos partenaires</h2>
+            <p className="text-slate-400 text-lg mb-14">Leur soutien rend cet événement possible.</p>
+            <div className="grid grid-cols-2 gap-8">
+              {SPONSORS.map((s) => (
+                <div key={s.name} className="flex flex-col items-center justify-center gap-4 px-10 py-8 rounded-2xl"
+                  style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={s.logo}
+                    alt={s.name}
+                    className="max-h-16 max-w-[220px] object-contain"
+                    style={{ filter: "brightness(0) invert(1)" }}
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = "none";
+                    }}
+                  />
+                  <span className="text-white/60 text-sm font-semibold tracking-wider">{s.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Dot indicators */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2.5">
-          {SCHEDULE.map((_, i) => (
+          {SLIDES.map((s, i) => (
             <div key={i} className="h-1.5 rounded-full transition-all duration-300"
               style={{
-                width: i === slide ? 32 : 8,
-                background: i === slide ? "rgba(255,255,255,0.9)" : i < slide ? "rgba(255,255,255,0.3)" : "rgba(255,255,255,0.15)",
+                width: i === slideIdx ? 32 : 8,
+                background: s.kind === "sponsor"
+                  ? (i === slideIdx ? "rgba(255,110,176,0.9)" : "rgba(255,110,176,0.2)")
+                  : (i === slideIdx ? "rgba(255,255,255,0.9)" : i < slideIdx ? "rgba(255,255,255,0.3)" : "rgba(255,255,255,0.15)"),
               }} />
           ))}
         </div>
@@ -177,18 +216,20 @@ export default function DisplayPage() {
 
       {/* Progress bar */}
       <div className="h-1 shrink-0" style={{ background: "rgba(42,53,128,0.4)" }}>
-        <div className="h-full transition-none"
-          style={{
-            width: `${progress * 100}%`,
-            background: "linear-gradient(90deg,#e84444,#c03880,#7b35b0)",
-          }} />
+        <div className="h-full"
+          style={{ width: `${progress * 100}%`, background: "linear-gradient(90deg,#e84444,#c03880,#7b35b0)", transition: "none" }} />
       </div>
 
       {/* Bottom bar */}
       <div className="flex items-center justify-between px-14 py-3 shrink-0"
         style={{ background: "rgba(7,9,26,0.95)", borderTop: "1px solid rgba(42,53,128,0.3)" }}>
         <div className="text-xs font-mono text-slate-600 tracking-widest uppercase">tainoscybercon.com</div>
-        <div className="text-xs font-mono text-slate-600 tracking-widest uppercase">{slide + 1} / {SCHEDULE.length}</div>
+        <div className="flex items-center gap-3">
+          {currentSlide.kind === "sponsor" && (
+            <span className="text-[#ff6eb0] text-xs font-mono tracking-widest uppercase">Nos partenaires</span>
+          )}
+        </div>
+        <div className="text-xs font-mono text-slate-600 tracking-widest uppercase">{slideIdx + 1} / {SLIDES.length}</div>
       </div>
     </div>
   );
