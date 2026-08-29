@@ -2,16 +2,16 @@
 import { useEffect, useState } from "react";
 
 const SCHEDULE = [
-  { time: "9:00",  end: "9:30",  title: "Accueil des invités",                                           speaker: "",                                    icon: "☕" },
-  { time: "9:30",  end: "10:30", title: "Cérémonie d'ouverture & allocutions",                           speaker: "Organisateurs & élus municipaux",      icon: "🎤" },
-  { time: "10:30", end: "11:30", title: "De la souveraineté numérique à la souveraineté architecturale", speaker: "Christian Kengne",                     icon: "🏛️" },
-  { time: "11:30", end: "12:30", title: "Des données aux décisions : transformer l'IA en résultats",     speaker: "Olivier Gaston",                       icon: "🤖" },
-  { time: "12:30", end: "13:30", title: "Dîner",                                                         speaker: "",                                    icon: "🍽️" },
-  { time: "13:30", end: "14:30", title: "Régulation, éthique et confiance : bâtir une IA responsable",  speaker: "Nourhene Ben Youssef",                 icon: "⚖️" },
-  { time: "14:30", end: "14:45", title: "Pause-café & réseautage",                                       speaker: "",                                    icon: "☕" },
-  { time: "14:45", end: "15:45", title: "L'ère quantique : repenser la cryptographie",                   speaker: "Mike Arbrouet",                        icon: "⚛️" },
-  { time: "15:45", end: "16:45", title: "Réponse aux incidents : de la détection à la récupération",    speaker: "Valentin Bromont & J.-F. Brouillette", icon: "🛡️" },
-  { time: "16:45", end: "17:00", title: "Clôture & réseautage",                                          speaker: "",                                    icon: "🎉" },
+  { time: "9:00",  end: "9:30",  title: "Accueil des invités",                                           speaker: "",                                          icon: "☕" },
+  { time: "9:30",  end: "10:30", title: "Cérémonie d'ouverture & allocutions",                           speaker: "Organisateurs & élus municipaux",            icon: "🎤" },
+  { time: "10:30", end: "11:30", title: "De la souveraineté numérique à la souveraineté architecturale", speaker: "Christian Kengne",                           icon: "🏛️" },
+  { time: "11:30", end: "12:30", title: "Des données aux décisions",                                     speaker: "Olivier Gaston",                             icon: "🤖" },
+  { time: "12:30", end: "13:30", title: "Dîner",                                                         speaker: "",                                          icon: "🍽️" },
+  { time: "13:30", end: "14:30", title: "Régulation, éthique et confiance",                              speaker: "Nourhene Ben Youssef",                       icon: "⚖️" },
+  { time: "14:30", end: "14:45", title: "Pause-café & réseautage",                                       speaker: "",                                          icon: "☕" },
+  { time: "14:45", end: "15:45", title: "L'ère quantique",                                               speaker: "Mike Arbrouet",                              icon: "⚛️" },
+  { time: "15:45", end: "16:45", title: "Réponse aux incidents",                                         speaker: "Valentin Bromont & Jean-François Brouillette", icon: "🛡️" },
+  { time: "16:45", end: "17:00", title: "Clôture & réseautage",                                          speaker: "",                                          icon: "🎉" },
 ];
 
 const SPONSORS = [
