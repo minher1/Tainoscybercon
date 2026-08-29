@@ -26,16 +26,11 @@ type ScheduleSlide = { kind: "session"; idx: number };
 type SponsorSlide  = { kind: "sponsor" };
 type Slide = ScheduleSlide | SponsorSlide;
 
-const SPONSOR_AFTER = new Set([4, 6]); // after Dîner and after Pause-café
-
 const SLIDES: Slide[] = [];
 SCHEDULE.forEach((_, i) => {
   SLIDES.push({ kind: "session", idx: i });
-  if (SPONSOR_AFTER.has(i)) {
-    SLIDES.push({ kind: "sponsor" });
-  }
+  SLIDES.push({ kind: "sponsor" });
 });
-SLIDES.push({ kind: "sponsor" }); // closing sponsor slide
 
 const SLIDE_DURATION = 6000;
 const SPONSOR_DURATION = 8000;
