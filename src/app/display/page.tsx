@@ -21,19 +21,24 @@ const SPONSORS = [
   { name: "First City Internet",  url: "https://firstcityinternet.com", logo: "https://firstcityinternet.com/logo.png" },
 ];
 
-// Sponsor slides appear after lunch (idx 4) and after coffee break (idx 6)
+const SURVEY_URL = "https://tainoscybercon.com/survey";
+const QR_URL = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&color=ffffff&bgcolor=07091a&data=${encodeURIComponent(SURVEY_URL)}`;
+
 type ScheduleSlide = { kind: "session"; idx: number };
 type SponsorSlide  = { kind: "sponsor" };
-type Slide = ScheduleSlide | SponsorSlide;
+type QRSlide       = { kind: "qr" };
+type Slide = ScheduleSlide | SponsorSlide | QRSlide;
 
 const SLIDES: Slide[] = [];
 SCHEDULE.forEach((_, i) => {
   SLIDES.push({ kind: "session", idx: i });
   SLIDES.push({ kind: "sponsor" });
 });
+SLIDES.push({ kind: "qr" });
 
 const SLIDE_DURATION = 6000;
 const SPONSOR_DURATION = 8000;
+const QR_DURATION = 15000;
 
 function toMinutes(t: string) {
   const [h, m] = t.split(":").map(Number);
@@ -58,7 +63,7 @@ export default function DisplayPage() {
 
   const currentScheduleIdx = getCurrentScheduleIndex(now);
   const currentSlide = SLIDES[slideIdx];
-  const duration = currentSlide.kind === "sponsor" ? SPONSOR_DURATION : SLIDE_DURATION;
+  const duration = currentSlide.kind === "qr" ? QR_DURATION : currentSlide.kind === "sponsor" ? SPONSOR_DURATION : SLIDE_DURATION;
 
   useEffect(() => {
     const tick = setInterval(() => setNow(new Date()), 1000);
@@ -193,13 +198,34 @@ export default function DisplayPage() {
           </div>
         )}
 
+        {/* QR SLIDE */}
+        {currentSlide.kind === "qr" && (
+          <div className={`relative text-center px-20 w-full max-w-2xl ${fade ? "opacity-100" : "opacity-0"}`}
+            style={{ transition: "opacity 0.5s ease" }}>
+            <div className="text-[9px] font-black tracking-[0.6em] text-[#7b9bff] uppercase mb-4">Tainos Cyber Con 2026</div>
+            <h2 className="text-5xl font-black text-white mb-3">Votre avis nous tient à cœur</h2>
+            <p className="text-slate-400 text-lg mb-10">Scannez pour répondre au sondage anonyme · <span className="text-slate-500">Scan to share your feedback</span></p>
+            <div className="flex flex-col items-center gap-6">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={QR_URL} alt="QR sondage" width={220} height={220} className="rounded-2xl"
+                style={{ border: "6px solid rgba(255,255,255,0.1)" }} />
+              <div className="px-6 py-2 rounded-full text-sm font-mono text-slate-300"
+                style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)" }}>
+                tainoscybercon.com/survey
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Dot indicators */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2.5">
           {SLIDES.map((s, i) => (
             <div key={i} className="h-1.5 rounded-full transition-all duration-300"
               style={{
                 width: i === slideIdx ? 32 : 8,
-                background: s.kind === "sponsor"
+                background: s.kind === "qr"
+                  ? (i === slideIdx ? "rgba(123,155,255,0.9)" : "rgba(123,155,255,0.2)")
+                  : s.kind === "sponsor"
                   ? (i === slideIdx ? "rgba(255,110,176,0.9)" : "rgba(255,110,176,0.2)")
                   : (i === slideIdx ? "rgba(255,255,255,0.9)" : i < slideIdx ? "rgba(255,255,255,0.3)" : "rgba(255,255,255,0.15)"),
               }} />
