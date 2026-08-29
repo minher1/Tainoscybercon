@@ -2,16 +2,16 @@
 import { useEffect, useState } from "react";
 
 const SCHEDULE = [
-  { time: "9:00",  end: "9:30",  title: "Accueil & café de bienvenue",       icon: "☕" },
-  { time: "9:30",  end: "10:30", title: "Conférence d'ouverture",             icon: "🎤" },
-  { time: "10:30", end: "11:30", title: "Session 1 — IA & Cybersécurité",    icon: "🤖" },
-  { time: "11:30", end: "12:30", title: "Session 2 — Rançongiciels",         icon: "🛡️" },
-  { time: "12:30", end: "13:30", title: "Dîner",                              icon: "🍽️" },
-  { time: "13:30", end: "14:30", title: "Session 3 — Sécurité cloud",        icon: "☁️" },
-  { time: "14:30", end: "15:30", title: "Session 4 — Gestion des identités", icon: "🔑" },
-  { time: "15:30", end: "16:00", title: "Pause-café & réseautage",           icon: "🤝" },
-  { time: "16:00", end: "17:00", title: "Table ronde & panel d'experts",     icon: "💬" },
-  { time: "17:00", end: "18:00", title: "Clôture & réseautage",              icon: "🎉" },
+  { time: "9:00",  end: "9:30",  title: "Accueil des invités",                                           speaker: "",                                    icon: "☕" },
+  { time: "9:30",  end: "10:30", title: "Cérémonie d'ouverture & allocutions",                           speaker: "Organisateurs & élus municipaux",      icon: "🎤" },
+  { time: "10:30", end: "11:30", title: "De la souveraineté numérique à la souveraineté architecturale", speaker: "Christian Kengne",                     icon: "🏛️" },
+  { time: "11:30", end: "12:30", title: "Des données aux décisions : transformer l'IA en résultats",     speaker: "Olivier Gaston",                       icon: "🤖" },
+  { time: "12:30", end: "13:30", title: "Dîner",                                                         speaker: "",                                    icon: "🍽️" },
+  { time: "13:30", end: "14:30", title: "Régulation, éthique et confiance : bâtir une IA responsable",  speaker: "Nourhene Ben Youssef",                 icon: "⚖️" },
+  { time: "14:30", end: "14:45", title: "Pause-café & réseautage",                                       speaker: "",                                    icon: "☕" },
+  { time: "14:45", end: "15:45", title: "L'ère quantique : repenser la cryptographie",                   speaker: "Mike Arbrouet",                        icon: "⚛️" },
+  { time: "15:45", end: "16:45", title: "Réponse aux incidents : de la détection à la récupération",    speaker: "Valentin Bromont & J.-F. Brouillette", icon: "🛡️" },
+  { time: "16:45", end: "17:00", title: "Clôture & réseautage",                                          speaker: "",                                    icon: "🎉" },
 ];
 
 const SLIDE_DURATION = 6000; // ms per slide
@@ -143,9 +143,14 @@ export default function DisplayPage() {
           </div>
 
           {/* Title */}
-          <div className="text-6xl font-black text-white leading-tight mb-8" style={{ textShadow: "0 4px 40px rgba(0,0,0,0.4)" }}>
+          <div className="text-6xl font-black text-white leading-tight mb-6" style={{ textShadow: "0 4px 40px rgba(0,0,0,0.4)" }}>
             {item.title}
           </div>
+
+          {/* Speaker */}
+          {item.speaker && (
+            <div className="text-2xl font-semibold text-white/70 mb-8">{item.speaker}</div>
+          )}
 
           {/* Next session */}
           {isCurrentSlide && next && (
