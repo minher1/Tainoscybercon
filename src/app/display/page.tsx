@@ -71,23 +71,27 @@ export default function DisplayPage() {
   }, []);
 
   useEffect(() => {
-    let start = Date.now();
+    const start = Date.now();
     let raf: number;
+    let done = false;
+
     const animate = () => {
       const elapsed = Date.now() - start;
       setProgress(Math.min(elapsed / duration, 1));
-      if (elapsed >= duration) {
+      if (!done && elapsed >= duration) {
+        done = true;
+        cancelAnimationFrame(raf);
         setFade(false);
         setTimeout(() => {
           setSlideIdx((s) => (s + 1) % SLIDES.length);
           setFade(true);
-          start = Date.now();
-        }, 400);
+        }, 500);
+        return;
       }
       raf = requestAnimationFrame(animate);
     };
     raf = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(raf);
+    return () => { done = true; cancelAnimationFrame(raf); };
   }, [slideIdx, duration]);
 
   const timeStr = now.toLocaleTimeString("fr-CA", { hour: "2-digit", minute: "2-digit" });
