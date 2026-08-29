@@ -21,19 +21,21 @@ const SPONSORS = [
   { name: "First City Internet",  url: "https://firstcityinternet.com", logo: "https://firstcityinternet.com/logo.png" },
 ];
 
-// Build slide deck: schedule slides with a sponsor slide injected every 3 sessions
+// Sponsor slides appear after lunch (idx 4) and after coffee break (idx 6)
 type ScheduleSlide = { kind: "session"; idx: number };
 type SponsorSlide  = { kind: "sponsor" };
 type Slide = ScheduleSlide | SponsorSlide;
 
+const SPONSOR_AFTER = new Set([4, 6]); // after Dîner and after Pause-café
+
 const SLIDES: Slide[] = [];
 SCHEDULE.forEach((_, i) => {
   SLIDES.push({ kind: "session", idx: i });
-  if ((i + 1) % 3 === 0 && i < SCHEDULE.length - 1) {
+  if (SPONSOR_AFTER.has(i)) {
     SLIDES.push({ kind: "sponsor" });
   }
 });
-SLIDES.push({ kind: "sponsor" }); // always end with sponsors
+SLIDES.push({ kind: "sponsor" }); // closing sponsor slide
 
 const SLIDE_DURATION = 6000;
 const SPONSOR_DURATION = 8000;
