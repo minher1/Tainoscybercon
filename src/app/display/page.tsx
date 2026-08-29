@@ -51,13 +51,7 @@ function getCurrentScheduleIndex(now: Date) {
   return -1;
 }
 
-const GRADIENTS = [
-  "linear-gradient(135deg,#c03880 0%,#7b35b0 100%)",
-  "linear-gradient(135deg,#1a2080 0%,#c03880 100%)",
-  "linear-gradient(135deg,#7b35b0 0%,#1a2080 100%)",
-  "linear-gradient(135deg,#e84444 0%,#c03880 100%)",
-  "linear-gradient(135deg,#0d1035 0%,#7b35b0 100%)",
-];
+const BG = "linear-gradient(160deg,#0d1035 0%,#1a1060 100%)";
 
 export default function DisplayPage() {
   const [now, setNow] = useState(new Date());
@@ -97,9 +91,7 @@ export default function DisplayPage() {
   const timeStr = now.toLocaleTimeString("fr-CA", { hour: "2-digit", minute: "2-digit" });
   const dateStr = now.toLocaleDateString("fr-CA", { weekday: "long", day: "numeric", month: "long" });
 
-  const sessionGradient = currentSlide.kind === "session"
-    ? GRADIENTS[currentSlide.idx % GRADIENTS.length]
-    : "linear-gradient(135deg,#07091a 0%,#1a1060 100%)";
+  const sessionGradient = BG;
 
   return (
     <div className="fixed inset-0 overflow-hidden bg-[#07091a] flex flex-col" style={{ fontFamily: "'Segoe UI', sans-serif" }}>
@@ -126,7 +118,7 @@ export default function DisplayPage() {
 
       {/* Main slide */}
       <div className="flex-1 relative flex items-center justify-center overflow-hidden"
-        style={{ background: sessionGradient, transition: "background 0.8s ease" }}>
+        style={{ background: sessionGradient }}>
 
         <div className="absolute inset-0 opacity-[0.05]" style={{
           backgroundImage: "linear-gradient(rgba(255,255,255,0.8) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.8) 1px,transparent 1px)",
