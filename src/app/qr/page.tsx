@@ -1,3 +1,4 @@
+"use client";
 export default function QRPage() {
   const url = "https://tainoscybercon.com/survey";
   const qr = `https://api.qrserver.com/v1/create-qr-code/?size=400x400&margin=10&data=${encodeURIComponent(url)}`;
