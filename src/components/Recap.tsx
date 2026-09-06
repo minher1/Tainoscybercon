@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { useState } from "react";
 import { useLang } from "@/context/LangContext";
 
 const PHOTOS = [
@@ -43,9 +44,21 @@ const STATS = [
 export default function Recap() {
   const { lang } = useLang();
   const fr = lang === "fr";
+  const [lightbox, setLightbox] = useState<string | null>(null);
 
   return (
     <div className="bg-[#07091a]">
+
+      {/* Lightbox */}
+      {lightbox && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 cursor-zoom-out p-4"
+          onClick={() => setLightbox(null)}>
+          <button className="absolute top-5 right-6 text-white/60 hover:text-white text-4xl font-light" onClick={() => setLightbox(null)}>✕</button>
+          <div className="relative max-w-5xl max-h-[90vh] w-full h-full">
+            <Image src={lightbox} alt="Tainos Cyber Con 2026" fill className="object-contain" unoptimized />
+          </div>
+        </div>
+      )}
 
       {/* ── Hero thank-you banner ── */}
       <section className="relative overflow-hidden py-24 px-4 text-center border-b border-[#2a3580]/40">
@@ -103,9 +116,13 @@ export default function Recap() {
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
             {PHOTOS.map((src) => (
-              <div key={src} className="relative aspect-[4/3] rounded-xl overflow-hidden bg-[#0f1240]">
-                <Image src={src} alt="Tainos Cyber Con 2026" fill className="object-cover hover:scale-105 transition-transform duration-500" unoptimized />
-              </div>
+              <button key={src} onClick={() => setLightbox(src)}
+                className="relative aspect-[4/3] rounded-xl overflow-hidden bg-[#0f1240] group cursor-zoom-in focus:outline-none">
+                <Image src={src} alt="Tainos Cyber Con 2026" fill className="object-cover group-hover:scale-105 transition-transform duration-500" unoptimized />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity text-white text-2xl drop-shadow-lg">⛶</span>
+                </div>
+              </button>
             ))}
           </div>
         </div>
