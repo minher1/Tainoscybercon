@@ -1,5 +1,30 @@
 "use client";
+import Image from "next/image";
 import { useLang } from "@/context/LangContext";
+
+const PHOTOS = [
+  "/photos/recap/tainos.jpg",
+  "/photos/recap/1788274259397.jpg",
+  "/photos/recap/1788274259526.jpg",
+  "/photos/recap/1788274259845.jpg",
+  "/photos/recap/1788274263848.jpg",
+  "/photos/recap/1788475303060.jpg",
+  "/photos/recap/1788475303097.jpg",
+  "/photos/recap/1788475303105.jpg",
+  "/photos/recap/1788475303154.jpg",
+  "/photos/recap/1788475303218.jpg",
+  "/photos/recap/1788475303288.jpg",
+  "/photos/recap/1788475303353.jpg",
+  "/photos/recap/1788475303396.jpg",
+  "/photos/recap/1788524878235.jpg",
+  "/photos/recap/1788524878614.jpg",
+  "/photos/recap/1788524878871.jpg",
+  "/photos/recap/1788524879176.jpg",
+  "/photos/recap/1788524879698.jpg",
+  "/photos/recap/1788524879744.jpg",
+  "/photos/recap/1788524879915.jpg",
+  "/photos/recap/1788524880105.jpg",
+];
 
 const SPONSORS = [
   { name: "Les Ateliers Bromont", logo: "https://lesateliersbromont.ca/cdn/shop/files/LesAteliersBromont_2cdbb6bf-4cfc-449d-bed1-ac39af732ac4.svg?height=80&v=1772938029", url: "https://lesateliersbromont.ca" },
@@ -9,10 +34,10 @@ const SPONSORS = [
 ];
 
 const STATS = [
-  { n: "200+", label: { fr: "Participants", en: "Attendees" } },
-  { n: "6",    label: { fr: "Conférences", en: "Sessions" } },
-  { n: "10+",  label: { fr: "Conférenciers", en: "Speakers" } },
-  { n: "4",    label: { fr: "Partenaires", en: "Partners" } },
+  { n: "70+", label: { fr: "Participants", en: "Attendees" } },
+  { n: "6",   label: { fr: "Conférences", en: "Sessions" } },
+  { n: "10+", label: { fr: "Conférenciers", en: "Speakers" } },
+  { n: "4",   label: { fr: "Partenaires", en: "Partners" } },
 ];
 
 export default function Recap() {
@@ -76,18 +101,13 @@ export default function Recap() {
           <p className="text-slate-500 text-sm text-center mb-10">
             {fr ? "Mascouche, QC · 29 août 2026" : "Mascouche, QC · August 29, 2026"}
           </p>
-          {/* Photo grid — replace src with real photos when available */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="aspect-[4/3] rounded-xl bg-[#0f1240]/80 border border-[#2a3580]/40 flex items-center justify-center"
-                style={{ background: "linear-gradient(135deg,#0d1035,#1a1060)" }}>
-                <span className="text-slate-600 text-xs font-mono">📷 photo {i + 1}</span>
+            {PHOTOS.map((src) => (
+              <div key={src} className="relative aspect-[4/3] rounded-xl overflow-hidden bg-[#0f1240]">
+                <Image src={src} alt="Tainos Cyber Con 2026" fill className="object-cover hover:scale-105 transition-transform duration-500" unoptimized />
               </div>
             ))}
           </div>
-          <p className="text-center text-slate-600 text-xs mt-4 font-mono">
-            {fr ? "Photos à venir sur LinkedIn" : "Photos coming to LinkedIn"}
-          </p>
         </div>
       </section>
 
