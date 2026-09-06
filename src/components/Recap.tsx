@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useLang } from "@/context/LangContext";
 
 const PHOTOS = [
@@ -71,17 +71,38 @@ export default function Recap() {
   const fr = lang === "fr";
   const [lightbox, setLightbox] = useState<string | null>(null);
   const [lightboxIdx, setLightboxIdx] = useState(0);
+  const [carouselIdx, setCarouselIdx] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const touchStartX = useRef<number | null>(null);
 
-  function openLightbox(src: string) {
-    const idx = PHOTOS.indexOf(src);
+  const carouselNext = useCallback(() => setCarouselIdx((i) => (i + 1) % PHOTOS.length), []);
+  const carouselPrev = useCallback(() => setCarouselIdx((i) => (i - 1 + PHOTOS.length) % PHOTOS.length), []);
+
+  useEffect(() => {
+    if (paused || lightbox) return;
+    const t = setInterval(carouselNext, 4000);
+    return () => clearInterval(t);
+  }, [paused, lightbox, carouselNext]);
+
+  function openLightbox(idx: number) {
     setLightboxIdx(idx);
-    setLightbox(src);
+    setLightbox(PHOTOS[idx]);
   }
 
   function navigate(dir: number) {
     const next = (lightboxIdx + dir + PHOTOS.length) % PHOTOS.length;
     setLightboxIdx(next);
     setLightbox(PHOTOS[next]);
+  }
+
+  function onTouchStart(e: React.TouchEvent) {
+    touchStartX.current = e.touches[0].clientX;
+  }
+  function onTouchEnd(e: React.TouchEvent) {
+    if (touchStartX.current === null) return;
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) diff > 0 ? carouselNext() : carouselPrev();
+    touchStartX.current = null;
   }
 
   return (
@@ -153,25 +174,62 @@ export default function Recap() {
         </div>
       </section>
 
-      {/* ── Photo gallery ── */}
-      <section className="py-16 px-4 border-b border-[#2a3580]/30">
-        <div className="max-w-6xl mx-auto">
+      {/* ── Photo carousel ── */}
+      <section className="py-16 border-b border-[#2a3580]/30">
+        <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-black text-white mb-2 text-center">
             {fr ? "La journée en images" : "The day in pictures"}
           </h2>
           <p className="text-slate-500 text-sm text-center mb-10">Mascouche, QC · 29 août 2026</p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-            {PHOTOS.map((src) => (
-              <button key={src} onClick={() => openLightbox(src)}
-                className="relative aspect-[4/3] rounded-xl overflow-hidden bg-[#0f1240] group cursor-zoom-in focus:outline-none">
-                <Image src={src} alt="Tainos Cyber Con 2026" fill className="object-cover group-hover:scale-105 transition-transform duration-500" unoptimized />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors duration-300 flex items-center justify-center">
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity text-white text-2xl drop-shadow-lg">⛶</span>
-                </div>
-              </button>
-            ))}
-          </div>
         </div>
+
+        {/* Main carousel */}
+        <div className="relative group"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}>
+
+          {/* Main image */}
+          <div className="relative w-full aspect-[16/9] max-h-[70vh] bg-[#07091a] cursor-zoom-in overflow-hidden"
+            onClick={() => openLightbox(carouselIdx)}>
+            {PHOTOS.map((src, i) => (
+              <div key={src} className="absolute inset-0 transition-opacity duration-700"
+                style={{ opacity: i === carouselIdx ? 1 : 0, pointerEvents: i === carouselIdx ? "auto" : "none" }}>
+                <Image src={src} alt="Tainos Cyber Con 2026" fill className="object-contain" unoptimized priority={i === 0} />
+              </div>
+            ))}
+            {/* Click-to-enlarge hint */}
+            <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity bg-black/50 text-white text-xs px-3 py-1.5 rounded-full font-mono">
+              {fr ? "Cliquer pour agrandir" : "Click to enlarge"}
+            </div>
+          </div>
+
+          {/* Prev / Next */}
+          <button onClick={carouselPrev}
+            className="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/50 hover:bg-black/80 text-white text-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            ‹
+          </button>
+          <button onClick={carouselNext}
+            className="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/50 hover:bg-black/80 text-white text-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            ›
+          </button>
+        </div>
+
+        {/* Thumbnail strip */}
+        <div className="flex gap-2 overflow-x-auto py-3 px-4 scrollbar-none max-w-6xl mx-auto">
+          {PHOTOS.map((src, i) => (
+            <button key={src} onClick={() => { setCarouselIdx(i); setPaused(true); }}
+              className={`relative flex-shrink-0 w-20 h-14 rounded-lg overflow-hidden border-2 transition-all focus:outline-none ${i === carouselIdx ? "border-[#c03880] opacity-100" : "border-transparent opacity-50 hover:opacity-80"}`}>
+              <Image src={src} alt="" fill className="object-cover" unoptimized />
+            </button>
+          ))}
+        </div>
+
+        {/* Counter */}
+        <p className="text-center text-slate-600 text-xs font-mono mt-1">
+          {carouselIdx + 1} / {PHOTOS.length}
+        </p>
       </section>
 
       {/* ── Thank-you breakdown ── */}
