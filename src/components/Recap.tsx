@@ -74,6 +74,23 @@ export default function Recap() {
   const [carouselIdx, setCarouselIdx] = useState(0);
   const [paused, setPaused] = useState(false);
   const touchStartX = useRef<number | null>(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (lightbox) {
+        if (e.key === "ArrowLeft") navigate(-1);
+        if (e.key === "ArrowRight") navigate(1);
+        if (e.key === "Escape") setLightbox(null);
+      } else {
+        if (e.key === "ArrowLeft") carouselPrev();
+        if (e.key === "ArrowRight") carouselNext();
+      }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lightbox, lightboxIdx, carouselNext, carouselPrev]);
 
   const carouselNext = useCallback(() => setCarouselIdx((i) => (i + 1) % PHOTOS.length), []);
   const carouselPrev = useCallback(() => setCarouselIdx((i) => (i - 1 + PHOTOS.length) % PHOTOS.length), []);
@@ -184,7 +201,8 @@ export default function Recap() {
         </div>
 
         {/* Main carousel */}
-        <div className="relative group"
+        <div ref={carouselRef} className="relative group" tabIndex={0}
+          onFocus={() => setPaused(true)} onBlur={() => setPaused(false)}
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
           onTouchStart={onTouchStart}
