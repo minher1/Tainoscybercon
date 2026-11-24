@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, FormEvent } from "react";
+import { useState, FormEvent } from "react";
 
 interface Field {
   name: string;
@@ -24,13 +24,13 @@ export default function ContactForm({
   formType = "contact",
 }: Props) {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error" | "spam">("idle");
-  const loadedAt = useRef(Date.now());
+  const [loadedAt] = useState(() => Date.now());
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
 
-    if (Date.now() - loadedAt.current < MIN_FILL_MS) {
+    if (Date.now() - loadedAt < MIN_FILL_MS) {
       setStatus("spam");
       return;
     }
@@ -44,7 +44,7 @@ export default function ContactForm({
     setStatus("sending");
 
     // Collect all named fields into a plain object
-    const data: Record<string, string> = { _formType: formType, _loadedAt: String(loadedAt.current) };
+    const data: Record<string, string> = { _formType: formType, _loadedAt: String(loadedAt) };
     fields.forEach((f) => {
       const el = form.elements.namedItem(f.name) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | null;
       if (el) data[f.label || f.name] = el.value;

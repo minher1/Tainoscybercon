@@ -98,7 +98,7 @@ export default function SurveyPage() {
           {/* Q1 — Star rating */}
           <div className="bg-[#0f1240]/60 border border-[#2a3580]/50 rounded-2xl p-6">
             <label className="block text-sm font-black tracking-wider text-[#7b9bff] uppercase mb-1">01</label>
-            <p className="text-white font-bold text-lg mb-1">Comment évaluez-vous l'événement ?</p>
+            <p className="text-white font-bold text-lg mb-1">Comment évaluez-vous l&apos;événement ?</p>
             <p className="text-slate-500 text-xs mb-4">How would you rate the overall event?</p>
             <div className="flex gap-3 justify-center">
               {[1, 2, 3, 4, 5].map((s) => (
@@ -137,8 +137,8 @@ export default function SurveyPage() {
           {/* Q3 — Main takeaway */}
           <div className="bg-[#0f1240]/60 border border-[#2a3580]/50 rounded-2xl p-6">
             <label className="block text-sm font-black tracking-wider text-[#7b9bff] uppercase mb-1">03</label>
-            <p className="text-white font-bold text-lg mb-1">Quel est votre principal apprentissage d'aujourd'hui ?</p>
-            <p className="text-slate-500 text-xs mb-4">What's your main takeaway from today?</p>
+            <p className="text-white font-bold text-lg mb-1">Quel est votre principal apprentissage d&apos;aujourd&apos;hui ?</p>
+            <p className="text-slate-500 text-xs mb-4">What&apos;s your main takeaway from today?</p>
             <textarea
               value={takeaway}
               onChange={(e) => setTakeaway(e.target.value)}
@@ -151,7 +151,7 @@ export default function SurveyPage() {
           {/* Q4 — Topics for next year */}
           <div className="bg-[#0f1240]/60 border border-[#2a3580]/50 rounded-2xl p-6">
             <label className="block text-sm font-black tracking-wider text-[#7b9bff] uppercase mb-1">04</label>
-            <p className="text-white font-bold text-lg mb-1">Quels sujets souhaitez-vous voir l'an prochain ?</p>
+            <p className="text-white font-bold text-lg mb-1">Quels sujets souhaitez-vous voir l&apos;an prochain ?</p>
             <p className="text-slate-500 text-xs mb-4">What topics would you like to see next year? (choose all that apply)</p>
             <div className="grid grid-cols-2 gap-2">
               {TOPICS.map((t) => (
@@ -200,7 +200,7 @@ export default function SurveyPage() {
           {/* Q7 — Attend again */}
           <div className="bg-[#0f1240]/60 border border-[#2a3580]/50 rounded-2xl p-6">
             <label className="block text-sm font-black tracking-wider text-[#7b9bff] uppercase mb-1">07</label>
-            <p className="text-white font-bold text-lg mb-1">Reviendrez-vous l'an prochain ?</p>
+            <p className="text-white font-bold text-lg mb-1">Reviendrez-vous l&apos;an prochain ?</p>
             <p className="text-slate-500 text-xs mb-4">Would you attend again next year?</p>
             <div className="flex gap-3">
               {[["Oui ✅", "oui"], ["Peut-être 🤔", "maybe"], ["Non ❌", "non"]].map(([label, val]) => (
@@ -215,7 +215,7 @@ export default function SurveyPage() {
           {/* Q8 — Suggestions */}
           <div className="bg-[#0f1240]/60 border border-[#2a3580]/50 rounded-2xl p-6">
             <label className="block text-sm font-black tracking-wider text-[#7b9bff] uppercase mb-1">08 — Optionnel</label>
-            <p className="text-white font-bold text-lg mb-1">Suggestions d'amélioration ?</p>
+            <p className="text-white font-bold text-lg mb-1">Suggestions d&apos;amélioration ?</p>
             <p className="text-slate-500 text-xs mb-4">Any suggestions to improve the event?</p>
             <textarea
               value={suggestion}

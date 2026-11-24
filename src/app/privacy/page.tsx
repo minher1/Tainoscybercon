@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const metadata = {
   title: "Politique de confidentialité — Tainos Cyber Con 2026",
 };
@@ -39,7 +41,7 @@ export default function PrivacyPage() {
               <li>Nom et prénom</li>
               <li>Adresse courriel</li>
               <li>Numéro de téléphone (optionnel)</li>
-              <li>Nom de l'organisation</li>
+              <li>Nom de l&apos;organisation</li>
               <li>Informations professionnelles (pour les propositions de conférences)</li>
             </ul>
             <p className="mt-3">Nous ne collectons pas de données de paiement. Les transactions sont gérées par Eventbrite.</p>
@@ -50,7 +52,7 @@ export default function PrivacyPage() {
             <p>Vos données sont utilisées pour :</p>
             <ul className="list-disc pl-5 mt-3 space-y-1 text-slate-400">
               <li>Répondre à vos demandes de partenariat ou de prise de parole</li>
-              <li>Vous informer sur l'événement Tainos Cyber Con 2026</li>
+              <li>Vous informer sur l&apos;événement Tainos Cyber Con 2026</li>
               <li>Assurer la protection du site contre les soumissions automatisées (Cloudflare Turnstile)</li>
             </ul>
           </section>
@@ -67,7 +69,7 @@ export default function PrivacyPage() {
             <h2 className="text-xl font-bold text-white mb-3">5. Partage des données</h2>
             <p>
               Nous ne vendons ni ne louons vos données personnelles à des tiers. Elles peuvent
-              être partagées avec nos prestataires de services techniques (Resend pour l'envoi
+              être partagées avec nos prestataires de services techniques (Resend pour l&apos;envoi
               de courriels, Cloudflare pour la sécurité) dans la stricte mesure nécessaire à la
               fourniture de nos services.
             </p>
@@ -77,11 +79,11 @@ export default function PrivacyPage() {
             <h2 className="text-xl font-bold text-white mb-3">6. Vos droits (Loi 25 / LPRPDE)</h2>
             <p>Conformément à la législation québécoise et canadienne, vous disposez des droits suivants :</p>
             <ul className="list-disc pl-5 mt-3 space-y-1 text-slate-400">
-              <li>Droit d'accès à vos données personnelles</li>
+              <li>Droit d&apos;accès à vos données personnelles</li>
               <li>Droit de rectification</li>
-              <li>Droit à l'effacement (« droit à l'oubli »)</li>
+              <li>Droit à l&apos;effacement (« droit à l&apos;oubli »)</li>
               <li>Droit de retirer votre consentement à tout moment</li>
-              <li>Droit de déposer une plainte auprès de la Commission d'accès à l'information du Québec</li>
+              <li>Droit de déposer une plainte auprès de la Commission d&apos;accès à l&apos;information du Québec</li>
             </ul>
             <p className="mt-3">
               Pour exercer ces droits, écrivez-nous à{" "}
@@ -95,9 +97,9 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-xl font-bold text-white mb-3">7. Cookies et technologies similaires</h2>
             <p>
-              Ce site n'utilise pas de cookies de traçage ou publicitaires. Cloudflare Turnstile
+              Ce site n&apos;utilise pas de cookies de traçage ou publicitaires. Cloudflare Turnstile
               peut déposer un cookie fonctionnel temporaire pour la protection contre les robots.
-              Aucune donnée n'est partagée à des fins publicitaires.
+              Aucune donnée n&apos;est partagée à des fins publicitaires.
             </p>
           </section>
 
@@ -113,9 +115,9 @@ export default function PrivacyPage() {
         </div>
 
         <div className="mt-16 pt-8 border-t border-[#2a3580]/40">
-          <a href="/" className="text-sm text-[#7b9bff] hover:text-white transition-colors font-mono">
-            ← Retour à l'accueil
-          </a>
+          <Link href="/" className="text-sm text-[#7b9bff] hover:text-white transition-colors font-mono">
+            ← Retour à l&apos;accueil
+          </Link>
         </div>
       </div>
     </div>

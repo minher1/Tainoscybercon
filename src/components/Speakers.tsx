@@ -173,7 +173,7 @@ export default function Speakers() {
             <div className="px-10 py-12 relative">
               <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)", backgroundSize: "32px 32px" }} />
               <div className="relative max-w-3xl">
-                <span className="text-xs font-mono font-bold tracking-[0.3em] uppercase text-white/60 mb-2 block">// APPEL À CONFÉRENCIERS</span>
+                <span className="text-xs font-mono font-bold tracking-[0.3em] uppercase text-white/60 mb-2 block">{"// APPEL À CONFÉRENCIERS"}</span>
                 <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">{t.speakers.call_title}</h2>
                 <p className="text-white/80 text-base leading-relaxed">{t.speakers.call_intro}</p>
               </div>

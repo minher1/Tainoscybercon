@@ -103,7 +103,7 @@ export default async function Image() {
 
           {/* Tagline */}
           <p style={{ fontSize: 22, color: "#94a3b8", textAlign: "center", maxWidth: 700, lineHeight: 1.4, margin: 0 }}>
-            La cybersécurité à l'ère de l'IA, du cloud et des menaces persistantes
+            La cybersécurité à l&apos;ère de l&apos;IA, du cloud et des menaces persistantes
           </p>
         </div>
 

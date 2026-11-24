@@ -118,7 +118,7 @@ export default function Footer() {
               Politique de confidentialité
             </a>
             <a href="/terms" className="text-xs text-slate-400 hover:text-slate-200 transition-colors underline underline-offset-2">
-              Conditions d'utilisation
+              Conditions d&apos;utilisation
             </a>
           </div>
           <BinaryStream className="w-40 opacity-30" />

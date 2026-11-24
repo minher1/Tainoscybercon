@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useLang } from "@/context/LangContext";
 
@@ -76,6 +77,9 @@ export default function Recap() {
   const touchStartX = useRef<number | null>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
 
+  const carouselNext = useCallback(() => setCarouselIdx((i) => (i + 1) % PHOTOS.length), []);
+  const carouselPrev = useCallback(() => setCarouselIdx((i) => (i - 1 + PHOTOS.length) % PHOTOS.length), []);
+
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (lightbox) {
@@ -91,9 +95,6 @@ export default function Recap() {
     return () => window.removeEventListener("keydown", onKey);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lightbox, lightboxIdx, carouselNext, carouselPrev]);
-
-  const carouselNext = useCallback(() => setCarouselIdx((i) => (i + 1) % PHOTOS.length), []);
-  const carouselPrev = useCallback(() => setCarouselIdx((i) => (i - 1 + PHOTOS.length) % PHOTOS.length), []);
 
   useEffect(() => {
     if (paused || lightbox) return;
@@ -118,7 +119,10 @@ export default function Recap() {
   function onTouchEnd(e: React.TouchEvent) {
     if (touchStartX.current === null) return;
     const diff = touchStartX.current - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) diff > 0 ? carouselNext() : carouselPrev();
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) carouselNext();
+      else carouselPrev();
+    }
     touchStartX.current = null;
   }
 
@@ -323,11 +327,11 @@ export default function Recap() {
               : "The organizing committee will keep you informed of upcoming activities before the next edition. Stay tuned! 🚀"}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="/#newsletter"
+            <Link href="/#newsletter"
               className="px-8 py-3.5 font-bold text-sm tracking-widest uppercase rounded-lg text-white transition-opacity hover:opacity-90"
               style={{ background: "linear-gradient(135deg,#e84444,#c03880,#7b35b0)" }}>
               {fr ? "Être notifié(e)" : "Get notified"}
-            </a>
+            </Link>
             <a href="https://www.linkedin.com/company/tainos-cybercon" target="_blank" rel="noopener noreferrer"
               className="px-8 py-3.5 border border-[#2a3580] text-slate-300 font-bold text-sm tracking-widest uppercase rounded-lg hover:border-[#4a6cf7] hover:text-white transition-colors">
               {fr ? "Suivre sur LinkedIn" : "Follow on LinkedIn"}

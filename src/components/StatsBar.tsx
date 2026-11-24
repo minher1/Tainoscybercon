@@ -3,7 +3,7 @@ import { useLang } from "@/context/LangContext";
 
 export default function StatsBar() {
   const { t } = useLang();
-  const stats = (t as any).stats as { value: string; label: string }[];
+  const stats = (t as unknown as { stats: { value: string; label: string }[] }).stats;
 
   return (
     <div className="bg-[#1c2460] py-10 px-4 border-y border-[#2a3580]/60">

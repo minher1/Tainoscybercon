@@ -6,6 +6,8 @@ export default function CookieBanner() {
 
   useEffect(() => {
     const consent = localStorage.getItem("cookie_consent");
+    // localStorage only exists in the browser, so the banner is shown after mount, not during render.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (!consent) setVisible(true);
   }, []);
 
@@ -28,7 +30,7 @@ export default function CookieBanner() {
           <p className="text-white text-sm font-semibold mb-1">🍪 Ce site utilise des cookies fonctionnels</p>
           <p className="text-slate-300 text-xs leading-relaxed">
             Nous utilisons Cloudflare Turnstile pour protéger nos formulaires contre les robots.
-            Aucun cookie publicitaire ou de traçage n'est utilisé.{" "}
+            Aucun cookie publicitaire ou de traçage n&apos;est utilisé.{" "}
             <a href="/privacy" className="text-[#7b9bff] hover:underline">Politique de confidentialité</a>
           </p>
         </div>

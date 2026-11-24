@@ -24,7 +24,7 @@ export default function NotFound() {
             href="/"
             className="px-8 py-3 logo-gradient text-white font-bold text-sm tracking-widest uppercase rounded-lg hover:opacity-90 transition-opacity"
           >
-            Retour à l'accueil
+            Retour à l&apos;accueil
           </Link>
           <Link
             href="/tickets"
@@ -35,7 +35,7 @@ export default function NotFound() {
         </div>
 
         <p className="mt-12 text-xs font-mono text-slate-600">
-          // TAINOS CYBER CON 2026 · tainoscybercon.com
+          {"// TAINOS CYBER CON 2026 · tainoscybercon.com"}
         </p>
       </div>
     </div>

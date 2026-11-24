@@ -34,7 +34,8 @@ export default function Typewriter({ lines, speed = 40, pauseMs = 1200, classNam
       }, speed);
       return () => clearTimeout(t);
     } else {
-      setPausing(true);
+      const t = setTimeout(() => setPausing(true), 0);
+      return () => clearTimeout(t);
     }
   }, [charIdx, lineIdx, lines, pausing, pauseMs, speed]);
 

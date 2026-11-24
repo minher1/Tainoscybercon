@@ -33,7 +33,7 @@ export default function Tickets() {
             <div className="text-center mb-8">
               <div className="inline-flex flex-col items-center gap-1 px-8 py-4 rounded-2xl logo-gradient shadow-lg shadow-[#c03880]/20">
                 <span className="text-4xl font-black text-white leading-none">
-                  {(t.tickets as any).price}
+                  {(t.tickets as unknown as { price: string }).price}
                 </span>
                 <span className="text-white/80 text-xs font-mono tracking-widest uppercase">
                   {t.tickets.subtitle}
